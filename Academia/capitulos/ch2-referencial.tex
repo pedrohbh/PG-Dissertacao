@@ -10,15 +10,29 @@
 O algoritmo de Dijkstra tem por objetivo definir o menor caminho partindo do vértice origem $v_{s}$ e chegando a todos os demais vértices $v_{i}$ do grafo $G = (V,E)$. Para garantir a viabilidade do algoritmo, assume-se que todos os pesos $w( u, v )$ sejam maiores ou iguais a zero para toda aresta $E$ do grafo $G$ \cite{cormen2009introduction}.
 
 A seguir é apresentado o pseudocódigo do algoritmo conforme descrito em \citeonline{drozdek2012data}.
-\begin{verbatim}
-CÓDIGO AQUI
-\end{verbatim}
+%\begin{verbatim}
+%CÓDIGO AQUI
+%\end{verbatim}
+
+\begin{lstlisting}[ mathescape, label=lst-dijkstra-codigo, caption=Algoritmo de Dijkstra., float=htpb]
+DijkstraAlgorithm(weighted simple digraph, vertex first)
+	for all vertices v
+		currDist(v) = $\infty$;
+	currDist(first) = 0;
+	toBeChecked = all vertices;
+	while toBeChecked is not empty
+		v = a vertex in toBeChecked with minimal currDist(v);
+		remove v from toBeChecked;
+		for all vertices u adjacent to v and in toBeChecked
+			if currDist( u ) > currDist( v ) + weight( edge(vu) )
+				currDist( u ) = currDist( v ) + weight( edge(vu) );
+				predecessor( u ) = v;
+\end{lstlisting}
+
 %\begin{verbatim}
 %DijkstraAlgorithm(weighted simple digraph, vertex first)
 %	for all vertices v
-%\end{verbatim}
-%	currDist(v) = $\infty$;
-%\begin{verbatim}
+%	currDist(v) = infinite;
 %	currDist(first) = 0;
 %	toBeChecked = all vertices;
 %	while toBeChecked is not empty
@@ -34,11 +48,13 @@ O algoritmo inicia atribuindo o valor inicial de cada distância de cada vértic
 
 Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do grafo, e a partir deste, poderemos definir a rota para qualquer vértice do grafo partindo de $v_{s}$.  %\footnote{Em liguagens de programação, é costume substituir este valor pelo maior número representativo do tipo da varíavel selecionado para representar a distância. Por exemplo na liguagem C, caso se utilize o valor int (inteiro) para representar a distância, a atribuição inicial será dado pela constante "int_max" definida na biblioteca "limits.h"}
 
-
+\subsection{Garantia do algoritmo retorna o menor valor}
+\label{sec-dijkstra-algoritmo-prova}
+A prova será demonstrada em breve.
 
 \section{Versões do Algoritmo implmentadas e suas Estrutura de Dados}
 \label{sec-dijkstra-versoes}
-Para este projeto de graduação, será implementada três versões do algoritmo de Dijkstra baseados em estruturas de dados diferentes que implicam em tempos computacionais diferentes \cite{cormen2009introduction}.
+Para este projeto de graduação, será implementada três versões do algoritmo de Dijkstra baseados em estruturas de dados diversas que implicam em tempos computacionais diferentes \cite{cormen2009introduction}.
 
 As versões implementadas são o Dijkstra Canônico, Dijkstra Heap Binário (seção \ref{sec-dijkstra-versoes-heap}) e Dijkstra Heap de Fibonacci (seção \ref{sec-dijkstra-versoes-fibonacci}), todas baseadas em \citeonline{cormen2009introduction, drozdek2012data}.
 
@@ -46,7 +62,7 @@ Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazena
 
 \subsection{Dijkstra Heap Binário}
 \label{sec-dijkstra-versoes-heap}
-Para esta implementação, será utilizada a estrutura de dados heap binária como fila de prioridade. Heaps binária podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
+Para esta implementação, será utilizada a estrutura de dados heap binária mínima como fila de prioridade. Heaps binária podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
 \begin{enumerate}
  \item O valor de cada nodo não é maior do que os valores guardados em cada um de seus filhos.
  \item A árvore é perfeitamente balaceada, e as folhas no último nível estão todas mais a esquerda.
@@ -72,3 +88,11 @@ A vantagem de se usar essa estrutura de dados reside no fato de suas operações
 
 \subsection{Dijkstra Heap de Fibonacci}
 \label{sec-dijkstra-versoes-fibonacci}
+
+
+\section{Experimentos Computacionais}
+\label{sec-dijkstra-experimentos}
+
+
+\section{Conclusões}
+\label{sec-dijkstra-conclusoes}
