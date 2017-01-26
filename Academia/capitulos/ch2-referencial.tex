@@ -40,7 +40,7 @@ Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do gr
 \label{sec-dijkstra-versoes}
 Para este projeto de graduação, será implementada três versões do algoritmo de Dijkstra baseados em estruturas de dados diferentes que implicam em tempos computacionais diferentes \cite{cormen2009introduction}.
 
-As versões são o Dijkstra Canônico, Dijkstra Heap Binário (seção X) e Dijkstra Heap de Fibonacci, todas descritas em \citeonline{cormen2009introduction, drozdek2012data}.
+As versões implementadas são o Dijkstra Canônico, Dijkstra Heap Binário (seção \ref{sec-dijkstra-versoes-heap}) e Dijkstra Heap de Fibonacci (seção \ref{sec-dijkstra-versoes-fibonacci}), todas baseadas em \citeonline{cormen2009introduction, drozdek2012data}.
 
 Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazenar as distâncias calculadas pelo algoritmo, e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice fora do conjunto "toBeChecked", cuja a distância é menor dentre todas as outras. O tempo computacional para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
 
@@ -50,6 +50,25 @@ Para esta implementação, será utilizada a estrutura de dados heap binária co
 \begin{enumerate}
  \item O valor de cada nodo não é maior do que os valores guardados em cada um de seus filhos.
  \item A árvore é perfeitamente balaceada, e as folhas no último nível estão todas mais a esquerda.
-\end{enumerate} 
+\end{enumerate}
 
+Um exemplo de estrutura Heap Binário representada tanto como árvore como vetor pode ser visualizado nas figuras \ref{fig-dijkstra-heapbinario} e \ref{fig-dijkstra-heapvetor} respectivamente.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.95\textwidth]{figuras/Heap} 
+\caption{Exemplo de Heap Binário representado como árvore.}
+\label{fig-dijkstra-heapbinario}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.60\textwidth]{figuras/Heap-vetor}
+\caption{Representação do Heap Binário da figura \ref{fig-dijkstra-heapbinario} como vetor.}
+\label{fig-dijkstra-heapvetor}
+\end{figure}
+
+A vantagem de se usar essa estrutura de dados reside no fato de suas operações de inserção, extração de mínimo e reconstrução da heap possuirem tempo computacional de $O(\log n)$. Por consequência, o tempo computacional para este caso é de $O(|E| \log |V|)$ \cite{cormen2009introduction}.
+
+\subsection{Dijkstra Heap de Fibonacci}
+\label{sec-dijkstra-versoes-fibonacci}
