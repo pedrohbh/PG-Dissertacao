@@ -48,6 +48,14 @@ O algoritmo inicia atribuindo o valor inicial de cada distância de cada vértic
 
 Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do grafo, e a partir deste, poderemos definir a rota para qualquer vértice do grafo partindo de $v_{s}$.  %\footnote{Em liguagens de programação, é costume substituir este valor pelo maior número representativo do tipo da varíavel selecionado para representar a distância. Por exemplo na liguagem C, caso se utilize o valor int (inteiro) para representar a distância, a atribuição inicial será dado pela constante "int_max" definida na biblioteca "limits.h"}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.\textwidth]{figuras/grafo-dijkstra} 
+\caption{Aplicação do algoritmo de Dijkstra tendo o vértice "A" como origem. As arestas pintadas de preto correspondem a rota calculada a todos os demais vértices.}
+\label{fig-dijkstra-algoritmo-grafo}
+\end{figure}
+
+
 \subsection{Garantia do algoritmo retorna o menor valor}
 \label{sec-dijkstra-algoritmo-prova}
 A prova será demonstrada em breve.
@@ -58,7 +66,7 @@ Para este projeto de graduação, será implementada três versões do algoritmo
 
 As versões implementadas são o Dijkstra Canônico, Dijkstra Heap Binário (seção \ref{sec-dijkstra-versoes-heap}) e Dijkstra Heap de Fibonacci (seção \ref{sec-dijkstra-versoes-fibonacci}), todas baseadas em \citeonline{cormen2009introduction, drozdek2012data}.
 
-Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazenar as distâncias calculadas pelo algoritmo, e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice fora do conjunto "toBeChecked", cuja a distância é menor dentre todas as outras. O tempo computacional para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
+Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazenar as distâncias calculadas pelo algoritmo (assim como os seus vértices correspondetes, que neste caso é utilizado o próprio indíce do vetor armazenado), e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice (fora do conjunto "toBeChecked") cuja a distância é menor dentre todas as outras. O tempo computacional para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
 
 \subsection{Dijkstra Heap Binário}
 \label{sec-dijkstra-versoes-heap}
