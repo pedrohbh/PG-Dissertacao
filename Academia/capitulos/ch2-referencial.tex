@@ -46,7 +46,7 @@ DijkstraAlgorithm(weighted simple digraph, vertex first)
 
 O algoritmo inicia atribuindo o valor inicial de cada distância de cada vértice do grafo igual a $\infty$ com exceção do vértice inicial $v_{s}$ que será iniciado por 0. Em seguida todos os vértices são adicionados ao conjunto dos "toBeChecked" ("aSeremChecados"). Feito isso, inicia-se o processo iterativo: seleciona-se o vértice $v$ de menor custo que esteja dentro do conjunto "toBeChecked", retira-se ele do conjunto e a partir dele, para cada vértice adjacente $u$ de $v$, verifica-se se a distância atual calculada de $u$ é maior do que a distância calculada de $v$ mais o valor referente ao peso da aresta de $v$ e $u$ (origem em $v$). Caso seja verdade, a distância atual de $u$ é substituida pela soma da distância atual de $v$ mais o peso da aresta de $v$ e $u$ (este valor corresponde a distância do vértice de origem $v_{s}$ até $u$), além de definir o antecessor $u$ como sendo $v$. Repete-se o passo iterativo até que o conjunto "toBeChecked" esteja vazio.
 
-Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do grafo, e a partir deste, poderemos definir a rota para qualquer vértice do grafo partindo de $v_{s}$.  %\footnote{Em liguagens de programação, é costume substituir este valor pelo maior número representativo do tipo da varíavel selecionado para representar a distância. Por exemplo na liguagem C, caso se utilize o valor int (inteiro) para representar a distância, a atribuição inicial será dado pela constante "int_max" definida na biblioteca "limits.h"}
+Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do grafo, e a partir deste, poderemos definir a rota para qualquer vértice do grafo partindo de $v_{s}$.\footnote{Em liguagens de programação, é costume substituir o valor $\infty$ pelo maior número representativo do tipo da varíavel selecionado para representar a distância. Por exemplo na liguagem C, caso se utilize o valor int (inteiro) para representar a distância, a atribuição inicial será dado pela constante int\underline{\space}max  definida pela biblioteca "limits.h".}
 
 \begin{figure}[H]
 \centering
@@ -68,7 +68,7 @@ As versões implementadas são o Dijkstra Canônico, Dijkstra Heap Binário (se�
 
 Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazenar as distâncias calculadas pelo algoritmo (assim como os seus vértices correspondetes, que neste caso é utilizado o próprio indíce do vetor armazenado), e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice (fora do conjunto "toBeChecked") cuja a distância é menor dentre todas as outras. O tempo computacional para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
 
-\subsection{Dijkstra Heap Binário}
+\subsection{Dijkstra Heap Binário (A revisar)}
 \label{sec-dijkstra-versoes-heap}
 Para esta implementação, será utilizada a estrutura de dados heap binária mínima como fila de prioridade. Heaps binária podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
 \begin{enumerate}
