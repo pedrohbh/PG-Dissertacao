@@ -1,0 +1,7 @@
+Nome Instância;Número de Vértices;Número de Arestas;Tempo Canônico (em milissegundos);Tempo Heap Binário (em milissegundos);Speed-up Heap Binário;Tempo Heap Fibonacci (em milissegundos);Speed-up Heap Fibonacci
+teste2.txt;5;9;0;0;�;2;0%
+teste.txt;5;7;1;0;∞%;0;∞%
+USA-road-d.BAY.gr;321270;800172;256690;248;103.504%;755;33.999%
+USA-road-d.FLA.gr;1070376;2712798;2909655;6601;44.079%;8732;33.322%
+USA-road-d.COL.gr;435666;1057066;181687;318;57.134%;627;28.977%
+USA-road-d.NY.gr;264346;733846;65287;153;42.671%;302;21.618%
