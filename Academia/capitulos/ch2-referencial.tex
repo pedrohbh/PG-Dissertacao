@@ -100,7 +100,7 @@ A vantagem de se usar essa estrutura de dados reside no fato de suas operações
 
 \section{Experimentos Computacionais}
 \label{sec-dijkstra-experimentos}
-Para a realização dos experimentos computacionais será rodado instâncias de grafos que representam malhas rodoviárias reais. Todas elas descritas na tabela \ref{tbl-dijkstra-instancias} e disponíveis no sítio eletrônico \url{http://www.dis.uniroma1.it/challenge9/download.shtml} (acesso em 28 de janeiro de 2017).
+Para a realização dos experimentos computacionais será rodado instâncias de grafos que representam malhas rodoviárias reais. Todas elas descritas nas tabelas \ref{tbl-dijkstra-instancias} e \ref{tbl-dijkstra-configuracao}, e disponíveis no sítio eletrônico \url{http://www.dis.uniroma1.it/challenge9/download.shtml} (acesso em 28 de janeiro de 2017).
 \begin{table}[H]
 \caption{Instâncias a serem rodadas pelo algoritmo de Dijkstra em suas três versões.}
 \label{tbl-dijkstra-instancias}
@@ -121,5 +121,44 @@ USA-road-d.FLA.gr & Representa a malha viária do estado da Flórida, Estados Un
 \end{tabular}
 \end{adjustbox}
 \end{table}
+
+\begin{table}[H]
+\caption{Configuração dos grafos correspondestes as malhas viárias descritas na tabela \ref{tbl-dijkstra-instancias}.}
+\label{tbl-dijkstra-configuracao}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Nome Instância} & \textbf{Número de Vértices |V|} & \textbf{Número de Arestas |E|} \\ 
+\hline 
+USA-road-d.NY.gr
+ & 264.346
+ & 733.846
+ \\ 
+\hline 
+USA-road-d.BAY.gr
+ & 321.270
+ & 800.172
+ \\ 
+\hline 
+USA-road-d.COL.gr
+ & 435.666
+ & 1.057.066
+ \\ 
+\hline 
+USA-road-d.FLA.gr
+ & 1.070.376
+ & 2.712.798
+ \\ 
+\hline 
+\end{tabular}
+\end{adjustbox} 
+\end{table}
+
+\subsection{Resultados}
+\label{sec-dijkstra-experimentos-resultados}
+
+
 \section{Conclusões}
 \label{sec-dijkstra-conclusoes}
+Conforme apresentado por \citeonline{larkin2014back}.
