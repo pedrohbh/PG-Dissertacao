@@ -159,6 +159,14 @@ USA-road-d.FLA.gr
 \label{sec-dijkstra-experimentos-resultados}
 Os resultados dos testes podem ser descritos a seguir.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.90\textwidth]{figuras/speed-up-dijkstra} 
+\caption{Ganho relativo dos Métodos do Algoritmo de Dijkstra sobre o Canônico.}
+\label{fig-dijkstra-resultados-speedup}
+\end{figure}
+
+
 \begin{table}[H]
 \caption{Tempos Computacionais obtidos pelo algoritmo de Dijkstra em suas diferentes versões (tempo em milissegundos).}
 \label{tbl-dijkstra-resultados-tempos}
@@ -175,6 +183,22 @@ USA-road-d.FLA.gr       & 2909655                 & 6601                        
 \end{adjustbox}
 \end{table}
 
+
+\begin{table}[H]
+\caption{Ganho relativo sobre o Dijkstra Canônico.}
+\label{tbl-dijkstra-resultados-speedup}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Ganho Heap Binário} & \textbf{Ganho Heap Fibonacci} \\ \hline
+USA-road-d.NY.gr        & 42.671\%                       & 21.618\%                         \\ \hline
+USA-road-d.BAY.gr       & 103.504\%                      & 33.999\%                         \\ \hline
+USA-road-d.COL.gr       & 57.134\%                       & 28.977\%                         \\ \hline
+USA-road-d.FLA.gr       & 44.079\%                       & 33.322\%                         \\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \section{Conclusões}
 \label{sec-dijkstra-conclusoes}
