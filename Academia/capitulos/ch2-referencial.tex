@@ -44,9 +44,9 @@ DijkstraAlgorithm(weighted simple digraph, vertex first)
 %			predecessor( u ) = v;
 %\end{verbatim}
 
-O algoritmo inicia atribuindo o valor inicial de cada distância de cada vértice do grafo igual a $\infty$ com exceção do vértice inicial $v_{s}$ que será iniciado por 0. Em seguida todos os vértices são adicionados ao conjunto dos "toBeChecked" ("aSeremChecados"). Feito isso, inicia-se o processo iterativo: seleciona-se o vértice $v$ de menor custo que esteja dentro do conjunto "toBeChecked", retira-se ele do conjunto e a partir dele, para cada vértice adjacente $u$ de $v$, verifica-se se a distância atual calculada de $u$ é maior do que a distância calculada de $v$ mais o valor referente ao peso da aresta de $v$ e $u$ (origem em $v$). Caso seja verdade, a distância atual de $u$ é substituida pela soma da distância atual de $v$ mais o peso da aresta de $v$ e $u$ (este valor corresponde a distância do vértice de origem $v_{s}$ até $u$), além de definir o antecessor $u$ como sendo $v$. Repete-se o passo iterativo até que o conjunto "toBeChecked" esteja vazio.
+O algoritmo inicia atribuindo o valor inicial de cada distância de cada vértice do grafo igual a $\infty$ com exceção do vértice inicial $v_{s}$ que será iniciado por 0. Em seguida todos os vértices são adicionados ao conjunto dos "toBeChecked" ("aSeremChecados"). Feito isso, inicia-se o processo iterativo: seleciona-se o vértice $v$ de menor custo que esteja dentro do conjunto "toBeChecked", retira-se ele do conjunto e a partir dele, para cada vértice adjacente $u$ de $v$, verifica-se se a distância atual calculada de $u$ é maior do que a distância calculada de $v$ mais o valor referente ao peso da aresta de $v$ e $u$ (origem em $v$). Caso seja verdade, a distância atual de $u$ é substituída pela soma da distância atual de $v$ mais o peso da aresta de $v$ e $u$ (este valor corresponde a distância do vértice de origem $v_{s}$ até $u$), além de definir o antecessor $u$ como sendo $v$. Repete-se o passo iterativo até que o conjunto "toBeChecked" esteja vazio.
 
-Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do grafo, e a partir deste, poderemos definir a rota para qualquer vértice do grafo partindo de $v_{s}$.\footnote{Em liguagens de programação, é costume substituir o valor $\infty$ pelo maior número representativo do tipo da varíavel selecionado para representar a distância. Por exemplo na liguagem C, caso se utilize o valor int (inteiro) para representar a distância, a atribuição inicial será dado pela constante INT\underline{\space}MAX  definida pela biblioteca "limits.h", que representa o maior valor númerico representado por esse tipo de variável.}
+Ao final do algoritmo, teremos o conjunto de predecessores de cada vértice do grafo, e a partir deste, poderemos definir a rota para qualquer vértice do grafo partindo de $v_{s}$.\footnote{Em linguagens de programação, é costume substituir o valor $\infty$ pelo maior número representativo do tipo da variável selecionado para representar a distância. Por exemplo na linguagem C, caso se utilize o valor int (inteiro) para representar a distância, a atribuição inicial será dado pela constante INT\underline{\space}MAX  definida pela biblioteca "limits.h", que representa o maior valor numérico representado por esse tipo de variável.}
 
 \begin{figure}[H]
 \centering
@@ -60,7 +60,7 @@ Ao final do algoritmo, teremos o conjuto de predecessores de cada vértice do gr
 \label{sec-dijkstra-algoritmo-prova}
 A prova será demonstrada em breve.
 
-\section{Versões do Algoritmo implmentadas e suas Estrutura de Dados}
+\section{Versões do Algoritmo implementadas e suas Estrutura de Dados}
 \label{sec-dijkstra-versoes}
 Para este projeto de graduação, será implementada três versões do algoritmo de Dijkstra baseados em estruturas de dados diversas que implicam em tempos computacionais diferentes \cite{cormen2009introduction}.
 
@@ -73,7 +73,7 @@ Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazena
 Para esta implementação, será utilizada a estrutura de dados heap binária mínima como fila de prioridade. Heaps binária podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
 \begin{enumerate}
  \item O valor de cada nodo não é maior do que os valores guardados em cada um de seus filhos.
- \item A árvore é perfeitamente balaceada, e as folhas no último nível estão todas mais a esquerda.
+ \item A árvore é perfeitamente balanceada, e as folhas no último nível estão todas mais a esquerda.
 \end{enumerate}
 
 Um exemplo de estrutura Heap Binário representada tanto como árvore como vetor pode ser visualizado nas figuras \ref{fig-dijkstra-heapbinario} e \ref{fig-dijkstra-heapvetor} respectivamente.
