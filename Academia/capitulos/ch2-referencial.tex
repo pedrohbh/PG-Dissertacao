@@ -159,6 +159,22 @@ USA-road-d.FLA.gr
 \label{sec-dijkstra-experimentos-resultados}
 Os resultados dos testes podem ser descritos a seguir.
 
+\begin{table}[H]
+\caption{Tempos Computacionais obtidos pelo algoritmo de Dijkstra em suas diferentes versões (tempo em milissegundos).}
+\label{tbl-dijkstra-resultados-tempos}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Tempo Canônico} & \textbf{Tempo Heap Binário} & \textbf{Tempo Heap Fibonacci} \\ \hline
+USA-road-d.NY.gr        & 65287                   & 153                         & 302                           \\ \hline
+USA-road-d.BAY.gr       & 256690                  & 248                         & 755                           \\ \hline
+USA-road-d.COL.gr       & 181687                  & 318                         & 627                           \\ \hline
+USA-road-d.FLA.gr       & 2909655                 & 6601                        & 8732                          \\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
 
 \section{Conclusões}
 \label{sec-dijkstra-conclusoes}
