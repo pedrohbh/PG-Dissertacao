@@ -92,6 +92,29 @@ Um exemplo de estrutura Heap Binário representada tanto como árvore como vetor
 \label{fig-dijkstra-heapvetor}
 \end{figure}
 
+A disposição dos elementos da árvore no vetor segue as seguintes relações entre nós pai, filho-direita e filho-esquerda:
+%\begin{equation}
+%Pai(i): \lfloor i/2 \rfloor
+%\end{equation}
+%\begin{equation}
+%Filho-esquerda(i): 2*i
+%\end{equation}
+%\begin{equation}
+%Filho-direita(i): 2*i+1
+%\end{equation}
+\begin{description}
+\item[Pai($i$):] $\lfloor i/2 \rfloor$
+\item[Filho-esquerda($i$):] $2*i$
+\item[Filho-direita($i$):] $2*i+1$
+\end{description}
+Onde $i \in \mathbb{N}$ e $i \subset [1, n]$, sendo que $i$ representa o índice do elemento no vetor e $n$ o número de elementos da árvore.
+
+ Para efeitos de exemplo (observe as figuras \ref{fig-dijkstra-heapbinario} e \ref{fig-dijkstra-heapvetor} para constatação), o nó que está contido na posição 4 do vetor, possuí como pai o nó de posição 2 ($\lfloor 4 / 2 \rfloor = 2$) e tem como filho da esquerda o nó de posição 8 ($2*4 = 8$) e filho da direita o nó de posição 9 ($2*4+1 = 9$).
+
+%\begin{equation}
+%\forall i, i \in \mathbb{N} [1,n]
+%\end{equation}
+
 A vantagem de se usar essa estrutura de dados reside no fato de suas operações de inserção, extração de mínimo e reconstrução da heap possuirem tempo computacional de $O(\log n)$. Por consequência, o tempo computacional para este caso é de $O(|E| \log |V|)$ \cite{cormen2009introduction}.
 
 \subsection{Dijkstra Heap de Fibonacci}
