@@ -68,7 +68,7 @@ As versões implementadas são o Dijkstra Canônico, Dijkstra Heap Binário (se�
 
 Para a versão Dijkstra Canônico, o algoritmo utiliza de um vetor para armazenar as distâncias calculadas pelo algoritmo (assim como os seus vértices correspondetes, que neste caso é utilizado o próprio indíce do vetor armazenado), e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice (fora do conjunto "toBeChecked") cuja a distância é menor dentre todas as outras. O tempo computacional para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
 
-\subsection{Dijkstra Heap Binário (A revisar)}
+\subsection{Dijkstra Heap Binário}
 \label{sec-dijkstra-versoes-heap}
 Para esta implementação, será utilizada a estrutura de dados heap binária mínima como fila de prioridade. Heaps binária podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
 \begin{enumerate}
@@ -232,9 +232,11 @@ USA-road-d.FLA.gr       & 44.079\%                       & 33.322\%             
 
 \subsection{Análise dos resultados (A revisar)}
 \label{sec-dijkstra-experimentos-analise}
-O resultado obtido é de certo modo inesperado, já que conforme demonstrados nas subseções \ref{sec-dijkstra-versoes-heap} e \ref{sec-dijkstra-versoes-fibonacci}, o heap de Fibonacci possui tempo computacional, aplicado ao algoritmo de Dijkstra, é $O(\log |V|)$ enquanto o heap binário possui $O(|E| \log |V|)$. Por consequência, a dedução lógica do ponto de vista teórico é que heap de Fibonacci apresentasse tempos mais rápidos do que o Heap Binário.
+Podemos observar que o Dijkstra Canônico elevou um tempo consideravelmente grande (a instância USA-road-d.FLA.gr por exemplo levou aproximadamente 48 minutos). Já o uso de estrutura de dados impactou consideravelmente no ganho do tempo sendo que o Heap Binário teve um ganho médio de 61.847\% com relação ao Dijkstra Canônico enquanto Dijkstra Heap de Fibonacci teve um ganho médio de 29.479\% (vide tabela \ref{tbl-dijkstra-resultados-speedup}).
 
-Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são mais eficientes do que a Heap de Fibonacci, é o que os testes realizados por este trabalho também constatam.
+Com relação ao resultado obtido pelos métodos do Heap Binário e Heap de Fibonacci, ele é de certo modo inesperado, já que conforme demonstrados nas subseções \ref{sec-dijkstra-versoes-heap} e \ref{sec-dijkstra-versoes-fibonacci}, o heap de Fibonacci possui tempo computacional, aplicado ao algoritmo de Dijkstra, é $O(\log |V|)$ [REVISAR AQUI] enquanto o heap binário possui $O(|E| \log |V|)$. Por consequência, a dedução lógica do ponto de vista teórico é que heap de Fibonacci apresentasse tempos mais rápidos do que o Heap Binário.
+
+Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são mais eficientes do que a Heap de Fibonacci. É o que os testes realizados por este trabalho também constatam.
 
 \section{Conclusões}
 \label{sec-dijkstra-conclusoes}
