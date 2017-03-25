@@ -119,6 +119,8 @@ A vantagem de se usar essa estrutura de dados reside no fato de suas operações
 
 \subsection{Dijkstra Heap de Fibonacci}
 \label{sec-dijkstra-versoes-fibonacci}
+A Heap de Fibonacci foi proposta por Fredman e Tarjan em 1984. Ela consiste de uma coleção de árvores que seguem a regra de árvore heap mínima, ou seja, os nós pais são maiores ou iguais ao nós filhos, sendo que os nós raízes de cada árvore são interligados por uma lista circular duplamente encadeada. Um ponteiro chamado "raiz mínima", aponta para o nó de menor valor. Sua característica é que operações de adição são executadas de uma maneira "preguiçosa", não procurando criar uma forma para as árvores, apenas as adicionados-as a lista principal de raízes. Por consequência, operações de inserção possuem tempo computacional $O(1)$ \cite{cormen2009introduction}.
+
 
 
 \section{Experimentos Computacionais}
