@@ -119,9 +119,26 @@ A vantagem de se usar essa estrutura de dados reside no fato de suas operações
 
 \subsection{Dijkstra Heap de Fibonacci (A revisar)}
 \label{sec-dijkstra-versoes-fibonacci}
-A Heap de Fibonacci foi proposta por Fredman e Tarjan em 1984. Ela consiste de uma coleção de árvores que seguem a regra de árvore heap mínima, ou seja, os nós pais são maiores ou iguais ao nós filhos. Os nós raízes de cada árvore são interligados por uma lista circular duplamente encadeada. Um ponteiro chamado "raiz mínima", aponta para o nó de menor valor. Sua característica é que operações de adição são executadas de uma maneira "preguiçosa", não procurando criar uma forma para as árvores (como por exemplo, deixa-la balanceada), apenas as adicionados-as a lista principal de raízes. Por consequência, operações de inserção possuem tempo computacional $O(1)$ \cite{cormen2009introduction}.
+A Heap de Fibonacci foi proposta por Fredman e Tarjan em 1984. Ela consiste de uma coleção de árvores que seguem a regra de árvore heap mínima, ou seja, os nós pais são maiores ou iguais aos nós filhos. Os nós raízes de cada árvore são interligados por uma lista circular duplamente encadeada. Um ponteiro chamado "raiz mínima", aponta para o nó de menor valor. Sua característica é que operações de adição são executadas de uma maneira "preguiçosa", não procurando criar uma forma para as árvores (como por exemplo, deixa-la balanceada), apenas as adicionados-as a lista principal de raízes. Por consequência, operações de inserção possuem tempo computacional $O(1)$ \cite{cormen2009introduction}.
 
-Para operações de extração de mínimo, o tempo computacional é mais custoso. Isso é devido que quando o mínimo é retirado, a heap precisa ser reorganizada de forma que sua propriedade principal não seja violada e o um novo mínimo seja determinado. Para isso, a operação de extração de mínimo se dá em três etapas. Primeiro é retirado o mínimo da heap (se caso o mínimo possua nós filhos, eles são colocados na lista principal de raízes) e o seu vizinho é assimilado como o novo mínimo provisório. Agora precisamos definir quem é o novo mínimo e para isso teremos que verificar todos os demais nós raízes. Com o intuito de diminuir o número de nós raízes é que o segundo passo é aplicado.  Ele consiste em lincar raízes com o mesmo número de grau (grau corresponde ao número de filhos que cada nodo possui) e verifica qual dos dois é menor. O que for menor será o nodo pai e outro por consequência será o nodo filho. Após a lincagem de todos os nodos com mesmo número de grau, uma busca linear é realizada para se determinar o menor elemento. O tempo computacional para a extração de mínimo é $O(\lg n)$ \cite{cormen2009introduction}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\textwidth]{figuras/fibonacci-heap1} 
+\caption{Exemplo de Heap de Fibonacci (os número no canto superior esquerdo de cada nodo correspondem ao grau de cada um, ou seja, o número de filhos).}
+\label{fig-dijkstra-heapfibonacci1}
+\end{figure}
+
+Para operações de extração de mínimo, o tempo computacional é mais custoso. Isso é devido ao fato de que quando o mínimo é retirado, a heap precisa ser reorganizada de forma que sua propriedade principal não seja violada e o um novo mínimo seja determinado. Para isso a operação de extração de mínimo se dá em três etapas. Primeiro é retirado o mínimo da heap (se caso o mínimo possua nós filhos, eles são colocados na lista principal de raízes) e o seu vizinho é assimilado como o novo mínimo provisório. Agora precisamos definir quem é o novo mínimo e para isso teremos que verificar todos os demais nós raízes. Com o intuito de diminuir o número de nós raízes é que o segundo passo é aplicado.  Ele consiste em lincar raízes com o mesmo número de grau (grau corresponde ao número de filhos que cada nodo possui) e para cada par de nodos licandos, verifica-se qual dos dois é menor. O que for o menor será o nodo pai e outro por consequência será o nodo filho. Após a lincagem de todos os nodos com mesmo número de grau, uma busca linear é realizada para se determinar o menor elemento entre os nodos raízes restantes. O tempo computacional para a extração de mínimo é $O(\lg n)$ \cite{cormen2009introduction}.
+
+%\footnote{Para otimizar a busca de nodos com o mesmo número de grau é utilizado um vetor auxiliar de tamanho mínimo ao maior grau de um nodo da estrutura. Esse vetor contém ponteiros para os nodos e a posição desse nodo no ponteiro corresponde ao grau do nodo. Por exemplo, se um nodo possui grau 3, ele ocupará a posição de número 3 no vetor. Quando um nodo da lista é referenciado na posição que já está ocupado, o processo de lincagem é feito conforme descrito.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.75\textwidth]{figuras/fibonacci-heap2} 
+\caption{Heap de Fibonacci da figura \ref{fig-dijkstra-heapfibonacci1} após a operação de extração de mínimo.}
+\label{fig-dijkstra-heapfibonacci2}
+\end{figure}
+
 
 Finalmente para a operação de mudança de chave de um determinado nodo, e após a mudança realizada em tempo constante ($O(1)$), é verificado se a propriedade heap foi violada. Se caso sim, esse nodo é cortado de seu nodo pai e colocado junto a lista principal. Se o pai não pertencer a lista de nodos raízes, ele é "marcado" ("pintado") e caso já estivesse "marcado" ele também é cortado e seu pai é "marcado". Esse processo continua subindo até encontrarmos um nodo pai "não marcado" ou um nodo raiz. Após esse processo recursivo ter terminado, verifica-se se nodo modificado inicialmente é menor do que o nodo mínimo atual. Se caso sim, o novo nodo mínimo é o modificado. O tempo computacional é $O(1)$ \cite{cormen2009introduction}.
 
