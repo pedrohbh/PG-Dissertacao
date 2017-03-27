@@ -58,7 +58,7 @@ Ao final do algoritmo, teremos o conjunto de predecessores de cada vértice do g
 
 \subsection{Garantia do algoritmo retorna o menor valor}
 \label{sec-dijkstra-algoritmo-prova}
-A prova será demonstrada em breve.
+[Professora, a prova de que algoritmo de Dijkstra retorna o menor caminho entre todos os pontos eu penso colocar nesta subseção.]
 
 \section{Versões do Algoritmo implementadas e suas Estrutura de Dados}
 \label{sec-dijkstra-versoes}
@@ -123,8 +123,8 @@ A Heap de Fibonacci foi proposta por Fredman e Tarjan em 1984. Ela consiste de u
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.75\textwidth]{figuras/fibonacci-heap1} 
-\caption{Exemplo de Heap de Fibonacci (os número no canto superior esquerdo de cada nodo correspondem ao grau de cada um, ou seja, o número de filhos).}
+\includegraphics[width=.65\textwidth]{figuras/fibonacci-heap1} 
+\caption{Exemplo de Heap de Fibonacci (os números no canto superior esquerdo de cada nodo correspondem ao grau de cada um, ou seja, o número de filhos).}
 \label{fig-dijkstra-heapfibonacci1}
 \end{figure}
 
@@ -134,7 +134,7 @@ Para operações de extração de mínimo, o tempo computacional é mais custoso
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.75\textwidth]{figuras/fibonacci-heap2} 
+\includegraphics[width=.65\textwidth]{figuras/fibonacci-heap2} 
 \caption{Heap de Fibonacci da figura \ref{fig-dijkstra-heapfibonacci1} após a operação de extração de mínimo.}
 \label{fig-dijkstra-heapfibonacci2}
 \end{figure}
@@ -261,8 +261,12 @@ Podemos observar que o Dijkstra Canônico elevou um tempo consideravelmente gran
 
 Com relação ao resultado obtido pelos métodos do Heap Binário e Heap de Fibonacci, ele é de certo modo inesperado, já que conforme demonstrados nas subseções \ref{sec-dijkstra-versoes-heap} e \ref{sec-dijkstra-versoes-fibonacci}, o heap de Fibonacci possui tempo computacional, aplicado ao algoritmo de Dijkstra, é $O(|V|\lg |V| + |E|)$ enquanto o heap binário possui $O(|E| \lg |V|)$. Por consequência, a dedução lógica do ponto de vista teórico é que heap de Fibonacci apresentasse tempos mais rápidos do que o Heap Binário.
 
-Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são mais eficientes do que a Heap de Fibonacci. É o que os testes realizados por este trabalho também constatam.
+Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são, na prática, mais eficientes do que a Heap de Fibonacci. É o que os testes realizados por este trabalho também constatam.
 
-\section{Conclusões}
+\section{Conclusões (A revisar)}
 \label{sec-dijkstra-conclusoes}
-Conforme apresentado por.
+Conforme demosntramos pelos experimentos descritos na seção \ref{sec-dijkstra-experimentos}, o algoritmo de Dijkstra que obteve o melhor resultado foi o Heap Binário, sendo mais rápido do que o próprio Heap de Fibonacci que teoricamente deveria ser mais rápido.
+
+Em termos de implementação, sem dúvida o mais complicado para se implementar foi o Heap de Fibonacci devido a sua própria estrutura, como a lista de nós raízes que é uma lista circular duplamente encadeada, e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
+
+Com isso, colocando em termos práticos, das formas de implementação apresentadas a que melhor se sobressai é o Heap Binário que não só se sobressaiu no tempo dentre outros, como sua implementação é simples.
