@@ -125,18 +125,18 @@ Sua característica é que operações de adição são executadas de uma maneir
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.65\textwidth]{figuras/fibonacci-heap1} 
+\includegraphics[width=.54\textwidth]{figuras/fibonacci-heap1} 
 \caption{Exemplo de Heap de Fibonacci (os números no canto superior esquerdo de cada nodo correspondem ao grau de cada um, ou seja, o número de filhos).}
 \label{fig-dijkstra-heapfibonacci1}
 \end{figure}
 
-Para operações de extração de mínimo o tempo computacional é mais custoso. Isso é devido ao fato de que quando o mínimo é retirado, a heap precisa ser reorganizada de forma que sua propriedade principal não seja violada e o um novo mínimo seja determinado. Para isso a operação de extração de mínimo se dá em três etapas. Primeiro é retirado o mínimo da heap (se caso o mínimo possua nós filhos, eles são colocados na lista principal de raízes) e o seu vizinho é assimilado como o novo mínimo provisório. Agora precisamos definir quem é o novo mínimo e para isso teremos que verificar todos os demais nós raízes. Com o intuito de diminuir o número de nós raízes é que o segundo passo é aplicado.  Ele consiste em lincar raízes com o mesmo número de grau (grau corresponde ao número de filhos que cada nodo possui) e para cada par de nodos licandos, verifica-se qual dos dois é menor. O que for o menor será o nodo pai e outro por consequência será o nodo filho. Após a lincagem de todos os nodos com mesmo número de grau, uma busca linear é realizada para se determinar o menor elemento entre os nodos raízes restantes. O tempo computacional para a extração de mínimo é $O(\lg n)$ \cite{cormen2009introduction}.
+Para operações de extração de mínimo o tempo computacional é mais custoso. Isso é devido ao fato de que quando o mínimo é retirado, a heap precisa ser reorganizada de forma que sua propriedade principal não seja violada e o um novo mínimo seja determinado. Para isso a operação de extração de mínimo se dá em três etapas. Primeiro é retirado o mínimo da heap (se caso o mínimo possua nós filhos, eles são colocados na lista principal de raízes) e o seu vizinho é assimilado como o novo mínimo provisório. Agora precisamos definir quem é o novo mínimo e para isso teremos que verificar todos os demais nós raízes. Com o intuito de diminuir o número de nós raízes é que o segundo passo é aplicado.  Ele consiste em lincar raízes com o mesmo número de grau (grau corresponde ao número de filhos que cada nodo possui) e para cada par de nodos licandos, verifica-se qual dos dois é menor. O que for o menor será o nodo pai e outro por consequência será o nodo filho. Após a lincagem de todos os nodos com mesmo número de grau, uma busca linear é realizada para se determinar o menor elemento entre os nodos raízes restantes\footnote{Para otimizar a busca de nodos com o mesmo número de grau é utilizado um vetor auxiliar de tamanho mínimo ao maior grau de um nodo da estrutura. Esse vetor contém ponteiros para os nodos e a posição desse nodo no ponteiro corresponde ao grau do nodo. Por exemplo, se um nodo possui grau 3, ele ocupará a posição de número 3 no vetor. Quando um nodo da lista é referenciado na posição que já está ocupado, o processo de lincagem é feito conforme descrito.}. O tempo computacional para a extração de mínimo é $O(\lg n)$ \cite{cormen2009introduction}.
 
 %\footnote{Para otimizar a busca de nodos com o mesmo número de grau é utilizado um vetor auxiliar de tamanho mínimo ao maior grau de um nodo da estrutura. Esse vetor contém ponteiros para os nodos e a posição desse nodo no ponteiro corresponde ao grau do nodo. Por exemplo, se um nodo possui grau 3, ele ocupará a posição de número 3 no vetor. Quando um nodo da lista é referenciado na posição que já está ocupado, o processo de lincagem é feito conforme descrito.}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.65\textwidth]{figuras/fibonacci-heap2} 
+\includegraphics[width=.54\textwidth]{figuras/fibonacci-heap2} 
 \caption{Heap de Fibonacci da figura \ref{fig-dijkstra-heapfibonacci1} após a operação de extração de mínimo.}
 \label{fig-dijkstra-heapfibonacci2}
 \end{figure}
@@ -265,10 +265,10 @@ Com relação ao resultado obtido pelos métodos do Heap Binário e Heap de Fibo
 
 Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são, na prática, mais eficientes do que a Heap de Fibonacci (vide referência para mais detalhes). É o que os testes realizados por este trabalho também constatam.
 
-\section{Conclusões (A revisar)}
+\section{Conclusões}
 \label{sec-dijkstra-conclusoes}
-Conforme demosntramos pelos experimentos descritos na seção \ref{sec-dijkstra-experimentos}, o algoritmo de Dijkstra que obteve o melhor resultado foi o Heap Binário, sendo mais rápido do que o próprio Heap de Fibonacci que teoricamente deveria ser mais rápido.
+Conforme demonstramos pelos experimentos descritos na seção \ref{sec-dijkstra-experimentos}, o algoritmo de Dijkstra que obteve o melhor resultado foi o Heap Binário, sendo mais rápido do que o próprio Heap de Fibonacci que teoricamente deveria ser mais rápido. O Dijkstra canônico obteve tempos que para aplicações como sistema de ponto global (em inglês, GPS) é indesejado, sendo sua implementação interessante apenas para fins de aprendizado e entendimento do algoritmo.
 
-Em termos de implementação, sem dúvida o mais complicado para se implementar foi o Heap de Fibonacci devido a sua própria estrutura, como a lista de nós raízes que é uma lista circular duplamente encadeada, e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
+Em termos de implementação, sem dúvida o mais complicado para se implementar foi o Heap de Fibonacci devido a sua própria estrutura que contém uma lista circular duplamente encadeada (a lista de raízes), e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
 
-Com isso, colocando em termos práticos, das formas de implementação apresentadas a que melhor se sobressai é o Heap Binário que não só se sobressaiu no tempo dentre outros, como sua implementação é simples.
+Com isso, colocando em termos práticos, das formas de implementação apresentadas e testadas, a que melhor se sobressai é o Heap Binário que não só foi melhor no tempo dentre outros, como sua implementação é simples.
