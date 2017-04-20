@@ -9,30 +9,49 @@
 \label{sec-aestrela-algoritmo}
 O algoritmo A* (lê-se "A estrela") também conhecido como busca A* é um algoritmo de busca informatizada em grafos. Foi proposta originalmente por (buscar referência) em (buscar referência) e pode ser visto como uma adaptação do algoritmo de Dijkstra (apresentado no capítulo \ref{sec-dijkstra}) em que, ao invés de se calcular a melhor rota de um ponto de partida para todos os demais vértices do grafo, se estabelece uma boa rota (ou mesmo a rota ótima\footnote{A garantia do valor ótimo do algoritmo depende de fatores que serão discutidos na subseção \ref{sec-aestrela-algoritmo-heuristica}.}) partindo do vértice origem a um vértice destino. Isso é feito realizando "podas" do caminho de forma que não seja necessário visitar todos os vértices, apenas os mais promissores.
 
-A seguir é apresentado o algoritmo A* adaptado de \citeonline{russell1995modern,cormen2009introduction}.
+A seguir é apresentado o algoritmo A* adaptado de \citeonline{likhachev2008anytime} sobre o algoritmo de Dijkstra apresentado na seção \ref{sec-dijkstra-algoritmo}. 
 
-\begin{lstlisting}[ mathescape, label=lst-aestrela-codigo, caption=Algoritmo A*., float=htpb]
-Entrada: Grafo G, vértice inicial $v_{i}$, vértice destino $v_{f}$
-	para todo vértice $s \in V(G), s \neq vi$ faça
-		$g(s) = \infty$
-	fim para
-	$g(v_{i}) = 0$
-	para todo vértice $s \in V(G)$ faça
-		anterior($s$) = -1
-	fimpara
-	OPEN = {$v_{i}$}
-	enquanto $v_{f}$ não é expandido faça
-		s = desenfila(OPEN)
-		para cada sucessor $s'$ de $s$ faça
-			se $g(s') > g(s) + c(s,s')$ então
-				$g(s') = g(s) + c(s,s')$
-				anterior($s'$) = s
-				insira/atualize $s'$ em OPEN pelo valor de f
-			fim se
-		fim para
-	fim enquanto
-retorna anterior
+\begin{lstlisting}[ mathescape, label=lst-aestrela-codigo, caption=Algoritmo A*, float=htpb]
+$A^{*}$Algorithm(weighted simple digraph, vertex first, vertex goal)
+	for all vertices v
+		g(v) = $\infty$;
+	g(first) = 0;
+	toBeChecked = all vertices;
+	while goal is in toBeChecked
+		v = a vertex in toBeChecked with minimal f(v);
+		remove v from toBeChecked;
+		for all vertices u adjacent to v and in toBeChecked
+			if g( u ) > g( v ) + weight( edge(vu) )
+				g( u ) = g( v ) + weight( edge(vu) );
+				predecessor( u ) = v;
+				update u in toBeChecked with f(u) = g(u) + h(u);
 \end{lstlisting}
+
+
+%\citeonline{russell1995modern,cormen2009introduction}.
+
+%\begin{lstlisting}[ mathescape, label=lst-aestrela-codigo, caption=Algoritmo A*, float=htpb]
+%Entrada: Grafo G, vértice inicial $v_{i}$, vértice destino $v_{f}$
+%	para todo vértice $s \in V(G), s \neq vi$ faça
+%		$g(s) = \infty$
+%	fim para
+%	$g(v_{i}) = 0$
+%	para todo vértice $s \in V(G)$ faça
+%		anterior($s$) = -1
+%	fimpara
+%	OPEN = {$v_{i}$}
+%	enquanto $v_{f}$ não é expandido faça
+%		s = desenfila(OPEN)
+%		para cada sucessor $s'$ de $s$ faça
+%			se $g(s') > g(s) + c(s,s')$ então
+%				$g(s') = g(s) + c(s,s')$
+%				anterior($s'$) = s
+%				insira/atualize $s'$ em OPEN pelo valor de f
+%			fim se
+%		fim para
+%	fim enquanto
+%retorna anterior
+%\end{lstlisting}
 
 
 
