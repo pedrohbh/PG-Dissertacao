@@ -27,6 +27,9 @@ $A^{*}$Algorithm(weighted simple digraph, vertex first, vertex goal)
 				update u in toBeChecked with f(u) = g(u) + h(u);
 \end{lstlisting}
 
+O algoritmo segue em sua essência como um Dijkstra adaptado. Iniciamos a distância de todos os vértices g(v) como sendo $\infty$\footnote{Vide nota de rodapé da seção \ref{sec-dijkstra-algoritmo}.} (o valor de g(v) corresponde ao valor da distância calculada do vértice origem "first" até o vértice "v") com exceção do vértice origem, cujo valor atribuído é zero. Adicionamos todos os vértices ao grupo dos "toBeChecked" \footnote{Algumas literaturas designam esse conjunto como OPEN.}. Feito isso inicia-se o processo iterativo: enquanto o vértice "goal" estiver dentro do conjunto do "toBeChecked" (ou seja, o vértice "goal" não foi alcançado ainda pelo algoritmo), o vértice com menor valor f(v) é retirado do conjunto "toBeChecked" e para cada vértice adjacente u de v verifica-se se o valor de g( u ) atual é maior que g( v ) mais o peso da aresta entre v e u. Se caso seja verdade, o valor de g( u ) é atualizado para g( v ) mais o peso da aresta entre v e u, e v é marcado como o predecessor de u. O valor do peso do vértice u é atualizado na fila de prioridades (como a heap binária, descrita na subseção \ref{sec-dijkstra-versoes-heap}) com o valor f( u ) = g( u ) + h( u ).
+
+O termo h( u ) significa o valor heurístico que corresponde a uma estimativa da distância de u ao vértice destino "goal". Esse valor é classificado como admissível e não-admissível cujo significado será dado na subseção \ref{sec-aestrela-algoritmo-heuristica}.
 
 %\citeonline{russell1995modern,cormen2009introduction}.
 
