@@ -31,7 +31,9 @@ O algoritmo segue em sua essência como um Dijkstra adaptado. Iniciamos a distâ
 
 Observe que para o algoritmo A*, diferente do que ocorre em Dijkstra, não utiliza o valor de g( u ) (valor da distância calculada do vértice origem "first" até o vértice "u") como chave de ordenamento da fila de prioridade, mas sim esse valor acrescido de h( u ). Observe também que o algoritmo para ao ser removido o vértice destino ("goal") da lista do "toBeChecked" em contrapartida ao Dijkstra que calcula para todos os vértices do grafo.
 
-O termo h( u ) significa o valor heurístico que corresponde a uma estimativa da distância de u ao vértice destino "goal". É devido a esse valor que o algoritmo A* realiza "podas" no número de vértices a serem checados, buscando os mais promissores, já que o valor heurístico faz com que os vértices cujas estimativas sejam mais próximas do vértice destino ("goal") sejam colocados mais a frente na fila de prioridades e por consequência, sejam calculadas primeiros. Esse valor é classificado como admissível e não-admissível cujo significado será dado na subseção \ref{sec-aestrela-algoritmo-heuristica}.
+O termo h( u ) significa o valor heurístico que corresponde a uma estimativa da distância de u ao vértice destino "goal". É devido a esse valor que o algoritmo A* realiza "podas" no número de vértices a serem checados, buscando os mais promissores, já que o valor heurístico faz com que os vértices cujas estimativas sejam mais próximas do vértice destino ("goal") sejam colocados mais a frente na fila de prioridades e por consequência, sejam calculadas primeiros. E assim é mais provável que o vértice destino seja alcançado antes e tenha sua rota calculada, terminando o algoritmo. O valor h( u ) é classificado como admissível e não-admissível cujo significado será dado na subseção \ref{sec-aestrela-algoritmo-heuristica}.
+
+A figura X mostra um exemplo de aplicação do algoritmo [DESCREVER A FIGURA AQUI].
 
 %\citeonline{russell1995modern,cormen2009introduction}.
 
