@@ -33,7 +33,15 @@ Observe que para o algoritmo A*, diferente do que ocorre em Dijkstra, não utili
 
 O termo h( u ) significa o valor heurístico que corresponde a uma estimativa da distância de u ao vértice destino "goal". É devido a esse valor que o algoritmo A* realiza "podas" no número de vértices a serem checados, buscando os mais promissores, já que o valor heurístico faz com que os vértices cujas estimativas sejam mais próximas do vértice destino ("goal") sejam colocados mais a frente na fila de prioridades e por consequência, sejam calculadas primeiros. E assim é mais provável que o vértice destino seja alcançado antes e tenha sua rota calculada, terminando o algoritmo. O valor h( u ) é classificado como admissível e não-admissível cujo significado será dado na subseção \ref{sec-aestrela-algoritmo-heuristica}.
 
-A figura X mostra um exemplo de aplicação do algoritmo [DESCREVER A FIGURA AQUI].
+A figura \ref{fig-aestrela-algoritmo-mapa1} contida em \citeonline{russell1995modern} mostra um exemplo de aplicação do algoritmo [DESCREVER A FIGURA AQUI].
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.90\textwidth]{figuras/Aestrela-mapa1} 
+\caption{Mapa da Romênia com os valores das distâncias entre as cidades, e a distância euclidiana até Bucareste.}
+\label{fig-aestrela-algoritmo-mapa1}
+\end{figure}
+
 
 %\citeonline{russell1995modern,cormen2009introduction}.
 
