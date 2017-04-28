@@ -89,8 +89,11 @@ O cálculo da distância euclidiana porém, nem sempre é a forma mais rápida e
 
 Exemplos de heurísticas não-admissíveis:
 \begin{itemize}
-\item Distância Manhattan: M( u, goal ) = $| x_{u} - x_{goal} | + | y_{u} - y_{goal}|$ 
+\item Distância Manhattan: h( u ) = $| x_{u} - x_{goal} | + | y_{u} - y_{goal}|$;
+\item Atalho Diagonal: h( u ) = $\sqrt{2} * | y_{u} - y_{goal}| + ( | x_{u} - x_{goal} | - | y_{u} - y_{goal}| )$ [Se a distância $| x_{u} - x_{goal} | > | y_{u} - y_{goal}|$] || $\sqrt{2} * | x_{u} - x_{goal}| + ( | y_{u} - y_{goal}| - | x_{u} - x_{goal} | )$ [Se a distância $| x_{u} - x_{goal} | < | y_{u} - y_{goal}|$];
 \end{itemize}
 
 \section{Experimentos Computacionais}
 \label{sec-aestrela-experimentos}
+
+Para os experimentos computacionais serão utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Serão comparados quatro versões de algoritmos: o algoritmo de Dijkstra descrito no capítulo \ref{sec-dijkstra}, o algoritmo de Dijkstra adaptado onde o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela X.
