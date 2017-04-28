@@ -33,7 +33,7 @@ Observe que para o algoritmo A*, diferente do que ocorre em Dijkstra, não utili
 
 O termo h( u ) significa o valor heurístico que corresponde a uma estimativa da distância de u ao vértice destino "goal". É devido a esse valor que o algoritmo A* realiza "podas" no número de vértices a serem checados, buscando os mais promissores, já que o valor heurístico faz com que os vértices cujas estimativas sejam mais próximas do vértice destino ("goal") sejam colocados mais a frente na fila de prioridades e por consequência, sejam calculadas primeiros. E assim é mais provável que o vértice destino seja alcançado antes e tenha sua rota calculada, terminando o algoritmo. O valor h( u ) é classificado como admissível e não-admissível cujo significado será dado na subseção \ref{sec-aestrela-algoritmo-heuristica}.
 
-A figura \ref{fig-aestrela-algoritmo-mapa1} contida em \citeonline{russell1995modern} mostra um exemplo de aplicação do algoritmo [DESCREVER A FIGURA AQUI].
+A figura \ref{fig-aestrela-algoritmo-mapa1} contida em \citeonline{russell1995modern} mostra um exemplo de aplicação do algoritmo.
 
 \begin{figure}[H]
 \centering
@@ -42,12 +42,16 @@ A figura \ref{fig-aestrela-algoritmo-mapa1} contida em \citeonline{russell1995mo
 \label{fig-aestrela-algoritmo-mapa1}
 \end{figure}
 
+Um viajante deseja partir da cidade de Arad com destino a Bucareste buscando percorrer o menor caminho entre essas duas cidades. Para isso é utilizado o algoritmo A* que explora o grafos conforme descrito na figura \ref{fig-aestrela-algoritmo-mapa2}, tendo como heurística utilizada, a distância euclidiana entre todas as cidades e Bucareste (distâncias também contida na figura \ref{fig-aestrela-algoritmo-mapa1}).
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=.90\textwidth]{figuras/Aestrela-mapa2} 
-\caption{Desenvolvimento do algoritmo A* (MUDAR DEPOIS)}
+\caption{Desenvolvimento do algoritmo A*.}
 \label{fig-aestrela-algoritmo-mapa2}
 \end{figure}
+
+
 
 
 %\citeonline{russell1995modern,cormen2009introduction}.
