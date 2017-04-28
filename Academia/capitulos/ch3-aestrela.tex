@@ -96,4 +96,28 @@ Exemplos de heurísticas não-admissíveis:
 \section{Experimentos Computacionais}
 \label{sec-aestrela-experimentos}
 
-Para os experimentos computacionais serão utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Serão comparados quatro versões de algoritmos: o algoritmo de Dijkstra descrito no capítulo \ref{sec-dijkstra}, o algoritmo de Dijkstra adaptado onde o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela X.
+Para os experimentos computacionais serão utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Serão comparados quatro versões de algoritmos: o algoritmo de Dijkstra descrito no capítulo \ref{sec-dijkstra}, o algoritmo de Dijkstra adaptado onde o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela \ref{tbl-aestrela-instancias}.
+
+\begin{table}[H]
+\caption{Descrição das versões a serem testadas neste capítulo.}
+\label{tbl-aestrela-instancias}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Nome Instância} & \textbf{Descrição} \\ 
+\hline 
+Dijkstra & Versão de Dijsktra conforme descrito no capítulo \ref{sec-dijkstra} \\ 
+\hline 
+Dijkstra Adaptado & Versão de Dijkstra adaptado para parar quando o vértice destino é encontrado \\ 
+\hline 
+Algoritmo A* & Algoritmo A* utilizando a distância euclidiana \\ 
+\hline 
+Algoritmo A* Manhattan & Algoritmo A* utilizando a distância Manhattan \\ 
+\hline 
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+\subsection{Resultados obtidos}
+\label{sec-aestrela-instancias-resultados}
