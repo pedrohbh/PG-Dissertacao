@@ -1,0 +1,5 @@
+Nome Instância;Número de Vértices;Número de Arestas;Tempo médio Dijkstra;Tempo médio Dijkstra Adptado;Tempo médio A*;Tempo médio A* Manhattan
+USA-road-d.BAY.gr;321270;800172;321;187;54;23
+USA-road-d.FLA.gr;1070376;2712798;2858;1026;886;101
+USA-road-d.COL.gr;435666;1057066;494;229;117;27
+USA-road-d.NY.gr;264346;733846;236;109;29;14
