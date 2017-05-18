@@ -126,7 +126,7 @@ Para todas as versões, será utilizada a estrutura de dados Heap Binário (desc
 \subsection{Resultados obtidos}
 \label{sec-aestrela-instancias-resultados}
 
-Os resultados dos testes computacionais descritos anteriormente podem ser vistos nas tabelas \ref{tbl-aestrela-resultados-tempo}, X e Y.
+Os resultados dos testes computacionais descritos anteriormente podem ser vistos nas tabelas \ref{tbl-aestrela-resultados-tempo}, \ref{tbl-aestrela-resultados-qualidadesolucao} e Y.
 
 \begin{table}[H]
 \caption{Tempo médio obtido pelos métodos descritos na tabela \ref{tbl-aestrela-instancias} (tempo em milissegundos).}
@@ -140,6 +140,22 @@ USA-road-d.NY.gr        & 236                           & 109                   
 USA-road-d.BAY.gr       & 321                           & 187                                    & 54                      & 23                                \\ \hline
 USA-road-d.COL.gr       & 494                           & 229                                    & 117                     & 27                                \\ \hline
 USA-road-d.FLA.gr       & 2858                          & 1026                                   & 886                     & 101                               \\ \hline
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\caption{Diferença média obtida pelo A* Manhattan com relação a solução ótima.}
+\label{tbl-aestrela-resultados-qualidadesolucao}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Qualidade Solução} \\ \hline
+USA-road-d.NY.gr        & 5\%                        \\ \hline
+USA-road-d.BAY.gr       & 4\%                        \\ \hline
+USA-road-d.COL.gr       & 3\%                        \\ \hline
+USA-road-d.FLA.gr       & 3\%                        \\ \hline
 \end{tabular} 
 \end{adjustbox}
 \end{table}
