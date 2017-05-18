@@ -145,7 +145,7 @@ USA-road-d.FLA.gr       & 2858                          & 1026                  
 \end{table}
 
 \begin{table}[H]
-\caption{Diferença média obtida pelo A* Manhattan com relação a solução ótima.}
+\caption{Diferença média de solução obtida pelo A* Manhattan com relação a solução ótima.}
 \label{tbl-aestrela-resultados-qualidadesolucao}
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -159,4 +159,23 @@ USA-road-d.FLA.gr       & 3\%                        \\ \hline
 \end{tabular} 
 \end{adjustbox}
 \end{table}
+
+\begin{table}[H]
+\caption{Número de Vértices Abertos (NVA) médio por cada método.}
+\label{tbl-aestrela-resultados-nva}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{NVA Dijkstra Adptado} & \textbf{NVA A*} & \textbf{NVA A* Manhattan} \\ \hline
+USA-road-d.NY.gr        & 140501                        & 31995           & 9079                      \\ \hline
+USA-road-d.BAY.gr       & 225754                        & 53206           & 17044                     \\ \hline
+USA-road-d.COL.gr       & 242674                        & 108343          & 21577                     \\ \hline
+USA-road-d.FLA.gr       & 580010                        & 349201          & 79077                     \\ \hline
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+
+
 
