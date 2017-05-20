@@ -7,7 +7,7 @@
 
 \section{O Algoritmo}
 \label{sec-aestrela-algoritmo}
-O algoritmo A* (lê-se "A estrela"), também conhecido como busca A*, é um algoritmo de busca informatizada em grafos. Foi proposta originalmente em (buscar referência) e pode ser visto como uma adaptação do algoritmo de Dijkstra (apresentado no capítulo \ref{sec-dijkstra}) em que, ao invés de se calcular a melhor rota de um ponto de partida para todos os demais vértices do grafo, se estabelece uma boa rota (ou mesmo a rota ótima\footnote{A garantia do valor ótimo do algoritmo depende de fatores que serão discutidos na subseção \ref{sec-aestrela-algoritmo-heuristica}.}) partindo do vértice origem a um vértice destino. Isso é feito realizando "podas" do caminho de forma que não seja necessário visitar todos os vértices, apenas os mais promissores.
+O algoritmo A* (lê-se "A estrela"), também conhecido como busca A*, é um algoritmo de busca informatizada em grafos. Foi proposta originalmente em \citeonline{hart1968formal} e pode ser visto como uma adaptação do algoritmo de Dijkstra (apresentado no capítulo \ref{sec-dijkstra}) em que, ao invés de se calcular a melhor rota de um ponto de partida para todos os demais vértices do grafo, se estabelece uma boa rota (ou mesmo a rota ótima\footnote{A garantia do valor ótimo do algoritmo depende de fatores que serão discutidos na subseção \ref{sec-aestrela-algoritmo-heuristica}.}) partindo do vértice origem a um vértice destino. Isso é feito realizando "podas" do caminho de forma que não seja necessário visitar todos os vértices, apenas os mais promissores.
 
 A seguir é apresentado o algoritmo A* adaptado de \citeonline{likhachev2008anytime} sobre o algoritmo de Dijkstra apresentado na seção \ref{sec-dijkstra-algoritmo}. 
 
@@ -42,7 +42,7 @@ A figura \ref{fig-aestrela-algoritmo-mapa1} contida em \citeonline{russell1995mo
 \label{fig-aestrela-algoritmo-mapa1}
 \end{figure}
 
-Um viajante deseja partir da cidade de Arad com destino a Bucareste buscando percorrer o menor caminho entre essas duas cidades. Para isso é utilizado o algoritmo A* que explora o grafos conforme descrito na figura \ref{fig-aestrela-algoritmo-mapa2}, tendo como heurística utilizada, a distância euclidiana entre todas as cidades e Bucareste (distâncias também contida na figura \ref{fig-aestrela-algoritmo-mapa1}).
+Um viajante deseja partir da cidade de Arad com destino a Bucareste buscando percorrer o menor caminho entre essas duas cidades. Para isso é utilizado o algoritmo A* que explora o grafos conforme descrito na figura \ref{fig-aestrela-algoritmo-mapa2}\footnote{A figura \ref{fig-aestrela-algoritmo-mapa2} foi obtida do vídeo "Algoritmo A*" contido no sítio eletrônico \url{https://www.youtube.com/watch?v=6CqZ5AaTfhQ}, acesso em 25 de abril de 2017.}, tendo como heurística utilizada, a distância euclidiana entre todas as cidades e Bucareste (distâncias também contida na figura \ref{fig-aestrela-algoritmo-mapa1}).
 
 \begin{figure}[H]
 \centering
