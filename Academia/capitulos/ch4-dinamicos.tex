@@ -12,16 +12,34 @@
 \section{Algoritmo ARA*}
 \label{sec-dinamicos-ara}
 
-O algoritmo 
-\begin{lstlisting}[ mathescape, label=lst-dinamicos-ara-key, caption=Algoritmo ARA* - função da chave ordenadora da fila de prioridades, float=htpb]
+O algoritmo ARA* proposto em \citeonline{likhachev2008anytime}, está descrito nas listagens \ref{lst-dinamicos-ara-computepath}, \ref{lst-dinamicos-ara-key} e \ref{lst-dinamicos-ara-main}.
+
+\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-computepath, caption=Algoritmo ARA* - função de cálculo de caminho, float=htpb]
+procedure ComputePath()
+	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$)
+		remove s with smallest key(s) from OPEN;
+		v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
+		for each successor s' of s
+			if s' was never visited by ARA* before then
+				v(s') = g(s') = $\infty$;
+			if g(s') > g(s) + c(s, s')
+				g(s') = g(s) + c(s, s');
+				if s' $\notin$ CLOSED
+					insert/update s' in OPEN with key(s');
+				else
+					insert s' into INCONS;
+\end{lstlisting}
+
+ 
+\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-key, caption=Algoritmo ARA* - função da chave ordenadora da fila de prioridades, float=htpb]
 procedure key(s)
 	return g(s) + $\epsilon$ * h(s);
 \end{lstlisting}
 
-\begin{lstlisting}[ mathescape, label=lst-dinamicos-ara-main, caption=Algoritmo ARA* - função principal, float=htpb]
+\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-main, caption=Algoritmo ARA* - função principal, float=htpb]
 procedure Main()
-	g( $s_{goal}$ ) = v( $s_{goal}$ ) = $\infty$; v( $s_{start}$ ) = $\infty$;
-	g( $s_{start}$ ) = 0; OPEN = CLOSED = INCONS = $\emptyset$;
+	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;
+	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$;
 	insert $s_{start}$ into OPEN with key($s_{start}$);
 	ComputePath();
 	publish current $\epsilon$-suboptimal solution;
