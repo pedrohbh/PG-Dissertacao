@@ -55,6 +55,16 @@ procedure Main()
 \section{Algoritmo AD*}
 \label{sec-dinamicos-ad}
 
+\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-set, caption=Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, float=htpb]
+procedure UpdateSetMembership(s)
+	if ($v(s) \neq g(s)$)
+		if (s $\notin$ CLOSED) insert/update s in OPEN with key(s);
+		else if (s $\notin$ INCONS) insert s in INCONS;
+	else
+		if (s $\in$ OPEN) remove s from OPEN;
+		else if (s $\in$ INCONS) remove s from INCONS;
+\end{lstlisting}
+
 \begin{lstlisting}[mathescape, label=lst-dinamicos-ad-computepath, caption=Algoritmo AD* - função de cálculo de caminho, float=htpb]
 procedure ComputePath()
 	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$ OR v($s_{goal}$) < g($s_{goal}$)) 
@@ -87,16 +97,24 @@ procedure key(s)
 
 \begin{lstlisting}[mathescape, label=lst-dinamicos-ad-main, caption=Algoritmo AD* - função principal, float=htpb]
 procedure Main()
-	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;
-	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$;
+	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;bp($s_{goal}$) = bp($s_{start}$) = null;
+	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$; $\epsilon = \epsilon_{0}$;
 	insert $s_{start}$ into OPEN with key($s_{start}$);
-	ComputePath();
-	publish current $\epsilon$-suboptimal solution;
-	while $\epsilon > 1$
-		decrease $\epsilon$;
+	forever
+		ComputePath();
+		publish current $\epsilon$-suboptimal solution;
+		if $\epsilon = 1$
+			wait changes in edge costs;
+		for all directed edges (u,v) with changed edge costs
+			update the edge cost (u,v);
+			if ( $v \neq s_{start}$ AND v was visited by AD* before)
+				bp(v) = $argmin_{s'' \in pred(v)}$ v(s'') + c(s'',v);
+				g(v) = v(bp(v)) + c(bp(v),v); UpdateSetMembership(v);
+		if significant edge cost changes were observed
+			increase $\epsilon$ or re-plan from scratch (i.e., re-excute Main function);
+		else if $\epsilon > 1$
+			decrease $\epsilon$;
 		Move states from INCONS into OPEN
 		Update the priorities for all s $\in$ OPEN according to key(s);
 		CLOSED = $\emptyset$;
-		ComputePath();
-		publish current $\epsilon$-suboptimal solution;
 \end{lstlisting}
