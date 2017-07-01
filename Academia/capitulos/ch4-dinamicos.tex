@@ -55,6 +55,8 @@ procedure Main()
 \section{Algoritmo AD*}
 \label{sec-dinamicos-ad}
 
+O algoritmo AD* também proposto em \citeonline{likhachev2008anytime}, está descrito nas listagens \ref{lst-dinamicos-ad-set}, \ref{lst-dinamicos-ad-computepath}, \ref{lst-dinamicos-ad-key} e \ref{lst-dinamicos-ad-main}.
+
 \begin{lstlisting}[mathescape, label=lst-dinamicos-ad-set, caption=Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, float=htpb]
 procedure UpdateSetMembership(s)
 	if ($v(s) \neq g(s)$)
