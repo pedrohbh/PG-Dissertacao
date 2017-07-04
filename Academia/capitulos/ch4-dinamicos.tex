@@ -52,6 +52,8 @@ procedure Main()
 		publish current $\epsilon$-suboptimal solution;
 \end{lstlisting}
 
+Começando pela função principal (listagem \ref{lst-dinamicos-ara-main}), temos as variáveis g(s) e v(s) que correspondem ao valor da distância real calculada da origem $s_{start}$ até o vértice s (o valor de v(s), apesar de estar descrito no algoritmo conforme a literatura de origem, não é utilizado pelo algoritmo e por isso será ignorado na explicação que se segue). O valor de g($s_{goal}$) (distância real calculada da origem ao vértice destino) é atribuído como $\infty$ (infinito)\footnote{Vide nota de rodapé da seção \ref{sec-dijkstra-algoritmo}.}, enquanto que o valor de g($s_{start}$) é atribuído com o valor 0 (já que o valor da distancia real calculada se baseia a partir da origem). Em seguida são criados o conjunto "OPEN", "CLOSED" e "INCONS", correspondendo respectivamente ao conjunto dos "ABERTOS", "FECHADOS" e "INCONSISTENTES". Em seguida, $s_{start}$ é inserido na fila de prioridades do conjunto "OPEN" utilizado a função de chave ordenadora descrito na listagem \ref{lst-dinamicos-ara-key}, a qual utiliza a estratégia da heurística inflada (descrito a seguir).
+
 \section{Algoritmo AD*}
 \label{sec-dinamicos-ad}
 
