@@ -96,22 +96,23 @@ procedure UpdateSetMembership(s)
 procedure ComputePath()
 	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$ OR v($s_{goal}$) < g($s_{goal}$)) 
 		remove s with smallest key(s) from OPEN;
-		v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
-		for each successor s' of s
-			if s' was never visited by ARA* before then
-				v(s') = g(s') = $\infty$;bp(s') = null;
-			if g(s') > g(s) + c(s, s')
-				g(s') = g(s) + c(s, s');
-				bp(s') = s;
-				g(s') = g(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
-			else
-				v(s) = $\infty$; UpdateSetMembership(s);
-				for each successor s' of s
-				if s' was never visited by ARA* before then
+		if v(s) > g(s)
+			v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
+			for each successor s' of s
+				if s' was never visited by AD* before then
 					v(s') = g(s') = $\infty$;bp(s') = null;
-				if bp(s') = s
-					bp(s') = $argmin_{s'' \in pred(s')}$ v(s'') + c(s'',s');
-					g(s') = v(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
+				if g(s') > g(s) + c(s, s')
+					g(s') = g(s) + c(s, s');
+					bp(s') = s;
+					g(s') = g(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
+		else
+			v(s) = $\infty$; UpdateSetMembership(s);
+			for each successor s' of s
+			if s' was never visited by AD* before then
+				v(s') = g(s') = $\infty$;bp(s') = null;
+			if bp(s') = s
+				bp(s') = $argmin_{s'' \in pred(s')}$ v(s'') + c(s'',s');
+				g(s') = v(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
 \end{lstlisting}
 
 \begin{lstlisting}[mathescape, label=lst-dinamicos-ad-key, caption=Algoritmo AD* - função da chave ordenadora da fila de prioridades, float=htpb]
@@ -133,7 +134,7 @@ procedure Main()
 		if $\epsilon = 1$
 			wait changes in edge costs;
 		for all directed edges (u,v) with changed edge costs
-			update the edge cost (u,v);
+			update the edge cost c(u,v);
 			if ( $v \neq s_{start}$ AND v was visited by AD* before)
 				bp(v) = $argmin_{s'' \in pred(v)}$ v(s'') + c(s'',v);
 				g(v) = v(bp(v)) + c(bp(v),v); UpdateSetMembership(v);
