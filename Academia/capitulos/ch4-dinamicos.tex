@@ -68,6 +68,15 @@ Porém, "Uma grande vantagem de se utilizar a estratégia apresentada é que tem
 Portanto a ideia principal é achar uma solução rápida, porém não-garantidamente ótima, atribuindo um valor $\epsilon$ maior do que 1, e a mediada que mais tempo é nos dado, diminuímos o valor de $\epsilon$ até termos $\epsilon$ = 1, em que a solução será garantidamente ótima. 
 
 Outra estratégia utilizada é que para ganhar tempo, a cada novo valor de $\epsilon$ em que a função para cálculo de caminho é invocada (listagem \ref{lst-dinamicos-ara-computepath}), não é necessário recalcular todos os vértices visitados anteriormente, já que os mesmo permanecem na lista de abertos (tendo apenas suas chaves atualizadas com o novo valor de $\epsilon$ e consequentemente a ordem dos vértices também é reconfigurada de acordo com esses novos valores). Além disso, para caso haja um melhor caminho encontrado para um vértice que pertence aos fechados, este é enviando para os INCONS dos quais serão enviados para OPEN para serem recalculados na próxima iteração.
+
+A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a aplicação da estratégia dita anteriormente.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.80\textwidth]{figuras/ara-3} 
+\caption{Exemplo de aplicação da estratégia de diminuição do valor de $\epsilon$.}
+\label{fig-ara-exemplo}
+\end{figure}
 \section{Algoritmo AD*}
 \label{sec-dinamicos-ad}
 
