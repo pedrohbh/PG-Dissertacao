@@ -7,8 +7,11 @@
 
 \section{Grafos Dinâmicos}
 \label{sec-dinamicos-grafos}
+Os algoritmos apresentados até agora, tratam apenas com grafos estáticos. Mas em situações reais podemos ter casos em que a modelagem feita por grafos requerem que o peso de suas arestas variem com tempo. Para esses casos, temos grafos ditos \textbf{dinâmicos}. Exemplos de modelagem por grafos dinâmicos são o sistema de tempo real de trânsito em que os pesos das arestas correspondem ao tempo médio para percorrer um determinado trecho e esse tempo está diretamente ligado ao trânsito local em uma determinada hora e o fluxo de em uma rede interna onde as arestas representam o caminho entre roteadores e os seus pesos correspondem ao uso desta linha, ou seja, o quão congestionada está.
 
+Para calcularmos o menor caminho entre dois vértices em grafos dinâmicos, poderíamos utilizar os algoritmos de Dijsktra e A* (capítulos \ref{sec-dijkstra} e \ref{sec-aestrela})  para acharmos a rota, e quando houver uma detecção de mudança do peso de arestas, recalcularíamos novamente o trajeto reutilizando esses algoritmos. Porém, ás vezes desejamos (ou necessitamos) que esse recálculo seja mais rápido. Para esse fim existem os algoritmos dinâmicos que calculam uma solução rápida porém não garantidamente ótima (elas são ditas sub-ótimas).
 
+Exemplos de algoritmos são o D* (citar referência), D* Lite \cite{koenig2002d}, ARA* e AD* \cite{likhachev2008anytime}. Esses dois últimos serão apresentados a seguir.
 \section{Algoritmo ARA*}
 \label{sec-dinamicos-ara}
 
@@ -63,7 +66,7 @@ Após o cálculo do caminho e continuando a função principal (listagem \ref{ls
 
 A principal diferença entre o algoritmo ARA* e o A* está na utilização da estratégia da heurística inflada. Ela consiste em utilizar a mesma função de ordenação de chaves da fila de prioridades do algoritmo A*, com a exceção de que o valor heurístico é multiplicado por um fator $\epsilon$. Isso faz com que menos vértices sejam visitados, já que os menos "promissores" serão jogados mais para o final da fila de prioridades enquanto que os mais "promissores" serão jogados para frente. Entretanto, ao se utilizar esta técnica perdemos a garantia do resultado ótimo do algoritmo (algo semelhante ao que ocorre quando não utilizamos heurísticas não-admissíveis. Vide subseção \ref{sec-aestrela-algoritmo-heuristica}).
 
-Porém, "Uma grande vantagem de se utilizar a estratégia apresentada é que temos um limite superior para a solução encontrada. Suponha que a melhor solução tenha custo C*. Se utilizarmos uma busca com o A* com um valor real $\epsilon \geq 1$ multiplicando o valor heurístico na função de avaliação, então há a garantia que para a nova solução C, C* $\leq$ C $\leq \epsilon$ x C*. Portanto, se $\epsilon$ = 1, a solução encontrada é ótima." (Citar referência A).
+Porém, "Uma grande vantagem de se utilizar a estratégia apresentada é que temos um limite superior para a solução encontrada. Suponha que a melhor solução tenha custo C*. Se utilizarmos uma busca com o A* com um valor real $\epsilon \geq 1$ multiplicando o valor heurístico na função de avaliação, então há a garantia que para a nova solução C, C* $\leq$ C $\leq \epsilon$ x C*. Portanto, se $\epsilon$ = 1, a solução encontrada é ótima." \cite{moura2010estudo}.
 
 Portanto a ideia principal é achar uma solução rápida, porém não-garantidamente ótima, atribuindo um valor $\epsilon$ maior do que 1, e a mediada que mais tempo é nos dado, diminuímos o valor de $\epsilon$ até termos $\epsilon$ = 1, em que a solução será garantidamente ótima. 
 
