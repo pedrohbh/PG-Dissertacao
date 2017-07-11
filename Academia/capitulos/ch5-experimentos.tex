@@ -1,0 +1,234 @@
+% ==============================================================================
+% TCC - Nome do Aluno
+% Capítulo 5 - Testes Computacionais
+% ==============================================================================
+\chapter{Testes Computacionais}
+\label{sec-testes}
+
+\section{Algoritmo de Dijkstra}
+\label{sec-dijkstra-experimentos}
+Para a realização dos experimentos computacionais será rodado instâncias de grafos que representam malhas rodoviárias reais. Todas elas descritas nas tabelas \ref{tbl-dijkstra-instancias} e \ref{tbl-dijkstra-configuracao}, e disponíveis no sítio eletrônico \url{http://www.dis.uniroma1.it/challenge9/download.shtml} (acesso em 28 de janeiro de 2017).
+\begin{table}[H]
+\caption{Instâncias a serem rodadas pelo algoritmo de Dijkstra em suas três versões.}
+\label{tbl-dijkstra-instancias}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Nome Instância} & \textbf{Descrição} \\ 
+\hline 
+USA-road-d.NY.gr & Representa a malha viária do estado de Nova Iorque, Estados Unidos \\ 
+\hline 
+USA-road-d.BAY.gr & Representa a malha viária da bahia de São Francisco, Califórnia, Estados Unidos \\ 
+\hline 
+USA-road-d.COL.gr & Representa a malha viária do estado do Colorado, Estados Unidos \\ 
+\hline 
+USA-road-d.FLA.gr & Representa a malha viária do estado da Flórida, Estados Unidos \\ 
+\hline 
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\caption{Configuração dos grafos correspondestes as malhas viárias descritas na tabela \ref{tbl-dijkstra-instancias}.}
+\label{tbl-dijkstra-configuracao}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline 
+\textbf{Nome Instância} & \textbf{Número de Vértices |V|} & \textbf{Número de Arestas |E|} \\ 
+\hline 
+USA-road-d.NY.gr
+ & 264.346
+ & 733.846
+ \\ 
+\hline 
+USA-road-d.BAY.gr
+ & 321.270
+ & 800.172
+ \\ 
+\hline 
+USA-road-d.COL.gr
+ & 435.666
+ & 1.057.066
+ \\ 
+\hline 
+USA-road-d.FLA.gr
+ & 1.070.376
+ & 2.712.798
+ \\ 
+\hline 
+\end{tabular}
+\end{adjustbox} 
+\end{table}
+
+\subsection{Resultados obtidos}
+\label{sec-dijkstra-experimentos-resultados}
+Os resultados dos testes obtidos estão descritos a seguir.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.90\textwidth]{figuras/dijkstra-tempos} 
+\caption{Tempos computacionais obtidos pelos Métodos de Dijkstra empregados (tempo em escala logarítmica).}
+\label{fig-dijkstra-resultados-tempos}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.90\textwidth]{figuras/speed-up-dijkstra} 
+\caption{Ganho relativo dos Métodos do Algoritmo de Dijkstra sobre o Canônico.}
+\label{fig-dijkstra-resultados-speedup}
+\end{figure}
+
+
+\begin{table}[H]
+\caption{Tempos Computacionais obtidos pelo algoritmo de Dijkstra em suas diferentes versões (tempo em milissegundos).}
+\label{tbl-dijkstra-resultados-tempos}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Tempo Canônico} & \textbf{Tempo Heap Binário} & \textbf{Tempo Heap Fibonacci} \\ \hline
+USA-road-d.NY.gr        & 65287                   & 153                         & 302                           \\ \hline
+USA-road-d.BAY.gr       & 256690                  & 248                         & 755                           \\ \hline
+USA-road-d.COL.gr       & 181687                  & 318                         & 627                           \\ \hline
+USA-road-d.FLA.gr       & 2909655                 & 6601                        & 8732                          \\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+
+\begin{table}[H]
+\caption{Ganho relativo sobre o Dijkstra Canônico.}
+\label{tbl-dijkstra-resultados-speedup}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Ganho Heap Binário} & \textbf{Ganho Heap Fibonacci} \\ \hline
+USA-road-d.NY.gr        & 42.671\%                       & 21.618\%                         \\ \hline
+USA-road-d.BAY.gr       & 103.504\%                      & 33.999\%                         \\ \hline
+USA-road-d.COL.gr       & 57.134\%                       & 28.977\%                         \\ \hline
+USA-road-d.FLA.gr       & 44.079\%                       & 33.322\%                         \\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\subsection{Análise dos resultados}
+\label{sec-dijkstra-experimentos-analise}
+Podemos observar que o Dijkstra Canônico elevou um tempo consideravelmente grande (a instância USA-road-d.FLA.gr por exemplo levou aproximadamente 48 minutos). Já o uso de estrutura de dados impactou consideravelmente no ganho do tempo sendo que o Heap Binário teve um ganho médio de 61.847\% com relação ao Dijkstra Canônico enquanto Dijkstra Heap de Fibonacci teve um ganho médio de 29.479\% (vide tabela \ref{tbl-dijkstra-resultados-speedup}).
+
+Com relação ao resultado obtido pelos métodos do Heap Binário e Heap de Fibonacci, ele é de certo modo inesperado, já que conforme demonstrados nas subseções \ref{sec-dijkstra-versoes-heap} e \ref{sec-dijkstra-versoes-fibonacci}, o heap de Fibonacci possui tempo computacional, aplicado ao algoritmo de Dijkstra, de $O(|V|\lg |V| + |E|)$ enquanto o heap binário possui $O(|E| \lg |V|)$.  Como para todas as instâncias rodadas $|E| > |V|$ (vide tabela \ref{tbl-dijkstra-configuracao}), era de se esperar do ponto de vista teórico que a heap de Fibonacci apresentasse tempos mais rápidos do que o Heap Binário.
+
+Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são, na prática, mais eficientes do que a Heap de Fibonacci (vide referência para mais detalhes). É o que os testes realizados por este trabalho também constatam.
+
+\subsection{Conclusões}
+\label{sec-dijkstra-conclusoes}
+Conforme demonstramos pelos experimentos descritos nesta seção, o algoritmo de Dijkstra que obteve o melhor resultado foi o Heap Binário, sendo mais rápido do que o próprio Heap de Fibonacci que teoricamente deveria ser mais rápido. O Dijkstra canônico obteve tempos que para aplicações como sistema de ponto global (em inglês, GPS) é indesejado, sendo sua implementação interessante apenas para fins de aprendizado e entendimento do algoritmo.
+
+Em termos de implementação, sem dúvida o mais complicado para se implementar foi o Heap de Fibonacci devido a sua própria estrutura que contém uma lista circular duplamente encadeada (a lista de raízes), e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
+
+Com isso, colocando em termos práticos, das formas de implementação apresentadas e testadas, a que melhor se sobressai é o Heap Binário que não só foi melhor no tempo dentre outros, como sua implementação é simples.
+
+\section{Algoritmo A*}
+\label{sec-aestrela-experimentos}
+
+Para os experimentos computacionais serão utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Serão comparados quatro versões de algoritmos: o algoritmo de Dijkstra descrito no capítulo \ref{sec-dijkstra}, o algoritmo de Dijkstra adaptado onde o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela \ref{tbl-aestrela-instancias}.
+
+\begin{table}[H]
+\caption{Descrição das versões a serem testadas neste capítulo.}
+\label{tbl-aestrela-instancias}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|}
+\hline 
+\textbf{Nome Instância} & \textbf{Descrição} \\ 
+\hline 
+Dijkstra & Versão de Dijsktra conforme descrito no capítulo \ref{sec-dijkstra} \\ 
+\hline 
+Dijkstra Adaptado & Versão de Dijkstra adaptado para parar quando o vértice destino é encontrado \\ 
+\hline 
+Algoritmo A* & Algoritmo A* utilizando a distância euclidiana \\ 
+\hline 
+Algoritmo A* Manhattan & Algoritmo A* utilizando a distância Manhattan \\ 
+\hline 
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+Será rodado dez vezes cada algoritmo para cada instância da subseção \ref{sec-dijkstra-experimentos} em que para cada rodada, será afixado o vértice origem como o sendo de valor de identificação "0" e terá como vértice destino um vértice escolhido aleatoriamente, sendo que não haverá repetição de vértices\footnote{Para o caso do algoritmo de Dijkstra especificado na primeira linha da tabela \ref{tbl-aestrela-instancias}, não será estabelecido um vértice destino já que o algoritmo calcula a melhor rota para todos os vértices do grafo.} (ou seja, supomos que o vértice de valor de identificação "180" tenha sido escolhido na primeira rodada. Esse vértice não será escolhido como destino nas demais 9 rodadas. Caso esse vértice seja "sorteado" na próxima iteração, um novo vértice será escolhido aleatoriamente). Nessas dez rodadas será verificado o tempo médio de execução, o número médio de vértices abertos por cada versão e para o algoritmo A* com a heurística Manhattan, será verificado a qualidade da solução.
+
+Para todas as versões será utilizada a estrutura de dados Heap Binário (descrito na subseção \ref{sec-dijkstra-versoes-heap}) pois conforme mostrado no capítulo \ref{sec-dijkstra}, foi a estrutura que melhor se sobressaiu entre as outras em termos de tempo computacional.
+
+\subsection{Resultados obtidos}
+\label{sec-aestrela-instancias-resultados}
+
+Os resultados dos testes computacionais descritos anteriormente podem ser vistos nas tabelas \ref{tbl-aestrela-resultados-tempo}, \ref{tbl-aestrela-resultados-qualidadesolucao} e \ref{tbl-aestrela-resultados-nva}.
+
+\begin{table}[H]
+\caption{Tempo médio obtido pelos métodos descritos na tabela \ref{tbl-aestrela-instancias} (tempo em milissegundos).}
+\label{tbl-aestrela-resultados-tempo}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Dijkstra} & \textbf{Dijkstra Adaptado} & \textbf{Algoritmo A*} & \textbf{Algoritmo A* Manhattan} \\ \hline
+USA-road-d.NY.gr        & 236                           & 109                                    & 29                      & 14                                \\ \hline
+USA-road-d.BAY.gr       & 321                           & 187                                    & 54                      & 23                                \\ \hline
+USA-road-d.COL.gr       & 494                           & 229                                    & 117                     & 27                                \\ \hline
+USA-road-d.FLA.gr       & 2858                          & 1026                                   & 886                     & 101                               \\ \hline
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\caption{Diferença média de solução obtida pelo A* Manhattan com relação a solução ótima.}
+\label{tbl-aestrela-resultados-qualidadesolucao}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{Qualidade Solução} \\ \hline
+USA-road-d.NY.gr        & 5\%                        \\ \hline
+USA-road-d.BAY.gr       & 4\%                        \\ \hline
+USA-road-d.COL.gr       & 3\%                        \\ \hline
+USA-road-d.FLA.gr       & 3\%                        \\ \hline
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+\begin{table}[H]
+\caption{Número de Vértices Abertos (NVA) médio por cada método.}
+\label{tbl-aestrela-resultados-nva}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{NVA Dijkstra Adptado} & \textbf{NVA A*} & \textbf{NVA A* Manhattan} \\ \hline
+USA-road-d.NY.gr        & 140501                        & 31995           & 9079                      \\ \hline
+USA-road-d.BAY.gr       & 225754                        & 53206           & 17044                     \\ \hline
+USA-road-d.COL.gr       & 242674                        & 108343          & 21577                     \\ \hline
+USA-road-d.FLA.gr       & 580010                        & 349201          & 79077                     \\ \hline
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+\subsection{Análise dos resultados}
+\label{sec-aestrela-resultados-analise}
+Como apontado pelos testes realizados, o algoritmo A* teve um desempenho computacional melhor do que o algoritmo Dijkstra, inclusive sobre o Dijkstra Adaptado (descrito anteriormente). Podemos ver que esse resultado está diretamente ligado ao número de vértices abertos por cada algoritmo (tabela \ref{tbl-aestrela-resultados-nva}). Aqueles que abriram mais vértices, obtiveram um tempo computacional maior. Isso já esperado, já que o algoritmo teve que processar mais etapas até que sua condição de parada fosse encontrada.
+
+Dos quatro métodos testados, o que obteve menor tempo computacional foi o algoritmo A* aplicando a heurística não-admissível Distância Manhattan. Isso se deve ao fato de o cálculo da distância (que é realizado em tempo de execução) ser mais simples do que o empregado pela distância euclidiana (que envolve radiação e exponenciação). Porém esse resultado possui um "preço a ser pago" que é, conforme descrito na subseção \ref{sec-aestrela-algoritmo-heuristica}, a não garantia do menor caminho entre os vértices pesquisados. Mas, conforme demonstra a tabela \ref{tbl-aestrela-resultados-qualidadesolucao}, a diferença média entre as soluções encontradas e suas respectivas soluções ótimas giram em torno de 4\%, o que pode ser considerado como um bom resultado.
+
+\subsection{Conclusões}
+\label{sec-aestrela-conclusao}
+O algoritmo A* demonstra ser um ótimo algoritmo para o cálculo de menor caminho entre dois vértices (origem e destino), superando em tempo computacional o algoritmo de Dijsktra (mas que retorna a menor rota para todos os demais vértices), sendo mais indicado para esse tipo de cálculo. Sua implementação é simples e é praticamente uma adaptação do algoritmo de Dijsktra.
+
+Com relação as heurísticas, para a garantia do melhor caminho como o algoritmo de Dijkstra o faz, é obrigatório o uso de uma heurística admissível, mesmo que isso tenha um impacto negativo no tempo com relação ao uso de outras heurísticas (as não-admissíveis). Porém, conforme mostrado na subseção ref{sec-aestrela-instancias-resultados}, a diferença entre as soluções ótimas e obtidos pelo método Manhattan giraram em torno de 4\%, o que é um bom resultado para quem deseja menor tempo computacional e não possui a obrigatoriedade do menor caminho.
+
+\section{Algoritmos Dinâmicos}
+\label{sec-experimentos-dinamicos}
+
+A ser realizado.
+
+
+
