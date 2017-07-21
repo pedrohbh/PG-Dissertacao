@@ -61,18 +61,18 @@ Inicialmente a distância do vértice "A" é atribuído como zero enquanto de to
 
 \section{Versões do Algoritmo implementadas e suas Estrutura de Dados}
 \label{sec-dijkstra-versoes}
-Para este projeto de graduação será implementada três versões do algoritmo de Dijkstra baseados em estruturas de dados diversas que implicam em tempos computacionais diferentes \cite{cormen2009introduction}.
+Neste projeto de graduação foram implementadas três versões do algoritmo de Dijkstra usando estruturas de dados diversas.
 
 As versões implementadas são o Dijkstra Canônico (descrito a seguir), Dijkstra Heap Binário (subseção \ref{sec-dijkstra-versoes-heap}) e Dijkstra Heap de Fibonacci (subseção \ref{sec-dijkstra-versoes-fibonacci}), todas baseadas em \citeonline{cormen2009introduction, drozdek2012data}.
 
-Para a versão Dijkstra Canônico o algoritmo utiliza de um vetor para armazenar as distâncias calculadas pelo algoritmo (o indíce dos vértices correspondem ao indíce do vetor em que são armazenados), e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice (fora do conjunto "toBeChecked") cuja a distância é menor dentre todas as outras. O tempo computacional para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
+Para a versão Dijkstra Canônico o algoritmo utiliza um vetor para armazenar as distâncias calculadas pelo algoritmo (o indíce dos vértices correspondem ao indíce do vetor em que são armazenados), e a cada passo iterativo (conforme demonstrado pelo algoritmo na seção \ref{sec-dijkstra-algoritmo}), uma busca linear é realizada para determinar o vértice (fora do conjunto "toBeChecked") cuja distância é menor dentre todas as outras. A complexidade para esse caso é $O(|V^{2}|)$ \cite{drozdek2012data}.
 
 \subsection{Dijkstra Heap Binário}
 \label{sec-dijkstra-versoes-heap}
-Para esta implementação, será utilizada a estrutura de dados heap binária mínima como fila de prioridade. Heaps binária podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
+Para esta implementação, será utilizada a estrutura de dados heap binária mínima como fila de prioridade. Heaps binárias podem ser descritas como árvores binárias que possuem as seguintes propriedades \cite{drozdek2012data}:
 \begin{enumerate}
  \item O valor de cada nodo não é maior do que os valores guardados em cada um de seus filhos.
- \item A árvore é perfeitamente balanceada, e as folhas no último nível estão todas mais a esquerda.
+ \item A árvore é perfeitamente balanceada, e as folhas no último nível estão todas posicionadas mais a esquerda.
 \end{enumerate}
 
 Um exemplo de estrutura Heap Binário representada tanto como árvore como vetor pode ser visualizado nas figuras \ref{fig-dijkstra-heapbinario} e \ref{fig-dijkstra-heapvetor} respectivamente.
@@ -102,11 +102,11 @@ A disposição dos elementos da árvore no vetor segue as seguintes relações e
 %Filho-direita(i): 2*i+1
 %\end{equation}
 \begin{description}
-\item[Pai($i$):] $\lfloor i/2 \rfloor$
-\item[Filho-esquerda($i$):] $2*i$
-\item[Filho-direita($i$):] $2*i+1$
+\item[pai($i$):] $\lfloor i/2 \rfloor$
+\item[filho-esquerda($i$):] $2*i$
+\item[filho-direita($i$):] $2*i+1$
 \end{description}
-Onde $i \in \mathbb{N}$ e $i \subset [1, n]$, sendo que $i$ representa o índice do elemento no vetor e $n$ o número de elementos da árvore.
+Onde $i \in \mathbb{N}$ e $i \in [1, n]$, sendo que $i$ representa o índice do elemento no vetor e $n$ o número de elementos da árvore.
 
  Para efeito de exemplo (observe as figuras \ref{fig-dijkstra-heapbinario} e \ref{fig-dijkstra-heapvetor} para constatação), o nó que está contido na posição 4 do vetor possui como pai o nó de posição 2 ($\lfloor 4 / 2 \rfloor = 2$), tem como filho da esquerda o nó de posição 8 ($2*4 = 8$) e filho da direita o nó de posição 9 ($2*4+1 = 9$).
 
@@ -114,13 +114,13 @@ Onde $i \in \mathbb{N}$ e $i \subset [1, n]$, sendo que $i$ representa o índice
 %\forall i, i \in \mathbb{N} [1,n]
 %\end{equation}
 
-A vantagem de se usar essa estrutura de dados reside no fato de suas operações de inserção, extração de mínimo e reconstrução da heap possuirem tempo computacional de $O(\lg n)$. Por consequência, o tempo computacional para este caso é de $O(|E| \lg |V|)$ \cite{cormen2009introduction}.
+A vantagem de se usar essa estrutura de dados reside no fato de suas operações de inserção, extração de mínimo e reconstrução da heap possuírem complexidade de $O(\lg n)$. Por consequência, o tempo computacional para este caso é de $O(|E| \lg |V|)$ \cite{cormen2009introduction}.
 
 \subsection{Dijkstra Heap de Fibonacci}
 \label{sec-dijkstra-versoes-fibonacci}
 A Heap de Fibonacci consiste de uma coleção de árvores que seguem a regra de árvore heap mínima, ou seja, os nós pais são maiores ou iguais aos nós filhos. Os nós raízes de cada árvore são interligados por uma lista circular duplamente encadeada. Um ponteiro chamado "raiz mínima" aponta para o nó de menor valor.
 
-Sua característica é que operações de adição são executadas de uma maneira "preguiçosa", não procurando criar uma forma para as árvores (como por exemplo, deixa-la balanceada), apenas as adicionados-as a lista principal de raízes. Por consequência, operações de inserção possuem tempo computacional $O(1)$ \cite{cormen2009introduction}.
+Sua característica é que operações de adição são executadas de uma maneira "preguiçosa", não procurando criar uma forma para as árvores (como por exemplo, deixá-la balanceada), apenas as adicionando à lista principal de raízes. Por consequência, operações de inserção possuem tempo computacional $O(1)$ \cite{cormen2009introduction}.
 
 \begin{figure}[H]
 \centering
