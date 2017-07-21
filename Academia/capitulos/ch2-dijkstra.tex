@@ -55,6 +55,8 @@ Ao final do algoritmo, teremos o conjunto de predecessores de cada vértice do g
 \label{fig-dijkstra-algoritmo-grafo}
 \end{figure}
 
+Inicialmente a distância do vértice "A" é atribuído como zero enquanto de todos os demais é atribuído como infinito $\infty$. Inicia-se o processo iterativo a partir de "A" que explora os seus vértices adjacentes, que neste caso só tem um que é o vértice "C". A distância de "C" é calculada como o valor da distância de "A" mais o peso da aresta "AC" (que é igual a 1). Em seguida é escolhido o vértice cuja a distância seja a menor dentro do conjunto "toBeChecked" que neste caso é o próprio "C". Do vértice "C" explora-se os vértices adjacentes dele "D" e "B". Suas respectivas distâncias são atribuídas como a distância de "C" mais o peso de suas respectivas arestas (currDist( B ) = 7 + 1; currDist( D ) = 3 + 1). Disso novamente, escolhe-se o vértice com menor distância em "toBeChecked" que neste caso será o D (currDist( D ) = 4 < currDist( C ) = 8). De "D" é explorado seu vértice adjacente "E" que é atribuído seu valor currDist( E ) como sendo 5 (3 + 1 + 1). Busca-se novamente o menor valor dos vértices em "toBeChecked" que neste caso será o "E" (currDist( E ) = 5 < currDist( B ) = 8). 
+
 
 \subsection{Garantia do algoritmo retorna o menor valor}
 \label{sec-dijkstra-algoritmo-prova}
