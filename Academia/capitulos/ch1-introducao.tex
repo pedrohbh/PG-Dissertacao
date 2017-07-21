@@ -6,6 +6,13 @@
 \label{sec-intro}
 Na computação muitas aplicações necessitam considerar um conjunto um conjunto de conexões entre dados e uso de algoritmos nesses dados para poder responder perguntad como, se existe um caminho entre um objeto a outro seguindo por essas conexões, qual a menor dinstância entre eles ou ainda quantos objetos podemos alcançar a partir de um determinado ponto. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.65\textwidth]{figuras/grafo-exemplo} 
+\caption{Exemplo de um grafo.}
+\label{fig-intro-exemplografo}
+\end{figure}
+
 Um problema clássico da literatura envolvendo grafos é o cálculo de caminho mínimo \cite{moura2010estudo}. Nele desejamos obter o menor caminho entre dois pontos específicos do grafo representado. A sua modelagem é feita representando as arestas com determinados pesos que podem significar o tempo decorrente entre executar tarefas, o custo de transmitir informações entre locais, quantidades específicas a serem transportadas entre um local e outro e etc \cite{drozdek2012data}. 
 
 Dentre as modelagens realizadas para resolver o problema do caminho mínimo, uma que é abordada é a definição do menor caminho entre dois pontos geográficos tendo como aplicação prática o uso por softwares do tipo GPS. Nela representamos as interseções das ruas, caminhos ou rodovias como o vértices do grafo e as distâncias entre essas interseções (as próprias ruas, caminhos ou rodovias) como as arestas e tendo seus respectivos pesos como sendo a distâncias entre essas interseções.
@@ -39,7 +46,7 @@ Este trabalho está estruturado da seguinte forma:
 \begin{description}
 \item[Capítulo \ref{sec-dijkstra}:] Apresenta a descrição do algoritmo clássico de Dijkstra, as versões implementadas baseadas em estrutura de dados diferentes e suas respectivas descrições;
 \item[Capítulo \ref{sec-aestrela}:] Apresenta a descrição do algoritmo busca A*, sua diferença em relação ao Dijkstra e uma descrição do uso da estratégia de heurísticas e como elas são classificadas;
-\item[Capítulo \ref{sec-dinamicos}:] Apresenta a descrição dos algoritmos ARA* e AD*, a estratégia de heurística inflada e uma breve descrição dos grafos dinâmicos os quais o algoritmo AD* se aplica;
+\item[Capítulo \ref{sec-dinamicos}:] Apresenta a descrição dos algoritmos ARA* e AD*, a estratégia de heurística inflada e uma breve descrição de grafos dinâmicos, nos quais o algoritmo AD* se aplica;
 \item[Capítulo \ref{sec-testes}:] Apresenta a descrição dos testes realizados, seus respectivos resultados e uma análise desses para cada algoritmo abordado;
 \item[Capítulo \ref{sec-conclusao}:] Traz a conclusão geral deste trabalho e possíveis trabalhos futuros.
 \end{description}
