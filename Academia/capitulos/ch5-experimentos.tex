@@ -237,25 +237,50 @@ Para os testes com o algoritmo ARA*, será comparado o desempenho da utilizaçã
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ara-resultados}
 
-Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}.
+Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}. O tempo é descrito em nanosegundos (ns). Observe também que o valor do tempo médio do algoritmo A* não varia dentro da mesma instância. Isso é devido a ser utilizado o resultado único para cada estância, já que o valor de $\epsilon$ não é utilizado pelo A*.
 
 \begin{table}[H]
-\caption{Número de Vértices Abertos (NVA) médio por cada método.}
+\caption{Resultado testes ARA*.}
 \label{tbl-experimentos-dinamicos-ara}
 \centering
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textbf{Nome Instância} & \textbf{NVA Dijkstra Adptado} & \textbf{NVA A*} & \textbf{NVA A* Manhattan} \\ \hline
-USA-road-d.NY.gr        & 140501                        & 31995           & 9079                      \\ \hline
-USA-road-d.BAY.gr       & 225754                        & 53206           & 17044                     \\ \hline
-USA-road-d.COL.gr       & 242674                        & 108343          & 21577                     \\ \hline
-USA-road-d.FLA.gr       & 580010                        & 349201          & 79077                     \\ \hline
-\end{tabular} 
+\textbf{Nome Instância}            & \multicolumn{1}{l|}{\textbf{Epsisolon}} & \multicolumn{1}{l|}{\textbf{NVA A*}} & \multicolumn{1}{l|}{\textbf{Tempo médio A*}} & \multicolumn{1}{l|}{\textbf{NVA ARA*}} & \multicolumn{1}{l|}{\textbf{Tempo médio ARA*}} & \multicolumn{1}{l|}{\textbf{Ganho de tempo com realção ao A*}} \\ \hline
+\multirow{7}{*}{USA-road-d.NY.gr}  & 4.0                                     & 29394                                & 26900000                                     & 252                                    & 980000                                         & 2.700\%                                                        \\ \cline{2-7} 
+                                   & 3.5                                     & 29394                                & 26900000                                     & 257                                    & 320000                                         & 8.400\%                                                        \\ \cline{2-7} 
+                                   & 3.0                                     & 29394                                & 26900000                                     & 265                                    & 820000                                         & 3.200\%                                                        \\ \cline{2-7} 
+                                   & 2.5                                     & 29394                                & 26900000                                     & 281                                    & 840000                                         & 3.200\%                                                        \\ \cline{2-7} 
+                                   & 2.0                                     & 29394                                & 26900000                                     & 296                                    & 560000                                         & 4.800\%                                                        \\ \cline{2-7} 
+                                   & 1.5                                     & 29394                                & 26900000                                     & 360                                    & 940000                                         & 2.800\%                                                        \\ \cline{2-7} 
+                                   & 1.0                                     & 29394                                & 26900000                                     & 4825                                   & 3140000                                        & 800\%                                                          \\ \hline
+\multirow{7}{*}{USA-road-d.BAY.gr} & 4.0                                     & 43896                                & 45980000                                     & 239                                    & 1180000                                        & 3.800\%                                                        \\ \cline{2-7} 
+                                   & 3.5                                     & 43896                                & 45980000                                     & 236                                    & 800000                                         & 5.700\%                                                        \\ \cline{2-7} 
+                                   & 3.0                                     & 43896                                & 45980000                                     & 224                                    & 800000                                         & 5.700\%                                                        \\ \cline{2-7} 
+                                   & 2.5                                     & 43896                                & 45980000                                     & 233                                    & 620000                                         & 7.400\%                                                        \\ \cline{2-7} 
+                                   & 2.0                                     & 43896                                & 45980000                                     & 252                                    & 1040000                                        & 4.400\%                                                        \\ \cline{2-7} 
+                                   & 1.5                                     & 43896                                & 45980000                                     & 299                                    & 740000                                         & 6.200\%                                                        \\ \cline{2-7} 
+                                   & 1.0                                     & 43896                                & 45980000                                     & 10867                                  & 7920000                                        & 500\%                                                          \\ \hline
+\multirow{7}{*}{USA-road-d.COL.gr} & 4.0                                     & 69991                                & 68140000                                     & 99                                     & 580000                                         & 11.700\%                                                       \\ \cline{2-7} 
+                                   & 3.5                                     & 69991                                & 68140000                                     & 93                                     & 860000                                         & 7.900\%                                                        \\ \cline{2-7} 
+                                   & 3.0                                     & 69991                                & 68140000                                     & 92                                     & 780000                                         & 8.700\%                                                        \\ \cline{2-7} 
+                                   & 2.5                                     & 69991                                & 68140000                                     & 92                                     & 720000                                         & 9.400\%                                                        \\ \cline{2-7} 
+                                   & 2.0                                     & 69991                                & 68140000                                     & 90                                     & 500000                                         & 13.600\%                                                       \\ \cline{2-7} 
+                                   & 1.5                                     & 69991                                & 68140000                                     & 172                                    & 580000                                         & 11.700\%                                                       \\ \cline{2-7} 
+                                   & 1.0                                     & 69991                                & 68140000                                     & 2080                                   & 1720000                                        & 3.900\%                                                        \\ \hline
+\multirow{7}{*}{USA-road-d.FLA.gr} & 4.0                                     & 255312                               & 711120000                                    & 808                                    & 3500000                                        & 20.300\%                                                       \\ \cline{2-7} 
+                                   & 3.5                                     & 255312                               & 711120000                                    & 840                                    & 2820000                                        & 25.200\%                                                       \\ \cline{2-7} 
+                                   & 3.0                                     & 255312                               & 711120000                                    & 913                                    & 2460000                                        & 28.900\%                                                       \\ \cline{2-7} 
+                                   & 2.5                                     & 255312                               & 711120000                                    & 596                                    & 2220000                                        & 32.000\%                                                       \\ \cline{2-7} 
+                                   & 2.0                                     & 255312                               & 711120000                                    & 524                                    & 1940000                                        & 36.600\%                                                       \\ \cline{2-7} 
+                                   & 1.5                                     & 255312                               & 711120000                                    & 687                                    & 2060000                                        & 34.500\%                                                       \\ \cline{2-7} 
+                                   & 1.0                                     & 255312                               & 711120000                                    & 18909                                  & 14360000                                       & 4.900\%                                                        \\ \hline
+\end{tabular}
 \end{adjustbox}
 \end{table}
 
-
+\subsubsection{Análise dos resultados}
+\label{sec-experimentos-dinamicos-ara-analise}
 
 
 
