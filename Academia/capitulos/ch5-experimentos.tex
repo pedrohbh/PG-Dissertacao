@@ -227,8 +227,35 @@ Com relação as heurísticas, para a garantia do melhor caminho como o algoritm
 
 \section{Algoritmos Dinâmicos}
 \label{sec-experimentos-dinamicos}
+Para o capítulo de algoritmo dinâmicos serão rodados dois tipos testes, um para cada algoritmo. Serão utilizadas as mesmas instâncias descritas na seção \ref{sec-dijkstra-experimentos}.
 
-A ser realizado.
+\subsection{ARA*}
+\label{sec-experimentos-dinamicos-ara}
+
+Para os testes com o algoritmo ARA*, será comparado o desempenho da utilização da heurística inflada com relação ao desempenho do algoritmo de Dijkstra. Será afixado um conjunto arbitrário de $\epsilon$ e será medido quanto tempo o algoritmo ARA* acha uma solução (mesmo não sendo a ótima) para aquele determinado $\epsilon$ e comparar com o tempo que o algoritmo A* acha uma solução ótima, além do número médio de vértices abertos por cada algoritmo. Será utilizada a mesma forma de bateria de testes descritas na seção \ref{sec-aestrela-experimentos} em que serão escolhidos 10 vértices diferentes aleatórios como vértice destino e 0 como vértice origem e depois disso, tirado a média dos tempo total gasto para achar a rota.
+
+\subsubsection{Resultados obtidos}
+\label{sec-experimentos-dinamicos-ara-resultados}
+
+Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}.
+
+\begin{table}[H]
+\caption{Número de Vértices Abertos (NVA) médio por cada método.}
+\label{tbl-experimentos-dinamicos-ara}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nome Instância} & \textbf{NVA Dijkstra Adptado} & \textbf{NVA A*} & \textbf{NVA A* Manhattan} \\ \hline
+USA-road-d.NY.gr        & 140501                        & 31995           & 9079                      \\ \hline
+USA-road-d.BAY.gr       & 225754                        & 53206           & 17044                     \\ \hline
+USA-road-d.COL.gr       & 242674                        & 108343          & 21577                     \\ \hline
+USA-road-d.FLA.gr       & 580010                        & 349201          & 79077                     \\ \hline
+\end{tabular} 
+\end{adjustbox}
+\end{table}
+
+
 
 
 
