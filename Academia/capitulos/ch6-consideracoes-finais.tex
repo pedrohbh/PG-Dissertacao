@@ -2,5 +2,13 @@
 % TCC - Nome do Aluno
 % Capítulo 5 - Testes Computacionais
 % ==============================================================================
-\chapter{Considerações Finais}
+\chapter{Considerações Finais e Trabalhos Futuros}
 \label{sec-conclusao}
+
+Este trabalho conseguiu realizar de forma satisfatória o cumprimento de seus objetivos propostos ao realizar os estudos dos algoritmos para grafos estáticos e dinâmicos, abordando seus funcionamentos, suas estratégias e o impacto que o uso de determinadas estruturas de dados ocasionam. Por meio dos testes computacionais realizados foi possível constatar a eficácia desses algoritmos e analisar em quais situações melhor se aplicam.
+
+Foram estudados os algoritmos de Dijkstra, busca A*, Anytime Search A* (ARA*) e o Anytime Dynamic Search A* (AD*) sobre instâncias que representam malhas rodoviárias reais, sendo o número de vértices e arestas desses grafos nos quais foram adaptados essas malhas viárias da ordem de grandeza de 100.000 a 1.000.000, possibilitando assim verificar o desempenho desses algoritmos em uma situação real e verificando também o desempenho para diferentes tamanhos de grafos.
+
+Este trabalho constatou que a escolha de uma determinada estrutura de dados impacta fortemente no desempenho do algoritmo e que certas estrutura de dados propostas, como é o caso da heap de Fibonacci, apesar de teoricamente possuir análise computacional melhor do que outras estruturas de dados como a heap binária, na prática, nem sempre é essa realidade que ocorre, tendo fatores práticos pesando no desempenho computacional.
+
+Para trabalhos futuros [professora, uma dúvida aqui, quando se fala de trabalhos futuros, eu devo usar termos como "podem ser feitos", no sentindo de sugestão, ou devo usar do tipo "serão", no sentido de como se fosse fazer?] serão realizados testes para comparar o desempenho dos algoritmos AD* e ARA* com o D* e o D* Lite, verificando também em quais situações cada um melhor se aplica. Além disso, vale também um estudo do uso de outras heurísticas além das que foram aplicadas, tanto para o algoritmo A* quanto para o ARA* e o AD*, incluindo também, nestes dois últimos casos, o uso de heurísticas não-admissíveis. Para o algoritmo de Dijkstra serão realizados testes com outras estrutura de dados propostas que não foram testadas por este trabalho.
