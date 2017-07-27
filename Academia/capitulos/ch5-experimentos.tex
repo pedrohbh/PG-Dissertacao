@@ -292,4 +292,52 @@ Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ad-resultados}
 
-Os resultados obtidos estão descritos na tabela X.
+Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos-ad}.
+
+\begin{table}[H]
+\caption{Resultados obtidos para AD*.}
+\label{tbl-experimentos-dinamicos-ad}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Nome Instância}            & \textbf{Modo} & \textbf{Porcentagem de mudança de vértices} & \textbf{Tempo A*} & \textbf{NVA A*} & \textbf{Tempo AD*} & \textbf{NVA AD*} & \textbf{Ganho em relação ao A*} \\ \hline
+\multirow{9}{*}{USA-road-d.NY.gr}  & Normal        & 0\%                                         & 1359866662        & 2087605         & 157800000          & 139458           & 800\%                           \\ \cline{2-8} 
+                                   & Diminui       & 2\%                                         & 1385299996        & 2114495         & 198100000          & 181197           & 600\%                           \\ \cline{2-8} 
+                                   & Diminui       & 20\%                                        & 1350633328        & 1993419         & 859800000          & 781839           & 100\%                           \\ \cline{2-8} 
+                                   & Diminui       & 50\%                                        & 183033328         & 151199          & 9500000            & 4845             & 1.900\%                         \\ \cline{2-8} 
+                                   & Diminui       & 70\%                                        & 105533329         & 27898           & 1600000            & 5096             & 6.500\%                         \\ \cline{2-8} 
+                                   & Aumenta       & 2\%                                         & 139399995         & 79134           & 59300000           & 58691            & 200\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 20\%                                        & 1252799994        & 1832418         & 625600000          & 559774           & 200\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 50\%                                        & 1386799995        & 2112880         & 168400000          & 153857           & 800\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 70\%                                        & 1378066662        & 2095219         & 273000000          & 143918           & 500\%                           \\ \hline
+\multirow{9}{*}{USA-road-d.BAY.gr} & Normal        & 0\%                                         & 1238633329        & 1591980         & 148300000          & 106581           & 800\%                           \\ \cline{2-8} 
+                                   & Diminui       & 2\%                                         & 1248599995        & 1573329         & 199800000          & 118749           & 600\%                           \\ \cline{2-8} 
+                                   & Diminui       & 20\%                                        & 1078899995        & 1350961         & 275900000          & 257416           & 300\%                           \\ \cline{2-8} 
+                                   & Diminui       & 50\%                                        & 223599995         & 177938          & 10800000           & 4887             & 2.000\%                         \\ \cline{2-8} 
+                                   & Diminui       & 70\%                                        & 140199995         & 44969           & 4500000            & 5670             & 3.100\%                         \\ \cline{2-8} 
+                                   & Aumenta       & 2\%                                         & 172633328         & 112561          & 13900000           & 15388            & 1.200\%                         \\ \cline{2-8} 
+                                   & Aumenta       & 20\%                                        & 1035999995        & 1329812         & 213700000          & 169195           & 400\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 50\%                                        & 1364833329        & 1742031         & 165300000          & 124424           & 800\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 70\%                                        & 1358966661        & 1756298         & 227600000          & 122366           & 500\%                           \\ \hline
+\multirow{9}{*}{USA-road-d.COL.gr} & Normal        & 0\%                                         & 2393133328        & 2595777         & 362000000          & 177983           & 600\%                           \\ \cline{2-8} 
+                                   & Diminui       & 2\%                                         & 2408266662        & 2580674         & 279300000          & 207273           & 800\%                           \\ \cline{2-8} 
+                                   & Diminui       & 20\%                                        & 2108899994        & 2323321         & 962400000          & 752105           & 200\%                           \\ \cline{2-8} 
+                                   & Diminui       & 50\%                                        & 413566660         & 349176          & 3100000            & 2858             & 13.300\%                        \\ \cline{2-8} 
+                                   & Diminui       & 70\%                                        & 188266660         & 20794           & 9500000            & 3682             & 1.900\%                         \\ \cline{2-8} 
+                                   & Aumenta       & 2\%                                         & 309799993         & 230532          & 625600000          & 512411           & 0\%                             \\ \cline{2-8} 
+                                   & Aumenta       & 20\%                                        & 2194799995        & 2500123         & 520900000          & 379449           & 400\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 50\%                                        & 2506366661        & 2748988         & 251000000          & 189233           & 900\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 70\%                                        & 2528133328        & 2756270         & 329300000          & 183643           & 700\%                           \\ \hline
+\multirow{9}{*}{USA-road-d.FLA.gr} & Normal        & 0\%                                         & 5970399996        & 5999935         & 1130900000         & 407767           & 500\%                           \\ \cline{2-8} 
+                                   & Diminui       & 2\%                                         & 5885366661        & 5919297         & 898500000          & 453850           & 600\%                           \\ \cline{2-8} 
+                                   & Diminui       & 20\%                                        & 5396366662        & 5532391         & 4405600000         & 2598656          & 100\%                           \\ \cline{2-8} 
+                                   & Diminui       & 50\%                                        & 1202133329        & 766740          & 25000000           & 18739            & 4.800\%                         \\ \cline{2-8} 
+                                   & Diminui       & 70\%                                        & 552966662         & 99583           & 14000000           & 16163            & 3.900\%                         \\ \cline{2-8} 
+                                   & Aumenta       & 2\%                                         & 661233329         & 327988          & 51500000           & 38827            & 1.200\%                         \\ \cline{2-8} 
+                                   & Aumenta       & 20\%                                        & 4870366662        & 5181622         & 3001600000         & 1574949          & 100\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 50\%                                        & 5791899995        & 6000935         & 1641100000         & 420677           & 300\%                           \\ \cline{2-8} 
+                                   & Aumenta       & 70\%                                        & 5881499994        & 6118269         & 1451000000         & 413480           & 400\%                           \\ \hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
