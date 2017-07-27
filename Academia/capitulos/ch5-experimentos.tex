@@ -354,3 +354,9 @@ Os resultados mostram também, que o ganho foi maior quando houve muitas mudanç
 
 \subsection{Conclusões}
 \label{sec-experimentos-dinamicos-conclusao}
+
+O algoritmo ARA* se mostra um excelente algoritmo para acharmos resultados rapidamente, tendo um desempenho de nanosegundos. Seu uso se torna ideal para aplicações que necessitam de respostas rápidas e não tem a obrigatoriedade de se ter o resultado ótimo. Mais interessante ainda é que, conforme descrito no capítulo \ref{sec-dinamicos}, o algoritmo vai melhorando o resultado a medida que mais tempo de cálculo é permitido pela aplicação, podendo assim achar um resultado rápido e este pode acabar se tornando ótimo (quando $\epsilon = 1$).
+
+O algoritmo AD*, que na verdade é uma adaptação do ARA*, mostrou-se um excelente algoritmo para grafos dinâmicos conseguindo superar em tempo computacional o algoritmo A* (que na verdade é um algoritmo estático, o uso dele em grafos dinâmicos é uma adaptação, conforme descrito no capítulo \ref{sec-dinamicos}) que o consegue com o uso da estratégia da heurística inflada, mais o não recálculo de todos vértices visitados anteriormente pelo algoritmo.
+
+Mas o uso do AD* só deve mesmo ser usado para grafos dinâmicos já que sua implementação é complexa e suscetível a erros de programação. Sendo assim, para grafos estáticos, o uso mais recomendado se dá de algoritmos estáticos como o Dijkstra e o A*.
