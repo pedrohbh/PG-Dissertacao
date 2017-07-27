@@ -17,10 +17,19 @@ Um problema clássico da literatura envolvendo grafos é o cálculo de caminho m
 
 Dentre as modelagens realizadas para resolver o problema do caminho mínimo, uma que é abordada é a definição do menor caminho entre dois pontos geográficos tendo como aplicação prática o uso por softwares do tipo GPS. Nela representamos as interseções das ruas, caminhos ou rodovias como o vértices do grafo e as distâncias entre essas interseções (as próprias ruas, caminhos ou rodovias) como as arestas e tendo seus respectivos pesos como sendo a distâncias entre essas interseções.
 
-A figura X mostra o exemplo desta modelagem abordada.
+A figura X mostra o exemplo desta modelagem abordada [a ser colocado ainda professora].
 
-A motivação deste trabalho é o estudo dos algoritmos de menor caminho em grafos, desde os clássicos como o algoritmo de Dijkstra \cite{dijkstra1959note} até algoritmos mais recentes propostos como o Anytime Dynamic A* (AD*) \cite{likhachev2008anytime}. Tem por  objetivo verificar o desempenho e a eficácia destes algoritmos, averiguar o impacto que as estruturas de dados utilizadas para resolver o problema causam e analisar quais situações os algoritmos estudados melhor se aplicam.
+A motivação deste trabalho é o estudo dos algoritmos de menor caminho em grafos, desde os clássicos como o algoritmo de Dijkstra \cite{dijkstra1959note} até algoritmos mais recentes propostos como o Anytime Dynamic Search A* (AD*) \cite{likhachev2008anytime}. Tem por  objetivo verificar o desempenho e a eficácia destes algoritmos, averiguar o impacto que as estruturas de dados utilizadas para resolver o problema causam e analisar quais situações os algoritmos estudados melhor se aplicam.
 
+\section{Revisão bibliográfica e trabalhos correlatos}
+\label{sec-intro-correlatos}
+O algoritmo de Dijkstra é amplamente difundido na literatura, sendo que é utilizado como base para o estudo desse algoritmo os livros de \citeonline{cormen2009introduction} e \citeonline{drozdek2012data}, em que abordam a descrição do algoritmo, estruturas de dados e a análise computacional das mesmas.
+
+Para o algoritmo busca A*, será tido como base o uso do livro de \citeonline{russell1995modern} e \citeonline{likhachev2008anytime} que o cita e desenvolve seus algorimtos (ARA* e AD*) baseando-se naquele.
+
+Já para os algoritmos ARA* e AD*, será utilizado o artigo que o propôs \cite{likhachev2008anytime}, e o estudo desses algoritmos realizados por \citeonline{moura2010estudo}.
+
+O trabalho de \citeonline{larkin2014back} analisa o uso de diversas estrutura de dados como fila de prioridades e seus respectivos impactos, constatado diferenças entre a proposta teórica dessas estruturas e a aplicação prática.
 \section{Metodologia de pesquisa}
 \label{sec-intro-metodologia}
 Para a realização do estudo a que este trabalho propõe, será implementado os algoritmos a serem estudados na linguagem Java, versão 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}. A configuração do computador em que será submetido os testes está descrito na tabela \ref{tbl-intro-configuracaomaquina}.

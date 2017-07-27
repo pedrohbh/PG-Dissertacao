@@ -232,7 +232,7 @@ Para o capítulo de algoritmo dinâmicos serão rodados dois tipos testes, um pa
 \subsection{ARA*}
 \label{sec-experimentos-dinamicos-ara}
 
-Para os testes com o algoritmo ARA*, será comparado o desempenho da utilização da heurística inflada com relação ao desempenho do algoritmo de Dijkstra. Será afixado um conjunto arbitrário de $\epsilon$ e será medido quanto tempo o algoritmo ARA* acha uma solução (mesmo não sendo a ótima) para aquele determinado $\epsilon$ e comparar com o tempo que o algoritmo A* acha uma solução ótima, além do número médio de vértices abertos por cada algoritmo. Será utilizada a mesma forma de bateria de testes descritas na seção \ref{sec-aestrela-experimentos} em que serão escolhidos 10 vértices diferentes aleatórios como vértice destino e 0 como vértice origem e depois disso, tirado a média dos tempo total gasto para achar a rota.
+Para os testes com o algoritmo ARA*, será comparado o desempenho da utilização da heurística inflada com relação ao desempenho do algoritmo de A*. Será afixado um conjunto arbitrário de $\epsilon$ e será medido quanto tempo o algoritmo ARA* acha uma solução (mesmo não sendo a ótima) para aquele determinado $\epsilon$ e comparar com o tempo que o algoritmo A* acha uma solução ótima, além do número médio de vértices abertos por cada algoritmo. Será utilizada a mesma forma de bateria de testes descritas na seção \ref{sec-aestrela-experimentos} em que serão escolhidos 10 vértices diferentes aleatórios como vértice destino e 0 como vértice origem e depois disso, tirado a média dos tempo total gasto para achar a rota.
 
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ara-resultados}
@@ -282,12 +282,12 @@ Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-expe
 \subsubsection{Análise dos resultados}
 \label{sec-experimentos-dinamicos-ara-analise}
 
-Podemos observar na tabela \ref{tbl-experimentos-dinamicos-ara} que o algoritmo ARA* possui um ganho no tempo consideravelmente alto. Ele conseguiu achar uma solução (não garantidamente ótima) em um tempo 36.600\% mais rápido do que o A*, reduzindo o tempo a fração de nanosegundos. É notável também a quantidade reduzida de vértices abertos pelo ARA*, mostrando que de fato o uso da heurística inflada "poda" mais ainda os vértices a serem visitados com relação ao A*.
+Podemos observar na tabela \ref{tbl-experimentos-dinamicos-ara} que o algoritmo ARA* possui um ganho no tempo consideravelmente alto. Ele conseguiu achar uma solução (não garantidamente ótima) em um tempo 36.600\% mais rápido do que o A*, reduzindo o tempo a ordem de nanosegundos. É notável também a quantidade reduzida de vértices abertos pelo ARA*, mostrando que de fato o uso da heurística inflada "poda" mais ainda os vértices a serem visitados com relação ao A*.
 
 \subsection{AD*}
 \label{sec-experimentos-dinamicos-ad}
 
-Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo com A*. Serão escolhidos também 10 vértices aleatórios seguindo os mesmos critérios descritos na seção \ref{sec-aestrela-experimentos}. Porém para este caso, em cada vértice escolhido aleatóriamente, será rodada 15 vezes cada algoritmo, e nestas 15 vezes a cada iteração, o grafo sofreará alteração dinâmica do pesos de suas arestas de acordo com uma porcentagem dos vértices do grafo. Para o algoritmo A*, a cada iteração será rodado o algoritmo novamente para recalculo da rota enquanto que para o AD*, o próprio algoritmo estará rodando e cada nova alteração do grafo, no próprio algoritmo será tratada essa mudança conforme foi descrito na seção \ref{sec-dinamicos-ara}.
+Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo com A*. Serão escolhidos também 10 vértices aleatórios seguindo os mesmos critérios descritos na seção \ref{sec-aestrela-experimentos}. Porém para este caso, em cada vértice escolhido aleatoriamente, será rodada 15 vezes cada algoritmo, e nestas 15 vezes a cada iteração, o grafo sofreará alteração dinâmica do pesos de suas arestas de acordo com uma porcentagem dos vértices do grafo. Para o algoritmo A*, a cada iteração será rodado o algoritmo novamente para recalculo da rota enquanto que para o AD*, o próprio algoritmo, que estará eme regime de funcionamento, dará o devido tratamento para essa mudança conforme foi descrito na seção \ref{sec-dinamicos-ara}.
 
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ad-resultados}
@@ -348,7 +348,7 @@ Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos
 
 Podemos observar que o algoritmo AD* possui um tempo computacional em geral melhor do que A* quando usado para recalcular a rota em grafos dinâmicos. No geral tivemos que essa diferença foi maior para quando o grafo tem o peso de suas arestas diminuídos do que quando o peso é aumentado. Isso é justificável, já que a rotina de tratamento para arestas com o peso aumentado é mais complexa do que para o peso diminuído.
 
-Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso "normal" descrito na tabela). Isso ocorre por causa da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do que executa o A*, o AD* não recalcula todo mundo novamente, mas usa vértices já abertos anteriormente, tornado mais rápido esse novo cálculo.
+Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso "normal" descrito na tabela). Isso ocorre por causa da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do que executa o A*, o AD* não recalcula todo mundo novamente, mas usa vértices já abertos anteriormente, tornado mais rápido esse novo cálculo. Observamos ainda que o número de vértices abertos pelo AD*, em geral, é menor do que o A*.
 
 Os resultados mostram também, que o ganho foi maior quando houve muitas mudanças dos vértices (50\%-70\%), mostrando que esse algoritmo se adéqua bem a grandes mudanças no grafo mantendo um bom desempenho.
 
