@@ -341,3 +341,13 @@ Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos
 \end{tabular}
 \end{adjustbox}
 \end{table}
+
+
+\subsubsection{Análise dos resultados}
+\label{sec-experimentos-dinamicos-analise}
+
+Podemos observar que o algoritmo AD* possui um tempo computacional em geral melhor do que A* quando usado para recalcular a rota em grafos dinâmicos. No geral tivemos que essa diferença foi maior para quando o grafo tem o peso de suas arestas diminuídos do que quando o peso é aumentado. Isso é justificável, já que a rotina de tratamento para arestas com o peso aumentado é mais complexa do que para o peso diminuído.
+
+Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso "normal" descrito na tabela). Isso ocorre por causa da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do que executa o A*, o AD* não recalcula todo mundo novamente, mas usa vértices já abertos anteriormente, tornado mais rápido esse novo cálculo.
+
+Os resultados mostram também, que o ganho foi maior quando houve muitas mudanças dos vértices (50\%-70\%), mostrando que esse algoritmo se adéqua bem a grandes mudanças no grafo mantendo um bom desempenho.
