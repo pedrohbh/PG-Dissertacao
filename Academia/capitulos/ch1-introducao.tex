@@ -4,7 +4,7 @@
 % ==============================================================================
 \chapter{Introdução}
 \label{sec-intro}
-Na computação muitas aplicações necessitam considerar um conjunto um conjunto de conexões entre dados e uso de algoritmos nesses dados para poder responder perguntad como, se existe um caminho entre um objeto a outro seguindo por essas conexões, qual a menor dinstância entre eles ou ainda quantos objetos podemos alcançar a partir de um determinado ponto. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}.
+Na computação muitas aplicações necessitam considerar um conjunto de conexões entre dados e uso de algoritmos nesses dados para poder responder perguntas como, se existe um caminho entre um objeto a outro seguindo por essas conexões, qual a menor dinstância entre eles ou ainda quantos objetos podemos alcançar a partir de um determinado ponto. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}.
 
 \begin{figure}[H]
 \centering
@@ -15,7 +15,7 @@ Na computação muitas aplicações necessitam considerar um conjunto um conjunt
 
 Um problema clássico da literatura envolvendo grafos é o cálculo de caminho mínimo \cite{moura2010estudo}. Nele desejamos obter o menor caminho entre dois pontos específicos do grafo representado. A sua modelagem é feita representando as arestas com determinados pesos que podem significar o tempo decorrente entre executar tarefas, o custo de transmitir informações entre locais, quantidades específicas a serem transportadas entre um local e outro e etc \cite{drozdek2012data}. 
 
-Dentre as modelagens realizadas para resolver o problema do caminho mínimo, uma que é abordada é a definição do menor caminho entre dois pontos geográficos tendo como aplicação prática o uso por softwares do tipo GPS. Nela representamos as interseções das ruas, caminhos ou rodovias como o vértices do grafo e as distâncias entre essas interseções (as próprias ruas, caminhos ou rodovias) como as arestas e tendo seus respectivos pesos como sendo a distâncias entre essas interseções.
+Dentre as modelagens realizadas para resolver o problema do caminho mínimo, uma que é muito utilizada é a definição do menor caminho entre dois pontos geográficos tendo como aplicação prática o uso por softwares do tipo GPS. Nela representamos as interseções das ruas, caminhos ou rodovias como o vértices do grafo e as distâncias entre essas interseções (as próprias ruas, caminhos ou rodovias) como as arestas e tendo seus respectivos pesos como sendo a distâncias entre essas interseções.
 
 A figura X mostra o exemplo desta modelagem abordada [a ser colocado ainda professora].
 
@@ -25,11 +25,11 @@ A motivação deste trabalho é o estudo dos algoritmos de menor caminho em graf
 \label{sec-intro-correlatos}
 O algoritmo de Dijkstra é amplamente difundido na literatura, sendo que é utilizado como base para o estudo desse algoritmo os livros de \citeonline{cormen2009introduction} e \citeonline{drozdek2012data}, em que abordam a descrição do algoritmo, estruturas de dados e a análise computacional das mesmas.
 
-Para o algoritmo busca A*, será tido como base o uso do livro de \citeonline{russell1995modern} e \citeonline{likhachev2008anytime} que o cita e desenvolve seus algorimtos (ARA* e AD*) baseando-se naquele.
+O algoritmo A* é bastante difundido na literatura. Foi proposto por \citeonline{hart1968formal}. Ele é descrito no livro de \citeonline{russell1995modern} e no artigo de \citeonline{likhachev2008anytime}. O pseudo-código descrito neste livro e artigo são usados como base para a implementação desse algoritmo neste projeto.
 
-Já para os algoritmos ARA* e AD*, será utilizado o artigo que o propôs \cite{likhachev2008anytime}, e o estudo desses algoritmos realizados por \citeonline{moura2010estudo}.
+O estudo dos algoritmos ARA* e AD* é baseado no artigo no qual esses algoritmos foram propostos \cite{likhachev2008anytime}, além do artigo em que investiga esses algoritmos \cite{moura2010estudo}.
 
-O trabalho de \citeonline{larkin2014back} analisa o uso de diversas estrutura de dados como fila de prioridades e seus respectivos impactos, constatado diferenças entre a proposta teórica dessas estruturas e a aplicação prática.
+O trabalho de \citeonline{larkin2014back} analisa o uso de diversas estruturas de dados como fila de prioridades e seus respectivos impactos, ressaltando diferenças entre a proposta teórica dessas estruturas e a aplicação prática.
 \section{Metodologia de pesquisa}
 \label{sec-intro-metodologia}
 Para a realização do estudo a que este trabalho propõe, será implementado os algoritmos a serem estudados na linguagem Java, versão 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}. A configuração do computador em que será submetido os testes está descrito na tabela \ref{tbl-intro-configuracaomaquina}.
