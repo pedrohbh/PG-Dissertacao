@@ -32,27 +32,13 @@ O estudo dos algoritmos ARA* e AD* é baseado no artigo no qual esses algoritmos
 O trabalho de \citeonline{larkin2014back} analisa o uso de diversas estruturas de dados como fila de prioridades e seus respectivos impactos, ressaltando diferenças entre a proposta teórica dessas estruturas e a aplicação prática.
 \section{Metodologia de pesquisa}
 \label{sec-intro-metodologia}
-Para a realização do estudo a que este trabalho propõe, será implementado os algoritmos a serem estudados na linguagem Java, versão 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}. A configuração do computador em que será submetido os testes está descrito na tabela \ref{tbl-intro-configuracaomaquina}.
-
-\begin{table}[H]
-\centering
-\caption{Configuração da máquina onde será realizado os testes computacionais.}
-\label{tbl-intro-configuracaomaquina}
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|c|c|}
-\hline
-Sistema Operacional & Linux Mint  18.2  Sonya 64-bit            \\ \hline
-Processador         & Intel Core i5-2430M @ 2.40 GHz. Cache 6MB \\ \hline
-Memória             & 4.0 GB                                    \\ \hline
-Compilador          & Java 1.8.0\_131                           \\ \hline
-\end{tabular}
-\end{adjustbox}
-\end{table}
-
+Todos os algoritmos estudados foram implementados na linguagem Java, versão 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}. A configuração do computador onde os testes foram realizados é o seguinte: o sistema operacional é o Linux Mint 18.2 Sonya 64-bit. O computador possui processador Intel Core i5-2430M @ 2.40 GHz. cache 6MB, memória de 4.0 GB e a versão do compilador Java utilizado é Javac 1.8.0\_131.
+\newpage
 \section{Organização dos capítulos}
 \label{sec-intro-organizaocao}
 Este trabalho está estruturado da seguinte forma:
 \begin{description}
+\item[Capítulo \ref{sec-intro}:] Esta introdução.
 \item[Capítulo \ref{sec-dijkstra}:] Apresenta a descrição do algoritmo clássico de Dijkstra, as versões implementadas baseadas em estrutura de dados diferentes e suas respectivas descrições;
 \item[Capítulo \ref{sec-aestrela}:] Apresenta a descrição do algoritmo busca A*, sua diferença em relação ao Dijkstra e uma descrição do uso da estratégia de heurísticas e como elas são classificadas;
 \item[Capítulo \ref{sec-dinamicos}:] Apresenta a descrição dos algoritmos ARA* e AD*, a estratégia de heurística inflada e uma breve descrição de grafos dinâmicos, nos quais o algoritmo AD* se aplica;
