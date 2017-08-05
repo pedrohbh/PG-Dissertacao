@@ -102,7 +102,7 @@ Sendo que $i \in \mathbb{N}$ e $i \in [1, n]$, em que $i$ representa o índice d
 %\forall i, i \in \mathbb{N} [1,n]
 %\end{equation}
 
-A vantagem de se usar essa estrutura de dados reside no fato de suas operações de inserção, extração de mínimo e reconstrução da heap possuírem complexidade de $O(\lg n)$. Por consequência, o tempo computacional para este caso é de $O(|E| \lg |V|)$ \cite{cormen2009introduction}.
+A vantagem de se usar essa estrutura de dados reside no fato de suas operações de inserção, extração de mínimo e reconstrução da heap possuírem complexidade de $O(\lg n)$. Com isso, a busca pelo vértice de distância mínima de cada iteração é mais rápida do que a pela realizada pelo Dijkstra Canônico, que para cada escolha do vértice de distância mínima, necessita realizar uma busca linear que é uma operação de custo alto. O tempo computacional utilizando a Heap Binário no algoritmo de Dijkstra é de $O(|E| \lg |V|)$ \cite{cormen2009introduction}.
 
 \subsubsection{Dijkstra Heap de Fibonacci}
 \label{sec-dijkstra-versoes-fibonacci}
