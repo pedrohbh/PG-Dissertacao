@@ -71,10 +71,34 @@ A principal diferença entre o algoritmo ARA* e o A* está na utilização da es
 Porém, uma grande vantagem de se utilizar essa estratégia é que teremos um limite superior para a solução encontrada. Considere que o custo ótimo de um determinado caminho seja C*. Se o utilizarmos a função g( s ) + $\epsilon$ * h( s ), com o valor de $\epsilon > 1$, então há a garantia de que a nova solução C, C* $\leq$ C $\leq \epsilon$ x C*. Com isso, se $\epsilon$ = 1, a solução encontrada será garantidamente ótima \cite{moura2010estudo}.
 
 Portanto a ideia principal é achar uma solução rápida, porém não-garantidamente ótima, atribuindo um valor $\epsilon$ maior do que 1, e caso a aplicação permita o uso de um tempo maior para aprimorarmos o resultado\footnote{Por exemplo, uma determinada aplicação necessita que se ache um caminho em no máximo 2 segundos. Se o algoritmo achar uma solução sub-ótima em 3 ms, dispomos de mais 1997 ms para podermos aprimorar ela.}, diminuímos o valor de $\epsilon$. E se o tempo ainda permitir, diminuímos até termos $\epsilon$ = 1, em que a solução será garantidamente ótima. 
-\newpage
+
 Outra estratégia utilizada para ganhar tempo, a cada novo valor de $\epsilon$ em que a função para cálculo de caminho é acionada (algoritmo \ref{lst-dinamicos-ara-computepath}), não é necessário recalcular todos os vértices visitados anteriormente, já que os mesmos permanecem na lista de abertos (tendo apenas suas chaves atualizadas com o novo valor de $\epsilon$ e consequentemente a ordem dos vértices também é reconfigurada de acordo com esses novos valores). Além disso, caso haja um melhor caminho encontrado para um vértice que pertence aos fechados, este são colocados em INCONS dos quais serão enviados para OPEN para serem recalculados na próxima busca (a busca se refere ao número da iteração da invocação da função de cálculo de caminho, contido no algoritmo \ref{lst-dinamicos-ara-computepath}, e consequentemente ao valor de $\epsilon$ a ele atribuído).
 
-A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a aplicação da estratégia da heurística inflada com seus respectivos resultados encontrados pelo algoritmo.
+As figuras \ref{fig-ara-exemplo3}, \ref{fig-ara-exemplo1} e \ref{fig-ara-exemplo2} mostram a estratégia da heurística inflada aplicada. A figura \ref{fig-ara-exemplo3} mostra o grafo onde são aplicados os algoritmos A* e o ARA*, sendo determinado como o vértice origem o ``0'' e o vértice destino o ``4''. Os valores das heurísticas utilizadas correspondem ao custo da distância ótima de cada vértice ao vértice destino ``4''. A figura \ref{fig-ara-exemplo1} mostra a exploração do grafo pelo algoritmo A* (os vértices em vermelho representam os que são escolhidos pelo algoritmo a cada passo), enquanto que a figura \ref{fig-ara-exemplo2} mostra a exploração do grafo pelo algoritmo ARA*, tendo o valor de $\epsilon = 2$ (novamente os vértices em vermelho representam os que são escolhidos pelo algoritmo a cada passo). Podemos ver que o efeito da heurística inflada ``poda'' ainda mais os vértices a serem visitados e encontra uma solução que não é a ótima.
+
+A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a estratégia de diminuir o fator $\epsilon$ e as respectivas soluções encontradas para a configuração proposta pela figura.
+%A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a aplicação da estratégia da heurística inflada com seus respectivos resultados encontrados pelo algoritmo.
+\newpage
+\begin{figure}[H]
+\centering
+\includegraphics[width=.70\textwidth]{figuras/ARA-exemplo3} 
+\caption{Exemplo de grafo onde são aplicados os algoritmos A* e ARA*.}
+\label{fig-ara-exemplo3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.70\textwidth]{figuras/ARA-exemplo1} 
+\caption{Exploração do grafo da figura \ref{fig-ara-exemplo3} pelo algoritmo A*.}
+\label{fig-ara-exemplo1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.70\textwidth]{figuras/ARA-exemplo2} 
+\caption{Exploração do grafo da figura \ref{fig-ara-exemplo3} pelo algoritmo ARA*, tendo o valor $\epsilon = 2$.}
+\label{fig-ara-exemplo2}
+\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -82,6 +106,9 @@ A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mo
 \caption{Exemplo de aplicação da estratégia de diminuição do valor de $\epsilon$.}
 \label{fig-ara-exemplo}
 \end{figure}
+
+
+
 \section{Algoritmo AD*}
 \label{sec-dinamicos-ad}
 
