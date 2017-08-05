@@ -5,7 +5,10 @@
 \chapter{Experimentos Computacionais}
 \label{sec-testes}
 
-\section{Algoritmo de Dijkstra}
+\section{Algoritmos para Grafos Estáticos}
+\label{sec-experimentos-algoritmosestaticos}
+
+\subsection{Algoritmo de Dijkstra}
 \label{sec-dijkstra-experimentos}
 Para a realização dos experimentos computacionais são utilizadas instâncias de grafos que representam malhas rodoviárias reais. Todas elas descritas nas tabelas \ref{tbl-dijkstra-instancias} e \ref{tbl-dijkstra-configuracao}, e disponíveis no sítio eletrônico \url{http://www.dis.uniroma1.it/challenge9/download.shtml} (acesso em 28 de janeiro de 2017).
 
@@ -64,7 +67,7 @@ USA-road-d.FLA.gr
 \end{adjustbox} 
 \end{table}
 
-\subsection{Resultados obtidos}
+\subsubsection{Resultados obtidos}
 \label{sec-dijkstra-experimentos-resultados}
 Os resultados dos testes obtidos estão descritos a seguir.
 
@@ -118,7 +121,7 @@ USA-road-d.FLA.gr       & 44.079\%                       & 33.322\%             
 
 A figura \ref{fig-dijkstra-resultados-tempos} mostra o comparativo entre os tempos computacionais obtidos por cada método em escala logarítmica. A figura \ref{fig-dijkstra-resultados-speedup} mostra o ganho relativo em tempo entre os métodos Dijkstra Heap Binário e Dijkstra Heap de Fibonacci sobre o Dijkstra Canônico. As tabelas \ref{tbl-dijkstra-resultados-tempos} e \ref{tbl-dijkstra-resultados-speedup} mostram os resultados, em números, dos tempos computacionais obtidos e os ganhos relativos sobre o Dijkstra Canônico, respectivamente.
 
-\subsection{Análise dos resultados}
+\subsubsection{Análise dos resultados}
 \label{sec-dijkstra-experimentos-analise}
 Podemos observar que o Dijkstra Canônico foi executado em um tempo elevado (a instância USA-road-d.FLA.gr por exemplo foi executado em aproximadamente 48 minutos). Já o uso de estrutura de dados impactou consideravelmente no ganho do tempo sendo que o Heap Binário teve um ganho médio de 61.847\% com relação ao Dijkstra Canônico enquanto Dijkstra Heap de Fibonacci teve um ganho médio de 29.479\% (vide tabela \ref{tbl-dijkstra-resultados-speedup}).
 
@@ -126,7 +129,7 @@ Com relação ao resultado obtido pelos métodos do Heap Binário e Heap de Fibo
 
 Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicação prática das estruturas de dados nem sempre corresponde a esperada descrita na teoria. \citeonline{larkin2014back} mostram que estrutura de dados heaps baseadas em vetor são, na prática, mais eficientes do que a Heap de Fibonacci (vide referência para mais detalhes). É o que os testes realizados por este trabalho também constatam.
 
-\subsection{Conclusões}
+\subsubsection{Conclusões}
 \label{sec-dijkstra-conclusoes}
 Conforme mostramos pelos experimentos descritos nesta seção, o algoritmo de Dijkstra que obteve o melhor resultado foi aquele com o Heap Binário, sendo mais rápido do que o próprio Heap de Fibonacci que teoricamente deveria ser mais rápido. O Dijkstra canônico obteve tempos que para aplicações como sistema de ponto global (em inglês, \textit{GPS}) é indesejado, sendo sua implementação interessante apenas para fins de aprendizado e entendimento do algoritmo.
 
@@ -134,7 +137,7 @@ Em termos de implementação, sem dúvida o mais complicado para se implementar 
 
 Com isso, colocando em termos práticos, das formas de implementação apresentadas e testadas, a que melhor se sobressai é o Heap Binário que não só foi melhor no tempo dentre outros, como sua implementação é simples.
 
-\section{Algoritmo A*}
+\subsection{Algoritmo A*}
 \label{sec-aestrela-experimentos}
 
 Para os experimentos computacionais serão utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Serão comparados quatro versões de algoritmos: o algoritmo de Dijkstra descrito no capítulo \ref{sec-dijkstra}, o algoritmo de Dijkstra adaptado onde o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela \ref{tbl-aestrela-instancias}.
@@ -164,7 +167,7 @@ Será executado dez vezes cada algoritmo para cada instância da subseção \ref
 
 Para todas as versões será utilizada a estrutura de dados Heap Binário (descrito na subseção \ref{sec-dijkstra-versoes-heap}) pois conforme mostrado no capítulo \ref{sec-dijkstra}, foi a estrutura que melhor se sobressaiu entre as outras em termos de tempo computacional.
 
-\subsection{Resultados obtidos}
+\subsubsection{Resultados obtidos}
 \label{sec-aestrela-instancias-resultados}
 
 Os resultados dos testes computacionais descritos anteriormente podem ser vistos nas tabelas \ref{tbl-aestrela-resultados-tempo}, \ref{tbl-aestrela-resultados-qualidadesolucao} e \ref{tbl-aestrela-resultados-nva}.
@@ -218,13 +221,13 @@ USA-road-d.FLA.gr       & 580010                        & 349201          & 7907
 \end{table}
 
 A tabela \ref{tbl-aestrela-resultados-tempo} mostra os tempos, em milissegundos, médios obtidos por cada método testado. A tabela \ref{tbl-aestrela-resultados-qualidadesolucao} mostra a porcentagem da diferença média entre a solução obtida pelo algoritmo A* aplicado com a heurística não-admissível e a solução ótima. Já a tabela \ref{tbl-aestrela-resultados-nva} mostra o número médio de vértices abertos por cada método.
-\subsection{Análise dos resultados}
+\subsubsection{Análise dos resultados}
 \label{sec-aestrela-resultados-analise}
 Como apontado pelos testes realizados, o algoritmo A* teve um desempenho computacional melhor do que o algoritmo Dijkstra, inclusive sobre o Dijkstra Adaptado (descrito anteriormente). Podemos ver que esse resultado está diretamente ligado ao número de vértices abertos por cada algoritmo (tabela \ref{tbl-aestrela-resultados-nva}). Aqueles que abriram mais vértices, obtiveram um tempo computacional maior. Isso já esperado, já que o algoritmo teve que processar mais etapas até que sua condição de parada fosse encontrada.
 
 Dos quatro métodos testados, o que obteve menor tempo computacional foi o algoritmo A* aplicando a heurística não-admissível Distância Manhattan. Isso se deve ao fato de o cálculo da distância (que é realizado em tempo de execução) ser mais simples do que o empregado pela distância euclidiana (que envolve radiação e exponenciação). Porém esse resultado possui um ``preço a ser pago'' que é, conforme descrito na subseção \ref{sec-aestrela-algoritmo-heuristica}, a não garantia do menor caminho entre os vértices pesquisados. Mas, conforme mostra a tabela \ref{tbl-aestrela-resultados-qualidadesolucao}, a diferença média entre as soluções encontradas e suas respectivas soluções ótimas giram em torno de 4\%, o que pode ser considerado como um bom resultado.
 
-\subsection{Conclusões}
+\subsubsection{Conclusões}
 \label{sec-aestrela-conclusao}
 O algoritmo A* mostra ser um ótimo algoritmo para o cálculo de menor caminho entre dois vértices (origem e destino), superando em tempo computacional o algoritmo de Dijsktra (mas que retorna a menor rota para todos os demais vértices), sendo mais indicado para esse tipo de cálculo. Sua implementação é simples e é praticamente uma adaptação do algoritmo de Dijsktra.
 
