@@ -212,19 +212,38 @@ O procedimento é bem semelhante ao de Dijkstra (descrito no capítulo \ref{sec-
 
 \subsection{Heurísticas admissíveis e não-admissíveis}
 \label{sec-aestrela-algoritmo-heuristica}  
-O fator heurístico h( u ) é uma estimativa da distância entre o vértice ``u'' e o vértice ``goal''. Ela é chamada de \textbf{admissível} quando o valor da estimativa garantidamente não superestima o valor da distância real entre ``u'' e ``goal'' \cite{russell1995modern}. Um exemplo clássico usado de heurística admissível é a distância euclidiana, já que a menor distância entre dois pontos é uma reta \cite{russell1995modern}.
+O fator heurístico h( u ) é uma estimativa da distância entre o vértice ``u'' e o vértice ``goal''. Ela é chamada de \textbf{admissível} quando o valor da estimativa garantidamente não superestima o valor da distância real entre ``u'' e ``goal'', e por consequência, o valor do caminho mínimo será garantidamente ótimo \cite{russell1995modern}. Um exemplo clássico usado de heurística admissível é a distância euclidiana, já que a menor distância entre dois pontos é uma reta \cite{russell1995modern}.
 
-O cálculo da distância euclidiana porém, nem sempre é a forma mais rápida em termos computacionais, já que geralmente ela é calculada em termos dos pontos geográficos do vértice e esse cálculo envolve exponenciação e radiação. É por isso que existe o uso de heurísticas \textbf{não-admissíveis} que são estimativas que visam a usar cálculos mais simples e que, porém, não há a garantia que essa distância superestime a distância real entre ``u'' e ``goal''. Por consequência não há garantia que o caminho ótimo seja encontrado.
+O cálculo da distância euclidiana porém, nem sempre é a forma mais rápida em termos computacionais, já que geralmente ela é calculada em termos dos pontos geográficos do vértice e esse cálculo envolve exponenciação e radiação. É por isso que existe o uso de heurísticas \textbf{não-admissíveis} que são estimativas que visam usar cálculos mais simples e que, porém, não há a garantia que essa distância superestime a distância real entre ``u'' e ``goal''. Por consequência não há garantia que o caminho ótimo seja encontrado.
 
 Exemplos de heurísticas não-admissíveis:
-\begin{itemize}
-\item Distância Manhattan:
+\begin{description}
+\item[Distância Manhattan:]
+\end{description}
 \begin{itemize}
 \item h( u ) = $| x_{u} - x_{goal} | + | y_{u} - y_{goal}|$;
 \end{itemize}
-\item Atalho Diagonal:
+\begin{description}
+\item[Atalho Diagonal:]
+\end{description}
 \begin{itemize}
 \item h( u ) = $\sqrt{2} * | y_{u} - y_{goal}| + ( | x_{u} - x_{goal} | - | y_{u} - y_{goal}| )$ [Se a distância $| x_{u} - x_{goal} | > | y_{u} - y_{goal}|$];
-\item h( u) = $\sqrt{2} * | x_{u} - x_{goal}| + ( | y_{u} - y_{goal}| - | x_{u} - x_{goal} | )$ [Se a distância $| x_{u} - x_{goal} | < | y_{u} - y_{goal}|$];
+\item h( u ) = $\sqrt{2} * | x_{u} - x_{goal}| + ( | y_{u} - y_{goal}| - | x_{u} - x_{goal} | )$ [Se a distância $| x_{u} - x_{goal} | < | y_{u} - y_{goal}|$];
 \end{itemize}
-\end{itemize}
+
+Onde os termos $x_{u}$ e $y_{u}$ representam as posições dos eixos $x$ e $y$ do vértice u, e os termos $x_{goal}$ e $y_{goal}$ representam as posições dos eixos $x$ e $y$ do vértice destino \textit{goal}.
+%Onde os subscritos $u$ e $goal$ representam respectivamente o vértice a partir do qual se calcula a heurística e o vértice destino.
+
+
+
+%\begin{itemize}
+%\item Distância Manhattan:
+%\begin{itemize}
+%\item > h( u ) = $| x_{u} - x_{goal} | + | y_{u} - y_{goal}|$;
+%\end{itemize}
+%\item Atalho Diagonal:
+%\begin{itemize}
+%\item > h( u ) = $\sqrt{2} * | y_{u} - y_{goal}| + ( | x_{u} - x_{goal} | - | y_{u} - y_{goal}| )$ [Se a distância $| x_{u} - x_{goal} | > | y_{u} - y_{goal}|$];
+%\item > h( u ) = $\sqrt{2} * | x_{u} - x_{goal}| + ( | y_{u} - y_{goal}| - | x_{u} - x_{goal} | )$ [Se a distância $| x_{u} - x_{goal} | < | y_{u} - y_{goal}|$];
+%\end{itemize}
+%\end{itemize}
