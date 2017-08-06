@@ -131,7 +131,7 @@ Porém, conforme também constatado por \citeonline{larkin2014back}, a aplicaç�
 \label{sec-dijkstra-conclusoes}
 Conforme mostramos pelos experimentos descritos nesta seção, o algoritmo de Dijkstra que obteve o melhor resultado foi aquele com o Heap Binário, sendo mais rápido do que o próprio Heap de Fibonacci que teoricamente deveria ser mais rápido. O Dijkstra canônico obteve tempos que para aplicações como sistema de ponto global (em inglês, \textit{GPS}) é indesejado, sendo sua implementação interessante apenas para fins de aprendizado e entendimento do algoritmo.
 
-Em termos de implementação, sem dúvida o mais complicado para se implementar foi o Heap de Fibonacci devido a sua própria estrutura que contém uma lista circular duplamente encadeada (a lista de raízes), e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
+Em termos de implementação, sem dúvida o mais complicado foi o Heap de Fibonacci devido a sua própria estrutura que contém uma lista circular duplamente encadeada (a lista de raízes), e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
 
 Com isso, colocando em termos práticos, das formas de implementação apresentadas e testadas, a que melhor se sobressai é o Heap Binário que não só foi melhor, em relação ao tempo computacional, mas também possui implementação mais simples.
 
@@ -163,7 +163,7 @@ Algoritmo A* Manhattan & Algoritmo A* utilizando a distância Manhattan \\
 
 Cada instância foi executada 10 vezes para cada algoritmo sendo que em cada execução o vértice origem é fixado como sendo o vértice de valor de identificação ``0'' e terá como vértice destino um vértice escolhido aleatoriamente, sendo que não haverá repetição de vértices\footnote{Para o caso do algoritmo de Dijkstra especificado na primeira linha da tabela \ref{tbl-aestrela-instancias}, não será estabelecido um vértice destino já que o algoritmo calcula a melhor rota para todos os vértices do grafo.},ou seja, supomos que o vértice de valor de identificação ``180'' tenha sido escolhido na primeira rodada. Esse vértice não será escolhido como destino nas demais 9 rodadas. Caso esse vértice seja ``sorteado'' na próxima iteração, um novo vértice será escolhido aleatoriamente. O mesmo vértice escolhido será utilizado para a execução de cada algoritmo. Nessas dez execuções foi verificado o tempo médio de execução, o número médio de vértices abertos e para o algoritmo A* com a heurística Manhattan, é verificado a qualidade da solução.
 
-Para todas as versões foi utilizada a estrutura de dados Heap Binário (descrito na subseção \ref{sec-dijkstra-versoes-heap}) pois conforme mostrado nos testes do algoritmo de Dijkstra (subseção \ref{sec-dijkstra-experimentos}), foi a estrutura que melhor se sobressaiu entre as outras em termos de tempo computacional.
+Para todas as versões foi utilizada a estrutura de dados Heap Binário (descrito na subseção \ref{sec-dijkstra-versoes-heap}) pois conforme mostrado nos testes do algoritmo de Dijkstra (subseção \ref{sec-dijkstra-experimentos}), foi a estrutura de melhor desempenho entre as outras abordadas nesse trabalho.
 
 \subsubsection{Resultados obtidos}
 \label{sec-aestrela-instancias-resultados}
@@ -243,7 +243,7 @@ Para os testes com o algoritmo ARA*, será comparado o desempenho da utilizaçã
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ara-resultados}
 
-Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}. O tempo é descrito em nanosegundos (ns). Observe também que o valor do tempo médio do algoritmo A* não varia dentro da mesma instância. Isso ocorre pois é utilizado o resultado único para cada estância, já que o valor de $\epsilon$ não é utilizado pelo A*.
+Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}. O tempo é descrito em nanosegundos (ns). Observe também que o valor do tempo médio do algoritmo A* não varia dentro da mesma instância. Isso ocorre pois é utilizado o resultado único para cada instância, já que o valor de $\epsilon$ não é utilizado pelo A*.
 
 \begin{table}[H]
 \caption{Resultado testes ARA*.}
@@ -288,12 +288,12 @@ Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-expe
 \subsubsection{Análise dos resultados}
 \label{sec-experimentos-dinamicos-ara-analise}
 
-Podemos observar na tabela \ref{tbl-experimentos-dinamicos-ara} que o algoritmo ARA* possui um ganho no tempo consideravelmente alto. Ele conseguiu achar uma solução (não garantidamente ótima) em um tempo 36.600\% mais rápido do que o A*, reduzindo o tempo para a ordem de microssegundos. É notável também a quantidade reduzida de vértices abertos pelo ARA*, mostrando que de fato o uso da heurística inflada ``poda'' mais ainda os vértices a serem visitados com relação ao A*.
+Podemos observar na tabela \ref{tbl-experimentos-dinamicos-ara} que o algoritmo ARA* possui um ganho no tempo consideravelmente alto. Ele conseguiu achar uma solução (não garantidamente ótima) em um tempo 36.600\% mais rápido do que o A*, reduzindo o tempo para a ordem de microssegundos. É notável também a quantidade reduzida de vértices abertos pelo ARA*, mostrando que de fato o uso da heurística inflada ``poda'' muito mais vértices a serem a serem visitados que o A*.
 
 \subsection{AD*}
 \label{sec-experimentos-dinamicos-ad}
 
-Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo com A*. Serão escolhidos também 10 vértices aleatórios seguindo os mesmos critérios descritos na seção \ref{sec-aestrela-experimentos}. Porém neste caso, em cada vértice escolhido aleatoriamente, foram executadas 15 vezes cada algoritmo, e nestas 15 vezes a cada iteração, o grafo sofreará alteração dinâmica do pesos de suas arestas de acordo com uma porcentagem dos vértices do grafo. Para o algoritmo A*, a cada iteração será rodado o algoritmo novamente para recálculo da rota enquanto que para o AD*, o próprio algoritmo, que estará em execução, dará o devido tratamento para essa mudança conforme foi descrito na seção \ref{sec-dinamicos-ara}.
+Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo com A*. Serão escolhidos também 10 vértices aleatórios seguindo os mesmos critérios descritos na seção \ref{sec-aestrela-experimentos}. Porém neste caso, em cada vértice escolhido aleatoriamente, foram executadas 15 vezes cada algoritmo, e nestas 15 vezes a cada iteração, o grafo sofreará alteração dinâmica do pesos de suas arestas de acordo com uma porcentagem dos vértices do grafo. Para o algoritmo A*, a cada iteração será executado o algoritmo novamente para recálculo da rota enquanto que para o AD*, o próprio algoritmo, que estará em execução, dará o devido tratamento para essa mudança conforme foi descrito na seção \ref{sec-dinamicos-ara}.
 
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ad-resultados}
@@ -352,17 +352,17 @@ Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos
 \subsubsection{Análise dos resultados}
 \label{sec-experimentos-dinamicos-analise}
 
-Podemos observar que o algoritmo AD* possui um tempo computacional em geral melhor do que A* quando usado para recalcular a rota em grafos dinâmicos. No geral tivemos que essa diferença foi maior para quando o grafo tem o peso de suas arestas diminuídos do que quando o peso é aumentado. Isso é justificável, já que a rotina de tratamento para arestas com o peso aumentado é mais complexa do que para o peso diminuído \cite{moura2010estudo}.
+Podemos observar que o algoritmo AD* possui um tempo computacional em geral melhor do que A* quando usado para recalcular a rota em grafos dinâmicos. No geral tivemos que essa diferença foi maior quando o grafo tem o peso de suas arestas diminuídos do que quando o peso é aumentado. Isso é justificável, já que a rotina de tratamento para arestas com o peso aumentado é mais complexa do que para o peso diminuído \cite{moura2010estudo}.
 
-Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso ``normal'' descrito na tabela). Isso ocorre por causa da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do A*, o AD* não recalcula todos os vértices novamente, mas usa vértices já abertos anteriormente, tornando mais rápido esse novo cálculo. Observamos ainda que o número de vértices abertos pelo AD*, em geral, é menor do que o A*.
+Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso ``normal'' descrito na tabela). Isso ocorre porque da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do A*, o AD* não recalcula todos os vértices novamente, mas usa vértices já abertos anteriormente, tornando mais rápido esse novo cálculo. Observamos ainda que o número de vértices abertos pelo AD*, em geral, é menor do que o A*.
 
-Os resultados mostram também, que o ganho foi maior quando houve muitas mudanças dos vértices (50\%-70\%), mostrando que esse algoritmo se adéqua bem a grandes mudanças no grafo mantendo um bom desempenho.
+Os resultados mostram também que o ganho foi maior quando houve muitas mudanças dos vértices (50\%-70\%), mostrando que esse algoritmo se adéqua bem a grandes mudanças no grafo mantendo um bom desempenho.
 
 \subsection{Conclusões}
 \label{sec-experimentos-dinamicos-conclusao}
 
-O algoritmo ARA* se mostra um excelente algoritmo para acharmos resultados rapidamente, tendo um desempenho de nanosegundos. Seu uso se torna ideal para aplicações que necessitam de respostas rápidas e não tem a obrigatoriedade de se ter o resultado ótimo. Mais interessante ainda é que, conforme descrito no capítulo \ref{sec-dinamicos}, o algoritmo vai melhorando o resultado a medida que mais tempo de cálculo é permitido pela aplicação, podendo assim achar um resultado rápido e este pode acabar ser o ótimo (quando $\epsilon = 1$).
+O algoritmo ARA* se mostra um excelente algoritmo para acharmos resultados rapidamente, tendo um desempenho de nanosegundos. Seu uso se torna ideal para aplicações que necessitam de respostas rápidas e não tem a obrigatoriedade de se obter o resultado ótimo. Mais interessante ainda é que, conforme descrito no capítulo \ref{sec-dinamicos}, o algoritmo vai melhorando o resultado a medida que mais tempo de cálculo é permitido pela aplicação, podendo assim achar um resultado rápido e este pode acabar ser o ótimo quando $\epsilon = 1$.
 
-O algoritmo AD*, que na verdade é uma adaptação do ARA*, mostrou-se um excelente algoritmo para grafos dinâmicos conseguindo superar em tempo computacional o algoritmo A* (que na verdade é um algoritmo estático, o uso dele em grafos dinâmicos é uma adaptação, conforme descrito no capítulo \ref{sec-dinamicos}).
+O algoritmo AD*, que na verdade é uma adaptação do ARA*, mostrou-se um excelente algoritmo para grafos dinâmicos conseguindo superar em tempo computacional o algoritmo A* (algoritmo estático. O uso dele em grafos dinâmicos é uma adaptação, conforme descrito no capítulo \ref{sec-dinamicos}).
 
 O uso do AD* é mais recomendado para grafos dinâmicos, uma vez que sua implementação é complexa. Para os grafos estáticos, é mais recomendado o uso dos algoritmos Dijkstra e o A*.
