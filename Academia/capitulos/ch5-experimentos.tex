@@ -12,7 +12,7 @@
 \label{sec-dijkstra-experimentos}
 Para a realização dos experimentos computacionais são utilizadas instâncias de grafos que representam malhas rodoviárias reais. Todas elas descritas nas tabelas \ref{tbl-dijkstra-instancias} e \ref{tbl-dijkstra-configuracao}, e disponíveis no sítio eletrônico \url{http://www.dis.uniroma1.it/challenge9/download.shtml} (acesso em 28 de janeiro de 2017).
 
-A tabela \ref{tbl-dijkstra-instancias} mostra o nome dos arquivos das instâncias que foram executadas para os testes e suas respectivas descrições dos grafos que representam malhas viárias reais. A tabela \ref{tbl-dijkstra-configuracao} mostra a configuração dos respectivos grafos apresentados na tabela \ref{tbl-dijkstra-instancias}, com seus respectivos número de vértices |V| e número de arestas |E|.
+A tabela \ref{tbl-dijkstra-instancias} mostra o nome dos arquivos das instâncias que foram executadas para os testes e suas respectivas descrições. A tabela \ref{tbl-dijkstra-configuracao} mostra a configuração dos respectivos grafos apresentados na tabela \ref{tbl-dijkstra-instancias}, com seus respectivos número de vértices |V| e número de arestas |E|.
 \begin{table}[H]
 \caption{Instâncias a serem rodadas pelo algoritmo de Dijkstra em suas três versões.}
 \label{tbl-dijkstra-instancias}
@@ -71,21 +71,6 @@ USA-road-d.FLA.gr
 \label{sec-dijkstra-experimentos-resultados}
 Os resultados dos testes obtidos estão descritos a seguir.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.90\textwidth]{figuras/dijkstra-tempos} 
-\caption{Tempos computacionais obtidos pelos Métodos de Dijkstra empregados (tempo em escala logarítmica).}
-\label{fig-dijkstra-resultados-tempos}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.90\textwidth]{figuras/speed-up-dijkstra} 
-\caption{Ganho relativo dos Métodos do Algoritmo de Dijkstra sobre o Canônico.}
-\label{fig-dijkstra-resultados-speedup}
-\end{figure}
-
-
 \begin{table}[H]
 \caption{Tempos Computacionais obtidos pelo algoritmo de Dijkstra em suas diferentes versões (tempo em milissegundos).}
 \label{tbl-dijkstra-resultados-tempos}
@@ -102,6 +87,12 @@ USA-road-d.FLA.gr       & 2909655                 & 6601                        
 \end{adjustbox}
 \end{table}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.90\textwidth]{figuras/dijkstra-tempos} 
+\caption{Tempos computacionais obtidos pelos Métodos de Dijkstra empregados (tempo em escala logarítmica).}
+\label{fig-dijkstra-resultados-tempos}
+\end{figure}
 
 \begin{table}[H]
 \caption{Ganho relativo sobre o Dijkstra Canônico.}
@@ -119,6 +110,13 @@ USA-road-d.FLA.gr       & 44.079\%                       & 33.322\%             
 \end{adjustbox}
 \end{table}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.90\textwidth]{figuras/speed-up-dijkstra} 
+\caption{Ganho relativo dos Métodos do Algoritmo de Dijkstra sobre o Canônico.}
+\label{fig-dijkstra-resultados-speedup}
+\end{figure}
+
 A figura \ref{fig-dijkstra-resultados-tempos} mostra o comparativo entre os tempos computacionais obtidos por cada método em escala logarítmica. A figura \ref{fig-dijkstra-resultados-speedup} mostra o ganho relativo em tempo entre os métodos Dijkstra Heap Binário e Dijkstra Heap de Fibonacci sobre o Dijkstra Canônico. As tabelas \ref{tbl-dijkstra-resultados-tempos} e \ref{tbl-dijkstra-resultados-speedup} mostram os resultados, em números, dos tempos computacionais obtidos e os ganhos relativos sobre o Dijkstra Canônico, respectivamente.
 
 \subsubsection{Análise dos resultados}
@@ -135,12 +133,12 @@ Conforme mostramos pelos experimentos descritos nesta seção, o algoritmo de Di
 
 Em termos de implementação, sem dúvida o mais complicado para se implementar foi o Heap de Fibonacci devido a sua própria estrutura que contém uma lista circular duplamente encadeada (a lista de raízes), e pelas funções de restruturação da estrutura que possui muitas movimentações de nodos e tratamento de casos de desvio de condição.
 
-Com isso, colocando em termos práticos, das formas de implementação apresentadas e testadas, a que melhor se sobressai é o Heap Binário que não só foi melhor no tempo dentre outros, como sua implementação é simples.
+Com isso, colocando em termos práticos, das formas de implementação apresentadas e testadas, a que melhor se sobressai é o Heap Binário que não só foi melhor, em relação ao tempo computacional, mas também possui implementação mais simples.
 
 \subsection{Algoritmo A*}
 \label{sec-aestrela-experimentos}
 
-Para os experimentos computacionais serão utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Serão comparados quatro versões de algoritmos: o algoritmo de Dijkstra descrito no capítulo \ref{sec-dijkstra}, o algoritmo de Dijkstra adaptado onde o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela \ref{tbl-aestrela-instancias}.
+Para os experimentos computacionais foram utilizados as mesmas instâncias descritas em subseção \ref{sec-dijkstra-experimentos}. Foram comparados quatro versões de algoritmos: o algoritmo de Dijkstra padrão, o algoritmo de Dijkstra adaptado em que o algoritmo é parado assim que se é explorado o vértice objetivo, o algoritmo A* onde se utiliza a heurística admissível distância euclidiana e o algoritmo A* onde se utiliza a heurística não-admissível distância Manhattan, todas sumarizadas na tabela \ref{tbl-aestrela-instancias}.
 
 \begin{table}[H]
 \caption{Descrição das versões a serem testadas neste capítulo.}
@@ -151,7 +149,7 @@ Para os experimentos computacionais serão utilizados as mesmas instâncias desc
 \hline 
 \textbf{Nome Instância} & \textbf{Descrição} \\ 
 \hline 
-Dijkstra & Versão de Dijsktra conforme descrito no capítulo \ref{sec-dijkstra} \\ 
+Dijkstra & Versão de Dijsktra padrão. \\ 
 \hline 
 Dijkstra Adaptado & Versão de Dijkstra adaptado para parar quando o vértice destino é encontrado \\ 
 \hline 
@@ -163,9 +161,9 @@ Algoritmo A* Manhattan & Algoritmo A* utilizando a distância Manhattan \\
 \end{adjustbox}
 \end{table}
 
-Será executado dez vezes cada algoritmo para cada instância da subseção \ref{sec-dijkstra-experimentos} em que para cada execução, será afixado o vértice origem como o sendo de valor de identificação ``0'' e terá como vértice destino um vértice escolhido aleatoriamente, sendo que não haverá repetição de vértices\footnote{Para o caso do algoritmo de Dijkstra especificado na primeira linha da tabela \ref{tbl-aestrela-instancias}, não será estabelecido um vértice destino já que o algoritmo calcula a melhor rota para todos os vértices do grafo.} (ou seja, supomos que o vértice de valor de identificação ``180'' tenha sido escolhido na primeira rodada. Esse vértice não será escolhido como destino nas demais 9 rodadas. Caso esse vértice seja ``sorteado'' na próxima iteração, um novo vértice será escolhido aleatoriamente). Nessas dez rodadas será verificado o tempo médio de execução, o número médio de vértices abertos por cada versão e para o algoritmo A* com a heurística Manhattan, será verificado a qualidade da solução.
+Cada instância foi executada 10 vezes para cada algoritmo sendo que em cada execução o vértice origem é fixado como sendo o vértice de valor de identificação ``0'' e terá como vértice destino um vértice escolhido aleatoriamente, sendo que não haverá repetição de vértices\footnote{Para o caso do algoritmo de Dijkstra especificado na primeira linha da tabela \ref{tbl-aestrela-instancias}, não será estabelecido um vértice destino já que o algoritmo calcula a melhor rota para todos os vértices do grafo.},ou seja, supomos que o vértice de valor de identificação ``180'' tenha sido escolhido na primeira rodada. Esse vértice não será escolhido como destino nas demais 9 rodadas. Caso esse vértice seja ``sorteado'' na próxima iteração, um novo vértice será escolhido aleatoriamente. O mesmo vértice escolhido será utilizado para a execução de cada algoritmo. Nessas dez execuções foi verificado o tempo médio de execução, o número médio de vértices abertos e para o algoritmo A* com a heurística Manhattan, é verificado a qualidade da solução.
 
-Para todas as versões será utilizada a estrutura de dados Heap Binário (descrito na subseção \ref{sec-dijkstra-versoes-heap}) pois conforme mostrado no capítulo \ref{sec-dijkstra}, foi a estrutura que melhor se sobressaiu entre as outras em termos de tempo computacional.
+Para todas as versões foi utilizada a estrutura de dados Heap Binário (descrito na subseção \ref{sec-dijkstra-versoes-heap}) pois conforme mostrado nos testes do algoritmo de Dijkstra (subseção \ref{sec-dijkstra-experimentos}), foi a estrutura que melhor se sobressaiu entre as outras em termos de tempo computacional.
 
 \subsubsection{Resultados obtidos}
 \label{sec-aestrela-instancias-resultados}
@@ -205,7 +203,7 @@ USA-road-d.FLA.gr       & 3\%                        \\ \hline
 \end{table}
 
 \begin{table}[H]
-\caption{Número de Vértices Abertos (NVA) médio por cada método.}
+\caption{Número de Vértices Abertos (NVA) médio.}
 \label{tbl-aestrela-resultados-nva}
 \centering
 \begin{adjustbox}{max width=\textwidth}
@@ -220,32 +218,32 @@ USA-road-d.FLA.gr       & 580010                        & 349201          & 7907
 \end{adjustbox}
 \end{table}
 
-A tabela \ref{tbl-aestrela-resultados-tempo} mostra os tempos, em milissegundos, médios obtidos por cada método testado. A tabela \ref{tbl-aestrela-resultados-qualidadesolucao} mostra a porcentagem da diferença média entre a solução obtida pelo algoritmo A* aplicado com a heurística não-admissível e a solução ótima. Já a tabela \ref{tbl-aestrela-resultados-nva} mostra o número médio de vértices abertos por cada método.
+A tabela \ref{tbl-aestrela-resultados-tempo} mostra os tempos, em milissegundos, médios obtidos por cada método testado. A tabela \ref{tbl-aestrela-resultados-qualidadesolucao} mostra a porcentagem da diferença média entre a solução obtida pelo algoritmo A* aplicado com a heurística não-admissível e a solução ótima. Já a tabela \ref{tbl-aestrela-resultados-nva} mostra o número médio de vértices abertos por cada método, exceto o método Dijkstra.
 \subsubsection{Análise dos resultados}
 \label{sec-aestrela-resultados-analise}
-Como apontado pelos testes realizados, o algoritmo A* teve um desempenho computacional melhor do que o algoritmo Dijkstra, inclusive sobre o Dijkstra Adaptado (descrito anteriormente). Podemos ver que esse resultado está diretamente ligado ao número de vértices abertos por cada algoritmo (tabela \ref{tbl-aestrela-resultados-nva}). Aqueles que abriram mais vértices, obtiveram um tempo computacional maior. Isso já esperado, já que o algoritmo teve que processar mais etapas até que sua condição de parada fosse encontrada.
+Como apontado pelos testes realizados, o algoritmo A* teve um desempenho computacional melhor do que o algoritmo Dijkstra, inclusive sobre o Dijkstra Adaptado (descrito anteriormente). Podemos ver que esse resultado está diretamente ligado ao número de vértices abertos por cada algoritmo (tabela \ref{tbl-aestrela-resultados-nva}). Aqueles que abriram mais vértices, obtiveram um tempo computacional maior. Isso é esperado, uma vez que o algoritmo teve que processar mais etapas até que sua condição de parada fosse encontrada.
 
-Dos quatro métodos testados, o que obteve menor tempo computacional foi o algoritmo A* aplicando a heurística não-admissível Distância Manhattan. Isso se deve ao fato de o cálculo da distância (que é realizado em tempo de execução) ser mais simples do que o empregado pela distância euclidiana (que envolve radiação e exponenciação). Porém esse resultado possui um ``preço a ser pago'' que é, conforme descrito na subseção \ref{sec-aestrela-algoritmo-heuristica}, a não garantia do menor caminho entre os vértices pesquisados. Mas, conforme mostra a tabela \ref{tbl-aestrela-resultados-qualidadesolucao}, a diferença média entre as soluções encontradas e suas respectivas soluções ótimas giram em torno de 4\%, o que pode ser considerado como um bom resultado.
+Dos quatro métodos testados, o que obteve menor tempo computacional foi o algoritmo A* aplicando a heurística não-admissível Distância Manhattan. Isso se deve ao fato de o cálculo da distância (que é realizado em tempo de execução) ser mais simples do que o empregado pela distância euclidiana (que envolve radiação e exponenciação). Porém esse resultado possui um aspecto negativo que é, conforme descrito na subseção \ref{sec-aestrela-algoritmo-heuristica}, a não garantia do menor caminho entre os vértices pesquisados. Mas, conforme mostra a tabela \ref{tbl-aestrela-resultados-qualidadesolucao}, a diferença média entre as soluções encontradas e suas respectivas soluções ótimas giram em torno de 4\%, o que pode ser considerado como um bom resultado.
 
 \subsubsection{Conclusões}
 \label{sec-aestrela-conclusao}
-O algoritmo A* mostra ser um ótimo algoritmo para o cálculo de menor caminho entre dois vértices (origem e destino), superando em tempo computacional o algoritmo de Dijsktra (mas que retorna a menor rota para todos os demais vértices), sendo mais indicado para esse tipo de cálculo. Sua implementação é simples e é praticamente uma adaptação do algoritmo de Dijsktra.
+O algoritmo A* mostra ser um ótimo algoritmo para o cálculo de menor caminho entre dois vértices (origem e destino), superando em tempo computacional o algoritmo de Dijsktra (que retorna a menor rota para todos os demais vértices), sendo mais indicado para esse tipo de cálculo. Sua implementação é simples e é praticamente uma adaptação do algoritmo de Dijsktra.
 
-Com relação as heurísticas, para a garantia do melhor caminho como o algoritmo de Dijkstra o faz, é obrigatório o uso de uma heurística admissível, mesmo que isso tenha um impacto negativo no tempo com relação ao uso de outras heurísticas (as não-admissíveis). Porém, conforme mostrado na subseção ref{sec-aestrela-instancias-resultados}, a diferença entre as soluções ótimas e obtidos pelo método Manhattan giraram em torno de 4\%, o que é um bom resultado para quem deseja menor tempo computacional e não possui a obrigatoriedade do menor caminho.
+Com relação as heurísticas, para a garantia do melhor caminho como o algoritmo de Dijkstra o faz, é obrigatório o uso de uma heurística admissível, mesmo que isso tenha um impacto negativo no tempo com relação ao uso de outras heurísticas (as não-admissíveis). Porém, conforme mostrado na subseção \ref{sec-aestrela-instancias-resultados}, a diferença entre as soluções ótimas e obtidos pelo método Manhattan ficaram em torno de 4\%, o que é um bom resultado para quem deseja menor tempo computacional e não possui a obrigatoriedade do menor caminho.
 
 \section{Algoritmos Dinâmicos}
 \label{sec-experimentos-dinamicos}
-Para o capítulo de algoritmo dinâmicos serão rodados dois tipos testes, um para cada algoritmo. Serão utilizadas as mesmas instâncias descritas na seção \ref{sec-dijkstra-experimentos}.
+Para o capítulo de algoritmo dinâmicos foram executados dois tipos testes, um para cada algoritmo. Serão utilizadas as mesmas instâncias descritas na seção \ref{sec-dijkstra-experimentos}.
 
 \subsection{ARA*}
 \label{sec-experimentos-dinamicos-ara}
 
-Para os testes com o algoritmo ARA*, será comparado o desempenho da utilização da heurística inflada com relação ao desempenho do algoritmo de A*. Será afixado um conjunto arbitrário de $\epsilon$ e será medido quanto tempo o algoritmo ARA* acha uma solução (mesmo não sendo a ótima) para aquele determinado $\epsilon$ e comparar com o tempo que o algoritmo A* acha uma solução ótima, além do número médio de vértices abertos por cada algoritmo. Será utilizada a mesma forma de bateria de testes descritas na seção \ref{sec-aestrela-experimentos} em que serão escolhidos 10 vértices diferentes aleatórios como vértice destino e 0 como vértice origem e depois disso, tirado a média dos tempo total gasto para achar a rota.
+Para os testes com o algoritmo ARA*, será comparado o desempenho da utilização da heurística inflada com relação ao desempenho do algoritmo A*. Foi fixado um conjunto arbitrário de $\epsilon$ e foi medido quanto tempo o algoritmo ARA* acha uma solução (mesmo não sendo a ótima) para aquele determinado $\epsilon$ e comparar com o tempo que o algoritmo A* acha uma solução ótima, além do número médio de vértices abertos por cada algoritmo. Foi utilizada a mesma forma de execução de testes descritas na seção \ref{sec-aestrela-experimentos} em que são escolhidos 10 vértices diferentes e aleatórios como vértice destino e 0 como vértice origem e depois disso, é calculado as médias dos tempo total gasto para achar o caminho.
 
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ara-resultados}
 
-Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}. O tempo é descrito em nanosegundos (ns). Observe também que o valor do tempo médio do algoritmo A* não varia dentro da mesma instância. Isso é devido a ser utilizado o resultado único para cada estância, já que o valor de $\epsilon$ não é utilizado pelo A*.
+Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-experimentos-dinamicos-ara}. O tempo é descrito em nanosegundos (ns). Observe também que o valor do tempo médio do algoritmo A* não varia dentro da mesma instância. Isso ocorre pois é utilizado o resultado único para cada estância, já que o valor de $\epsilon$ não é utilizado pelo A*.
 
 \begin{table}[H]
 \caption{Resultado testes ARA*.}
@@ -254,7 +252,7 @@ Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-expe
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textbf{Nome Instância}            & \multicolumn{1}{l|}{\textbf{Epsisolon}} & \multicolumn{1}{l|}{\textbf{NVA A*}} & \multicolumn{1}{l|}{\textbf{Tempo médio A*}} & \multicolumn{1}{l|}{\textbf{NVA ARA*}} & \multicolumn{1}{l|}{\textbf{Tempo médio ARA*}} & \multicolumn{1}{l|}{\textbf{Ganho de tempo com realção ao A*}} \\ \hline
+\textbf{Nome Instância}            & \multicolumn{1}{l|}{\textbf{Épsilon}} & \multicolumn{1}{l|}{\textbf{NVA A*}} & \multicolumn{1}{l|}{\textbf{Tempo médio A*}} & \multicolumn{1}{l|}{\textbf{NVA ARA*}} & \multicolumn{1}{l|}{\textbf{Tempo médio ARA*}} & \multicolumn{1}{l|}{\textbf{Ganho de tempo com realção ao A*}} \\ \hline
 \multirow{7}{*}{USA-road-d.NY.gr}  & 4.0                                     & 29394                                & 26900000                                     & 252                                    & 980000                                         & 2.700\%                                                        \\ \cline{2-7} 
                                    & 3.5                                     & 29394                                & 26900000                                     & 257                                    & 320000                                         & 8.400\%                                                        \\ \cline{2-7} 
                                    & 3.0                                     & 29394                                & 26900000                                     & 265                                    & 820000                                         & 3.200\%                                                        \\ \cline{2-7} 
@@ -290,17 +288,17 @@ Os resultados dos experimentos estão descritos a seguir na tabela \ref{tbl-expe
 \subsubsection{Análise dos resultados}
 \label{sec-experimentos-dinamicos-ara-analise}
 
-Podemos observar na tabela \ref{tbl-experimentos-dinamicos-ara} que o algoritmo ARA* possui um ganho no tempo consideravelmente alto. Ele conseguiu achar uma solução (não garantidamente ótima) em um tempo 36.600\% mais rápido do que o A*, reduzindo o tempo a ordem de nanosegundos. É notável também a quantidade reduzida de vértices abertos pelo ARA*, mostrando que de fato o uso da heurística inflada ``poda'' mais ainda os vértices a serem visitados com relação ao A*.
+Podemos observar na tabela \ref{tbl-experimentos-dinamicos-ara} que o algoritmo ARA* possui um ganho no tempo consideravelmente alto. Ele conseguiu achar uma solução (não garantidamente ótima) em um tempo 36.600\% mais rápido do que o A*, reduzindo o tempo para a ordem de microssegundos. É notável também a quantidade reduzida de vértices abertos pelo ARA*, mostrando que de fato o uso da heurística inflada ``poda'' mais ainda os vértices a serem visitados com relação ao A*.
 
 \subsection{AD*}
 \label{sec-experimentos-dinamicos-ad}
 
-Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo com A*. Serão escolhidos também 10 vértices aleatórios seguindo os mesmos critérios descritos na seção \ref{sec-aestrela-experimentos}. Porém para este caso, em cada vértice escolhido aleatoriamente, será rodada 15 vezes cada algoritmo, e nestas 15 vezes a cada iteração, o grafo sofreará alteração dinâmica do pesos de suas arestas de acordo com uma porcentagem dos vértices do grafo. Para o algoritmo A*, a cada iteração será rodado o algoritmo novamente para recalculo da rota enquanto que para o AD*, o próprio algoritmo, que estará em regime de funcionamento, dará o devido tratamento para essa mudança conforme foi descrito na seção \ref{sec-dinamicos-ara}.
+Para o algoritmo AD*, será comparado o desempenho computacional deste algoritmo com A*. Serão escolhidos também 10 vértices aleatórios seguindo os mesmos critérios descritos na seção \ref{sec-aestrela-experimentos}. Porém neste caso, em cada vértice escolhido aleatoriamente, foram executadas 15 vezes cada algoritmo, e nestas 15 vezes a cada iteração, o grafo sofreará alteração dinâmica do pesos de suas arestas de acordo com uma porcentagem dos vértices do grafo. Para o algoritmo A*, a cada iteração será rodado o algoritmo novamente para recálculo da rota enquanto que para o AD*, o próprio algoritmo, que estará em execução, dará o devido tratamento para essa mudança conforme foi descrito na seção \ref{sec-dinamicos-ara}.
 
 \subsubsection{Resultados obtidos}
 \label{sec-experimentos-dinamicos-ad-resultados}
 
-Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos-ad}. Modo compreende o tipo de teste rodado quanto a alteração do grafo. ``Normal'' significa que o grafo não sofre alteração, ``Diminui'' significa que as mudanças de pesos nas arestas compreende uma diminuição do valor do peso enquanto que ``Aumenta'' significa aumento delas. A porcentagem define a quantidade percentual de vértices do grafo que sofrerão alteração a cada nova iteração do teste (conforme descrito no início desta subseção). O tempo é dado em nanosegundos (ns).
+Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos-ad}. A segunda coluna representa o tipo de teste que é executado quando o grafo é alterado. ``Normal'' significa que o grafo não sofre alteração, ``Diminui'' significa que as mudanças de pesos nas arestas compreende uma diminuição do valor do peso enquanto que ``Aumenta'' significa aumento delas. A porcentagem define a quantidade percentual de vértices do grafo que sofrerão alteração a cada nova iteração do teste (conforme descrito no início desta subseção). O tempo é dado em nanosegundos (ns).
 
 \begin{table}[H]
 \caption{Resultados obtidos para AD*.}
@@ -356,15 +354,15 @@ Os resultados obtidos estão descritos na tabela \ref{tbl-experimentos-dinamicos
 
 Podemos observar que o algoritmo AD* possui um tempo computacional em geral melhor do que A* quando usado para recalcular a rota em grafos dinâmicos. No geral tivemos que essa diferença foi maior para quando o grafo tem o peso de suas arestas diminuídos do que quando o peso é aumentado. Isso é justificável, já que a rotina de tratamento para arestas com o peso aumentado é mais complexa do que para o peso diminuído \cite{moura2010estudo}.
 
-Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso ``normal'' descrito na tabela). Isso ocorre por causa da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do que executa o A*, o AD* não recalcula todo mundo novamente, mas usa vértices já abertos anteriormente, tornado mais rápido esse novo cálculo. Observamos ainda que o número de vértices abertos pelo AD*, em geral, é menor do que o A*.
+Observamos também que existe um ganho computacional mesmo quando o grafo não sofre alteração de seus pesos (caso ``normal'' descrito na tabela). Isso ocorre por causa da estratégia da heurística inflada que acha uma solução sub-ótima rápida e a medida que  o valor de $\epsilon$ é diminuído, a solução é melhorada, porém, ao contrário do A*, o AD* não recalcula todos os vértices novamente, mas usa vértices já abertos anteriormente, tornando mais rápido esse novo cálculo. Observamos ainda que o número de vértices abertos pelo AD*, em geral, é menor do que o A*.
 
 Os resultados mostram também, que o ganho foi maior quando houve muitas mudanças dos vértices (50\%-70\%), mostrando que esse algoritmo se adéqua bem a grandes mudanças no grafo mantendo um bom desempenho.
 
 \subsection{Conclusões}
 \label{sec-experimentos-dinamicos-conclusao}
 
-O algoritmo ARA* se mostra um excelente algoritmo para acharmos resultados rapidamente, tendo um desempenho de nanosegundos. Seu uso se torna ideal para aplicações que necessitam de respostas rápidas e não tem a obrigatoriedade de se ter o resultado ótimo. Mais interessante ainda é que, conforme descrito no capítulo \ref{sec-dinamicos}, o algoritmo vai melhorando o resultado a medida que mais tempo de cálculo é permitido pela aplicação, podendo assim achar um resultado rápido e este pode acabar se tornando ótimo (quando $\epsilon = 1$).
+O algoritmo ARA* se mostra um excelente algoritmo para acharmos resultados rapidamente, tendo um desempenho de nanosegundos. Seu uso se torna ideal para aplicações que necessitam de respostas rápidas e não tem a obrigatoriedade de se ter o resultado ótimo. Mais interessante ainda é que, conforme descrito no capítulo \ref{sec-dinamicos}, o algoritmo vai melhorando o resultado a medida que mais tempo de cálculo é permitido pela aplicação, podendo assim achar um resultado rápido e este pode acabar ser o ótimo (quando $\epsilon = 1$).
 
-O algoritmo AD*, que na verdade é uma adaptação do ARA*, mostrou-se um excelente algoritmo para grafos dinâmicos conseguindo superar em tempo computacional o algoritmo A* (que na verdade é um algoritmo estático, o uso dele em grafos dinâmicos é uma adaptação, conforme descrito no capítulo \ref{sec-dinamicos}) que o consegue com o uso da estratégia da heurística inflada, mais o não recálculo de todos vértices visitados anteriormente pelo algoritmo.
+O algoritmo AD*, que na verdade é uma adaptação do ARA*, mostrou-se um excelente algoritmo para grafos dinâmicos conseguindo superar em tempo computacional o algoritmo A* (que na verdade é um algoritmo estático, o uso dele em grafos dinâmicos é uma adaptação, conforme descrito no capítulo \ref{sec-dinamicos}).
 
-Mas o uso do AD* só deve mesmo ser usado para grafos dinâmicos já que sua implementação é complexa e suscetível a erros de programação. Sendo assim, para grafos estáticos, é mais recomendado o uso dos algoritmos Dijkstra e o A*.
+O uso do AD* é mais recomendado para grafos dinâmicos, uma vez que sua implementação é complexa. Para os grafos estáticos, é mais recomendado o uso dos algoritmos Dijkstra e o A*.
