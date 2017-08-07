@@ -4,7 +4,7 @@
 % ==============================================================================
 \chapter{Introdução}
 \label{sec-intro}
-Na computação muitas aplicações necessitam considerar um conjunto de conexões entre dados e uso de algoritmos nesses dados para poder responder perguntas como, se existe um caminho entre um objeto a outro seguindo por essas conexões, qual a menor distância entre eles ou ainda quantos objetos podemos alcançar a partir de um determinado ponto. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}, que é representado em termos de seus vértices e arestas.
+Na computação muitas aplicações necessitam considerar um conjunto de conexões entre dados e uso de algoritmos sobre esses dados para poder responder perguntas, como exemplo, se existe um caminho entre dois dados distintos seguindo por essas conexões, qual a menor distância entre eles ou ainda quantos dados podemos alcançar a partir de um outro determinado dado. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}. Um grafo G = (V,E) consiste de um conjunto não vazio V de vértices, que representam os dados, e um conjunto que pode ser vazio de arestas E, que representam a ligação entre esses dados. A figura \ref{fig-intro-exemplografo} mostra um exemplo de um grafo. Exemplos de modelagens por grafos são a ligação entre cidades em que as arestas representam as distâncias entre elas e a representação de uma rede interna de computadores. 
 
 \begin{figure}[H]
 \centering
@@ -15,7 +15,7 @@ Na computação muitas aplicações necessitam considerar um conjunto de conexõ
 
 Um problema clássico da literatura envolvendo grafos é o cálculo de caminho mínimo \cite{moura2010estudo}. Nele desejamos obter o menor caminho entre dois pontos específicos do grafo representado. A sua modelagem é feita representando as arestas com determinados pesos que podem significar o tempo decorrente entre executar tarefas, o custo de transmitir informações entre locais, quantidades específicas a serem transportadas entre um local e outro e etc \cite{drozdek2012data}. 
 
-Dentre as modelagens realizadas para resolver o problema do caminho mínimo, uma que é muito utilizada é a definição do menor caminho entre dois pontos geográficos tendo como aplicação prática o uso por softwares do tipo GPS. Nela representamos as interseções das ruas, caminhos ou rodovias como o vértices do grafo e as distâncias entre essas interseções (as próprias ruas, caminhos ou rodovias) como as arestas e tendo seus respectivos pesos como sendo a distâncias entre essas interseções.
+Dentre as modelagens realizadas para resolver o problema do caminho mínimo, uma que é muito utilizada é a definição do menor caminho entre dois pontos geográficos tendo como aplicação prática o uso de softwares do tipo GPS. Nela representamos as interseções das ruas, caminhos ou rodovias como o vértices do grafo e as distâncias entre essas interseções (as próprias ruas, caminhos ou rodovias) como as arestas e tendo seus respectivos pesos como sendo a distâncias entre essas interseções.
 
 %A figura X mostra o exemplo desta modelagem abordada [a ser colocado ainda professora].
 
@@ -32,15 +32,14 @@ O estudo dos algoritmos ARA* e AD* é baseado no artigo no qual esses algoritmos
 O trabalho de \citeonline{larkin2014back} analisa o uso de diversas estruturas de dados como fila de prioridades e seus respectivos impactos, ressaltando diferenças entre a proposta teórica dessas estruturas e a aplicação prática.
 \section{Metodologia de pesquisa}
 \label{sec-intro-metodologia}
-Todos os algoritmos estudados foram implementados na linguagem Java, a versão do compilador utilizado é Java 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}. A configuração do computador onde os testes foram realizados é o seguinte: o sistema operacional é o Linux Mint 18.2 Sonya 64-bit. O computador possui processador Intel Core i5-2430M @ 2.40 GHz. cache 6MB, memória de 4.0 GB.
+Todos os algoritmos estudados foram implementados na linguagem Java, a versão do compilador utilizado é Java 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}. A configuração do computador onde os testes foram realizados possui o sistema operacional Linux Mint 18.2 Sonya 64-bit. Além disso, o computador também possui processador Intel Core i5-2430M @ 2.40 GHz. cache 6MB, memória de 4.0 GB.
 \newpage
 \section{Organização dos capítulos}
 \label{sec-intro-organizaocao}
-Este trabalho está estruturado da seguinte forma:
+Nos próximos capítulos este trabalho está estruturado da seguinte forma:
 \begin{description}
-\item[Capítulo \ref{sec-intro}:] Esta introdução.
-\item[Capítulo \ref{sec-dijkstra}:] Apresenta a descrição do algoritmo clássico de Dijkstra, as versões implementadas baseadas em estrutura de dados diferentes e suas respectivas descrições;
-\item[Capítulo \ref{sec-aestrela}:] Apresenta a descrição do algoritmo busca A*, sua diferença em relação ao Dijkstra e uma descrição do uso da estratégia de heurísticas e como elas são classificadas;
+%\item[Capítulo \ref{sec-intro}:] Esta introdução.
+\item[Capítulo \ref{sec-algoritmosestaticos}:] Apresenta a descrição do algoritmo clássico de Dijkstra, as versões implementadas baseadas em estrutura de dados diferentes e suas respectivas descrições. Apresenta também a descrição do algoritmo busca A*, sua diferença em relação ao Dijkstra e uma descrição do uso da estratégia de heurísticas e como elas são classificadas;
 \item[Capítulo \ref{sec-dinamicos}:] Apresenta a descrição dos algoritmos ARA* e AD*, a estratégia de heurística inflada e uma breve descrição de grafos dinâmicos, nos quais o algoritmo AD* se aplica;
 \item[Capítulo \ref{sec-testes}:] Apresenta a descrição dos testes realizados, seus respectivos resultados e uma análise desses para cada algoritmo abordado;
 \item[Capítulo \ref{sec-conclusao}:] Traz a conclusão geral deste trabalho e possíveis trabalhos futuros.
