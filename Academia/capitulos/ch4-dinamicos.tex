@@ -19,43 +19,103 @@ Neste trabalho serão discutidos os algoritmos ARA* e AD* \cite{likhachev2008any
 
 O algoritmo ARA* proposto em \citeonline{likhachev2008anytime}, está descrito nos três algoritmos a seguir.
 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-computepath, caption=Algoritmo ARA* - função de cálculo de caminho, float=htpb]
-procedure ComputePath()
-	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$)
-		remove s with smallest key(s) from OPEN;
-		v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
-		for each successor s' of s
-			if s' was never visited by ARA* before then
-				v(s') = g(s') = $\infty$;
-			if g(s') > g(s) + c(s, s')
-				g(s') = g(s) + c(s, s');
-				if s' $\notin$ CLOSED
-					insert/update s' in OPEN with key(s');
-				else
-					insert s' into INCONS;
-\end{lstlisting}
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+%\Entrada{weighted simple digraph, vertex first, vertex goal}
+\While{key($s_{goal}$) > $min_{s \in OPEN(key(s))}$}
+{
+	remove s with smallest key(s) from OPEN\;
+	v(s) = g(s)\; CLOSED = CLOSED $\cup$ {s}\;
+	\ForEach{successor s' of s}
+	{
+		\If{s' was never visited by ARA* before then}
+		{
+			v(s') $\leftarrow$ $\infty$\;
+			g(s') $\leftarrow$ $\infty$\;
+		}
+		\If{g(s') > g(s) + c(s, s')}
+		{
+			g(s') $\leftarrow$ g(s) + c(s, s')\;
+			\eIf{s' $\notin$ CLOSED}
+			{
+				insert/update s' in OPEN with key(s')\;
+			}
+			{
+				insert s' into INCONS\;
+			}
+		}
+	}
+}
+\caption{Algoritmo ARA* - função de cálculo de caminho ComputePath().}
+\end{algorithm}
 
- 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-key, caption=Algoritmo ARA* - função da chave ordenadora da fila de prioridades, float=htpb]
-procedure key(s)
-	return g(s) + $\epsilon$ * h(s);
-\end{lstlisting}
 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-main, caption=Algoritmo ARA* - função principal, float=htpb]
-procedure Main()
-	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;
-	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$;
-	insert $s_{start}$ into OPEN with key($s_{start}$);
-	ComputePath();
-	publish current $\epsilon$-suboptimal solution;
-	while $\epsilon > 1$
-		decrease $\epsilon$;
-		Move states from INCONS into OPEN
-		Update the priorities for all s $\in$ OPEN according to key(s);
-		CLOSED = $\emptyset$;
-		ComputePath();
-		publish current $\epsilon$-suboptimal solution;
-\end{lstlisting}
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-computepath, caption=Algoritmo ARA* - função de cálculo de caminho, float=htpb]
+%procedure ComputePath()
+%	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$)
+%		remove s with smallest key(s) from OPEN;
+%		v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
+%		for each successor s' of s
+%			if s' was never visited by ARA* before then
+%				v(s') = g(s') = $\infty$;
+%			if g(s') > g(s) + c(s, s')
+%				g(s') = g(s) + c(s, s');
+%				if s' $\notin$ CLOSED
+%					insert/update s' in OPEN with key(s');
+%				else
+%					insert s' into INCONS;
+%\end{lstlisting}
+
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+\Entrada{vertex s}
+return g(s) + $\epsilon$ * h(s)\;
+\caption{Algoritmo ARA* - função da chave ordenadora da fila de prioridades key(s).}
+\end{algorithm}
+
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-key, caption=Algoritmo ARA* - função da chave ordenadora da fila de prioridades, float=htpb]
+%procedure key(s)
+%	return g(s) + $\epsilon$ * h(s);
+%\end{lstlisting}
+\newpage
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+%\Entrada{weighted simple digraph, vertex first, vertex goal}
+g($s_{goal}$) $\leftarrow$ v($s_{goal}$) $\leftarrow$ $\infty$; v($s_{start}$) $\leftarrow$ $\infty$\;
+g($s_{start}$) $\leftarrow$ 0; OPEN $\leftarrow$ CLOSED $\leftarrow$ INCONS $\leftarrow$ $\emptyset$\;
+insert $s_{start}$ into OPEN with key($s_{start}$)\;
+ComputePath()\;
+publish current $\epsilon$-suboptimal solution\;
+\While{$\epsilon > 1$}
+{
+	decrease $\epsilon$\;
+	Move states from INCONS into OPEN\;
+	Update the priorities for all s $\in$ OPEN according to key(s)\;
+	CLOSED $\leftarrow$ $\emptyset$\;
+	ComputePath()\;
+	publish current $\epsilon$-suboptimal solution\;
+}
+\caption{Algoritmo ARA* - função principal.}
+\end{algorithm}
+
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-main, caption=Algoritmo ARA* - função principal, float=htpb]
+%procedure Main()
+%	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;
+%	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$;
+%	insert $s_{start}$ into OPEN with key($s_{start}$);
+%	ComputePath();
+%	publish current $\epsilon$-suboptimal solution;
+%	while $\epsilon > 1$
+%		decrease $\epsilon$;
+%		Move states from INCONS into OPEN
+%		Update the priorities for all s $\in$ OPEN according to key(s);
+%		CLOSED = $\emptyset$;
+%		ComputePath();
+%		publish current $\epsilon$-suboptimal solution;
+%\end{lstlisting}
 
 A função principal é descrita no terceiro algoritmo. Temos as variáveis g(s) e v(s) que correspondem ao valor da distância real calculada da origem $s_{start}$ até o vértice s, porém v(s) representa a distância calculada pelo algoritmo na busca anterior, enquanto g(s) é a distância da busca atual. O valor de v(s), apesar de estar descrito no algoritmo conforme a literatura de origem, não é utilizado pelo algoritmo. Ele só é utilizado no próximo algoritmo, AD*, que está descrito no mesmo artigo do ARA* e foi do critério de seus autores originais colocar essa variável em sua descrição (portanto será ignorado na explicação que se segue). O valor de g($s_{goal}$) (distância real calculada da origem ao vértice destino) é atribuído como $\infty$ (infinito)\footnote{Vide nota de rodapé da seção \ref{sec-dijkstra-algoritmo}.}, enquanto que o valor de g($s_{start}$) é atribuído com o valor 0, pois a distância real é calculada a partir da origem. Em seguida são criados os conjuntos ``OPEN'', ``CLOSED'' e ``INCONS'', correspondendo respectivamente ao conjunto dos ``ABERTOS'', ``FECHADOS'' e ``INCONSISTENTES''. O vértice $s_{start}$ é inserido na fila de prioridades do conjunto OPEN utilizando a função de chave ordenadora descrito no segundo algoritmo. Essa função utiliza a estratégia da heurística inflada (descrito a seguir, na subseção \ref{sec-dinamicos-ara-consideracoes}).
 
@@ -116,70 +176,202 @@ O algoritmo ARA* calcula um caminho para grafos estáticos e dinâmicos. Porém,
 
 Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está descrito nos quatro algoritmos a seguir.
 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-set, caption=Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, float=htpb]
-procedure UpdateSetMembership(s)
-	if ($v(s) \neq g(s)$)
-		if (s $\notin$ CLOSED) insert/update s in OPEN with key(s);
-		else if (s $\notin$ INCONS) insert s in INCONS;
-	else
-		if (s $\in$ OPEN) remove s from OPEN;
-		else if (s $\in$ INCONS) remove s from INCONS;
-\end{lstlisting}
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+\Entrada{vertex s}
+\eIf{$v(s) \neq g(s)$}
+{
+	\eIf{s $\notin$ CLOSED}
+	{
+		insert/update s in OPEN with key(s)\;
+	}
+	{
+		\If{s $\notin$ INCONS}
+		{
+			insert s in INCONS\;
+		}
+	}
+}
+{
+	\eIf{s $\in$ OPEN}
+	{
+		remove s from OPEN\;
+	}
+	{
+		\If{s $\in$ INCONS}
+		{
+			remove s from INCONS\;
+		}
+	}
+}
+\caption{Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, UpdateSetmembership(s).}
+\end{algorithm}
 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-computepath, caption=Algoritmo AD* - função de cálculo de caminho, float=htpb]
-procedure ComputePath()
-	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$ OR v($s_{goal}$) < g($s_{goal}$)) 
-		remove s with smallest key(s) from OPEN;
-		if v(s) > g(s)
-			v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
-			for each successor s' of s
-				if s' was never visited by AD* before then
-					v(s') = g(s') = $\infty$;bp(s') = null;
-				if g(s') > g(s) + c(s, s')
-					g(s') = g(s) + c(s, s');
-					bp(s') = s;
-					g(s') = g(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
-		else
-			v(s) = $\infty$; UpdateSetMembership(s);
-			for each successor s' of s
-			if s' was never visited by AD* before then
-				v(s') = g(s') = $\infty$;bp(s') = null;
-			if bp(s') = s
-				bp(s') = $argmin_{s'' \in pred(s')}$ v(s'') + c(s'',s');
-				g(s') = v(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
-\end{lstlisting}
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-set, caption=Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, float=htpb]
+%procedure UpdateSetMembership(s)
+%	if ($v(s) \neq g(s)$)
+%		if (s $\notin$ CLOSED) insert/update s in OPEN with key(s);
+%		else if (s $\notin$ INCONS) insert s in INCONS;
+%	else
+%		if (s $\in$ OPEN) remove s from OPEN;
+%		else if (s $\in$ INCONS) remove s from INCONS;
+%\end{lstlisting}
+\newpage
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+%\Entrada{vertex s}
+\While{key($s_{goal}$) > $min_{s \in OPEN(key(s))}$ OR v($s_{goal}$) < g($s_{goal}$)}
+{
+	remove s with smallest key(s) from OPEN\;
+	\eIf{v(s) > g(s)}
+	{
+		v(s) $\leftarrow$ g(s); CLOSED $\leftarrow$ CLOSED $\cup$ {s}\;
+		\ForEach{successor s' of s}
+		{
+			\If{s' was never visited by AD* before then}
+			{
+				v(s') $\leftarrow$ g(s') $\leftarrow$ $\infty$;bp(s') $\leftarrow$ null\;
+			}
+			\If{g(s') > g(s) + c(s, s')}
+			{
+				g(s') $\leftarrow$ g(s) + c(s, s')\;
+				bp(s') $\leftarrow$ s\;
+				g(s') $\leftarrow$ g(bp(s')) + c(bp(s'),s')\; UpdateSetMembership(s')\;
+			}
+		}
+	}
+	{
+		v(s) $\leftarrow$ $\infty$\; UpdateSetMembership(s)\;	
+		\ForEach{successor s' of s}
+		{
+			\If{s' was never visited by AD* before then}
+			{
+				v(s') $\leftarrow$ g(s') $\leftarrow$ $\infty$;bp(s') $\leftarrow$ null\;
+			}
+			\If{bp(s') = s}
+			{
+				bp(s') $\leftarrow$ $argmin_{s'' \in pred(s')}$ v(s'') + c(s'',s')\;
+				g(s') $\leftarrow$ v(bp(s')) + c(bp(s'),s')\; UpdateSetMembership(s')\;
+			}
+		}
+	}
+}
+\caption{Algoritmo AD* - função de cálculo de caminho ComputePath().}
+\end{algorithm}
 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-key, caption=Algoritmo AD* - função da chave ordenadora da fila de prioridades, float=htpb]
-procedure key(s)
-	if (v(s) $\geq$ g(s))
-		return [g(s) + $\epsilon$ * h(s); g(s)];
-	else
-		return [v(s) + h(s); v(s)];
-\end{lstlisting}
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-computepath, caption=Algoritmo AD* - função de cálculo de caminho, float=htpb]
+%procedure ComputePath()
+%	while(key($s_{goal}$) > $min_{s \in OPEN(key(s))}$ OR v($s_{goal}$) < g($s_{goal}$)) 
+%		remove s with smallest key(s) from OPEN;
+%		if v(s) > g(s)
+%			v(s) = g(s); CLOSED = CLOSED $\cup$ {s};
+%			for each successor s' of s
+%				if s' was never visited by AD* before then
+%					v(s') = g(s') = $\infty$;bp(s') = null;
+%				if g(s') > g(s) + c(s, s')
+%					g(s') = g(s) + c(s, s');
+%					bp(s') = s;
+%					g(s') = g(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
+%		else
+%			v(s) = $\infty$; UpdateSetMembership(s);
+%			for each successor s' of s
+%			if s' was never visited by AD* before then
+%				v(s') = g(s') = $\infty$;bp(s') = null;
+%			if bp(s') = s
+%				bp(s') = $argmin_{s'' \in pred(s')}$ v(s'') + c(s'',s');
+%				g(s') = v(bp(s')) + c(bp(s'),s'); UpdateSetMembership(s');
+%\end{lstlisting}
 
-\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-main, caption=Algoritmo AD* - função principal, float=htpb]
-procedure Main()
-	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;bp($s_{goal}$) = bp($s_{start}$) = null;
-	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$; $\epsilon = \epsilon_{0}$;
-	insert $s_{start}$ into OPEN with key($s_{start}$);
-	forever
-		ComputePath();
-		publish current $\epsilon$-suboptimal solution;
-		if $\epsilon = 1$
-			wait changes in edge costs;
-		for all directed edges (u,v) with changed edge costs
-			update the edge cost c(u,v);
-			if ( $v \neq s_{start}$ AND v was visited by AD* before)
-				bp(v) = $argmin_{s'' \in pred(v)}$ v(s'') + c(s'',v);
-				g(v) = v(bp(v)) + c(bp(v),v); UpdateSetMembership(v);
-		if significant edge cost changes were observed
-			increase $\epsilon$ or re-plan from scratch (i.e., re-excute Main function);
-		else if $\epsilon > 1$
-			decrease $\epsilon$;
-		Move states from INCONS into OPEN
-		Update the priorities for all s $\in$ OPEN according to key(s);
-		CLOSED = $\emptyset$;
-\end{lstlisting}
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+\Entrada{vertex s}
+\eIf{v(s) $\geq$ g(s)}
+{
+	return [g(s) + $\epsilon$ * h(s); g(s)]\;
+}
+{
+	return [v(s) + h(s); v(s)]\;
+}
+\caption{Algoritmo AD* - função da chave ordenadora da fila de prioridades key(s).}
+\end{algorithm}
+
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-key, caption=Algoritmo AD* - função da chave ordenadora da fila de prioridades, float=htpb]
+%procedure key(s)
+%	if (v(s) $\geq$ g(s))
+%		return [g(s) + $\epsilon$ * h(s); g(s)];
+%	else
+%		return [v(s) + h(s); v(s)];
+%\end{lstlisting}
+\newpage
+\begin{algorithm}[H]
+\SetAlgoLined
+%\KwResult{Write here the result}
+%\Entrada{weighted simple digraph, vertex first, vertex goal}
+g($s_{goal}$) $\leftarrow$ v($s_{goal}$) $\leftarrow$ $\infty$; v($s_{start}$) $\leftarrow$ $\infty$;bp($s_{goal}$) $\leftarrow$ bp($s_{start}$) $\leftarrow$ null\;
+g($s_{start}$) $\leftarrow$ 0; OPEN $\leftarrow$ CLOSED $\leftarrow$ INCONS $\leftarrow$ $\emptyset$; $\epsilon$ $\leftarrow \epsilon_{0}$\;
+insert $s_{start}$ into OPEN with key($s_{start}$)\;
+\While{ forever }
+{
+	ComputePath()\;
+	publish current $\epsilon$-suboptimal solution\;
+	\If{$\epsilon = 1$}
+	{
+		wait changes in edge costs\;
+	}
+	\ForEach{directed edges (u,v) with changed edge costs}
+	{
+		update the edge cost c(u,v)\;
+		\If{$v \neq s_{start}$ AND v was visited by AD* before}
+		{
+			bp(v) $\leftarrow$ $argmin_{s'' \in pred(v)}$ v(s'') + c(s'',v)\;
+			g(v) $\leftarrow$ v(bp(v)) + c(bp(v),v); UpdateSetMembership(v)\;
+		}
+	}
+	\eIf{significant edge cost changes were observed}
+	{
+		increase $\epsilon$ or re-plan from scratch (i.e., re-excute Main function);
+	}
+	{
+		\If{$\epsilon > 1$}
+		{
+			decrease $\epsilon$\;
+		}
+	}
+		Move states from INCONS into OPEN\;
+		Update the priorities for all s $\in$ OPEN according to key(s)\;
+		CLOSED $\leftarrow$ $\emptyset$\;
+}
+		
+\caption{Algoritmo AD* - função principal.}
+\end{algorithm}
+
+
+%\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-main, caption=Algoritmo AD* - função principal, float=htpb]
+%procedure Main()
+%	g($s_{goal}$) = v($s_{goal}$) = $\infty$; v($s_{start}$) = $\infty$;bp($s_{goal}$) = bp($s_{start}$) = null;
+%	g($s_{start}$) = 0; OPEN = CLOSED = INCONS = $\emptyset$; $\epsilon = \epsilon_{0}$;
+%	insert $s_{start}$ into OPEN with key($s_{start}$);
+%	forever
+%		ComputePath();
+%		publish current $\epsilon$-suboptimal solution;
+%		if $\epsilon = 1$
+%			wait changes in edge costs;
+%		for all directed edges (u,v) with changed edge costs
+%			update the edge cost c(u,v);
+%			if ( $v \neq s_{start}$ AND v was visited by AD* before)
+%				bp(v) = $argmin_{s'' \in pred(v)}$ v(s'') + c(s'',v);
+%				g(v) = v(bp(v)) + c(bp(v),v); UpdateSetMembership(v);
+%		if significant edge cost changes were observed
+%			increase $\epsilon$ or re-plan from scratch (i.e., re-excute Main function);
+%		else if $\epsilon > 1$
+%			decrease $\epsilon$;
+%		Move states from INCONS into OPEN
+%		Update the priorities for all s $\in$ OPEN according to key(s);
+%		CLOSED = $\emptyset$;
+%\end{lstlisting}
 
 O algoritmo é muito semelhante em sua execução ao ARA*, já que o AD* é uma adaptação do mesmo \cite{moura2010estudo}. A função principal (quarto algoritmo) começa iniciando os valores de g($s_{goal}$), v($s_{goal}$) e v($s_{start}$) como $\infty$, bp($s_{start}$) como ponteiro nulo e g($s_{start}$) como 0. Os valores g(s) e v(s) correspondem as distâncias reais calculadas partindo do vértice origem ao vértice s, sendo que o valor g(s) corresponde a distância da busca atual enquanto que o v(s) corresponde ao valor da busca anterior. O valor bp(s) corresponde ao ponteiro para o vértice antecessor de s. Seguindo com o algoritmo, o vértice $s_{start}$ é inserido na fila de prioridades de acordo com  a função de chave ordenadora descrita no terceiro algoritmo. Em seguida, é acionado a função de cálculo de caminho (segundo algoritmo).
 
