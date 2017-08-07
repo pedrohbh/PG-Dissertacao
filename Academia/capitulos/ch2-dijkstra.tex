@@ -112,18 +112,18 @@ Sua característica é que operações de adição são executadas de uma maneir
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.54\textwidth]{figuras/fibonacci-heap1} 
+\includegraphics[width=.80\textwidth]{figuras/fibonacci-heap1} 
 \caption{Exemplo de Heap de Fibonacci (os números no canto superior esquerdo de cada nodo correspondem ao grau de cada um, ou seja, o número de filhos).}
 \label{fig-dijkstra-heapfibonacci1}
 \end{figure}
-
+\newpage
 Para operações de extração de mínimo o tempo computacional é mais custoso, devido o fato de que quando o mínimo é retirado, a heap precisa ser reorganizada de forma que sua propriedade principal não seja violada e um novo mínimo seja determinado. Para isso a operação de extração de mínimo se dá em três etapas. Primeiro é retirado o mínimo da heap (caso o mínimo possua nós filhos, eles são colocados na lista principal de raízes) e o seu vizinho é assimilado como o novo mínimo provisório. Em seguida, é preciso definir quem é o novo mínimo e para isso teremos que verificar todos os demais nós raízes. Com o intuito de diminuir o número de nós raízes é que o segundo passo é aplicado.  Ele consiste em agrupar raízes com o mesmo número filhos e para cada par de nodos agrupados, verifica-se qual dos dois é menor. O que for o menor será o nodo pai e outro por consequência será o nodo filho. Após o agrupamento de todos os nodos com mesmo número de filhos, uma busca linear é realizada para se determinar o menor elemento entre os nodos raízes restantes\footnote{Para otimizar a busca de nodos com o mesmo número de grau é utilizado um vetor auxiliar de tamanho mínimo ao maior grau de um nodo da estrutura. Esse vetor contém ponteiros para os nodos e a posição desse nodo no ponteiro corresponde ao grau do nodo. Por exemplo, se um nodo possui grau 3, ele ocupará a posição de número 3 no vetor. Quando um nodo da lista é referenciado na posição que já está ocupado, o processo de lincagem é feito conforme descrito.}. Como exemplo, considere a figura \ref{fig-dijkstra-heapfibonacci1}. Quando o elemento de chave ``0001'' é extraido, o nodo ``mínimo'' é atribuído ao vizinho de ``0001''. Em seguida, é lincado os nodos ``0010'' e ``0011'' por possuírem mesmo número de filhos. É verificado qual dos dois é menor, e que neste caso é ``0010''. Por consequência, este será o nodo pai. O nodo ``0002'' não é lincado com nínguém pois só ele possui 3 filhos. Terminado o processo de lincagem de raízes, uma busca linear é realizada, e o nodo ``0002'' é selecionado como novo nodo mínimo por ser o menor entre os nodos raízes. A figura \ref{fig-dijkstra-heapfibonacci2} mostra a estrutra Heap de Fibonacci da figura \ref{fig-dijkstra-heapfibonacci1} após a operação de extração de mínimo. O tempo computacional para a extração de mínimo é $O(\lg n)$ \cite{cormen2009introduction}.
 
 %\footnote{Para otimizar a busca de nodos com o mesmo número de grau é utilizado um vetor auxiliar de tamanho mínimo ao maior grau de um nodo da estrutura. Esse vetor contém ponteiros para os nodos e a posição desse nodo no ponteiro corresponde ao grau do nodo. Por exemplo, se um nodo possui grau 3, ele ocupará a posição de número 3 no vetor. Quando um nodo da lista é referenciado na posição que já está ocupado, o processo de lincagem é feito conforme descrito.}
-
+\newpage
 \begin{figure}[H]
 \centering
-\includegraphics[width=.54\textwidth]{figuras/fibonacci-heap2} 
+\includegraphics[width=.65\textwidth]{figuras/fibonacci-heap2} 
 \caption{Heap de Fibonacci da figura \ref{fig-dijkstra-heapfibonacci1} após a operação de extração de mínimo.}
 \label{fig-dijkstra-heapfibonacci2}
 \end{figure}
@@ -175,7 +175,7 @@ Para exemplificar, considere o seguinte: um viajante deseja partir da cidade de 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.85\textwidth]{figuras/Aestrela-mapa2} 
+\includegraphics[width=.84\textwidth]{figuras/Aestrela-mapa2} 
 \caption{Desenvolvimento do algoritmo A*.}
 \label{fig-aestrela-algoritmo-mapa2}
 \end{figure}
