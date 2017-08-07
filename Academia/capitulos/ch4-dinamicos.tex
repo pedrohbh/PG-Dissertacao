@@ -9,11 +9,11 @@
 \label{sec-dinamicos-grafos}
 Os algoritmos apresentados até agora tratam apenas de grafos estáticos, ou seja, grafos em que o peso de suas arestas não mudam. Mas em situações reais podemos ter casos em que a modelagem feita por grafos requer que os pesos de suas arestas variem com o tempo. Esses grafos são ditos \textbf{dinâmicos}. Exemplos de modelagem por grafos dinâmicos são o sistema de tempo real de trânsito em que os pesos das arestas correspondem ao tempo médio para percorrer um determinado trecho e esse tempo está diretamente ligado ao trânsito local em uma determinada hora; e o fluxo uma rede interna de computadores em que as arestas representam o caminho entre roteadores e os seus pesos correspondem ao uso desta linha, ou seja, o quão congestionada está.
 
-Para calcularmos o menor caminho entre dois vértices em grafos dinâmicos, poderíamos utilizar os algoritmos de Dijsktra e A* (discutidos nos capítulos \ref{sec-dijkstra} e \ref{sec-aestrela})  para acharmos a rota, e quando houver uma detecção de mudança do peso de arestas, recalcularíamos novamente o trajeto reutilizando esses algoritmos. Em geral desejamos (ou necessitamos) que esse recálculo seja mais rápido. Para esse fim existem os algoritmos dinâmicos que calculam uma solução rápida, porém não garantidamente ótima (elas são ditas sub-ótimas).
+Para calcularmos o menor caminho entre dois vértices em grafos dinâmicos, poderíamos utilizar os algoritmos de Dijsktra e A* (discutidos no capítulo \ref{sec-algoritmosestaticos})  para acharmos a rota, e quando houver uma detecção de mudança do peso de arestas, recalcularíamos novamente o trajeto reutilizando esses algoritmos. Em geral desejamos (ou necessitamos) que esse recálculo seja mais rápido. Para esse fim existem os algoritmos dinâmicos que calculam uma solução rápida, porém não garantidamente ótima (elas são ditas sub-ótimas).
 
 Exemplos de algoritmos são o D* \cite{stentz1994optimal}, D* Lite \cite{koenig2002d} e o AD* \cite{likhachev2008anytime}.
 
-Neste trabalho serão discutidos os algoritmos ARA* e AD* \cite{likhachev2008anytime}.
+Neste trabalho são discutidos os algoritmos ARA* e AD* \cite{likhachev2008anytime}.
 \section{Algoritmo ARA*}
 \label{sec-dinamicos-ara}
 
@@ -22,7 +22,7 @@ O algoritmo ARA* proposto em \citeonline{likhachev2008anytime}, está descrito n
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-%\Entrada{weighted simple digraph, vertex first, vertex goal}
+%\KwIn{weighted simple digraph, vertex first, vertex goal}
 \While{key($s_{goal}$) > $min_{s \in OPEN(key(s))}$}
 {
 	remove s with smallest key(s) from OPEN\;
@@ -47,7 +47,7 @@ O algoritmo ARA* proposto em \citeonline{likhachev2008anytime}, está descrito n
 		}
 	}
 }
-\caption{Algoritmo ARA* - função de cálculo de caminho ComputePath().}
+\caption{ComputePath() - função de cálculo de caminho.}
 \end{algorithm}
 
 
@@ -70,9 +70,9 @@ O algoritmo ARA* proposto em \citeonline{likhachev2008anytime}, está descrito n
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-\Entrada{vertex s}
+\KwIn{vertex s}
 return g(s) + $\epsilon$ * h(s)\;
-\caption{Algoritmo ARA* - função da chave ordenadora da fila de prioridades key(s).}
+\caption{key(s) - função da chave ordenadora da fila de prioridades.}
 \end{algorithm}
 
 %\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-key, caption=Algoritmo ARA* - função da chave ordenadora da fila de prioridades, float=htpb]
@@ -83,7 +83,7 @@ return g(s) + $\epsilon$ * h(s)\;
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-%\Entrada{weighted simple digraph, vertex first, vertex goal}
+%\KwIn{weighted simple digraph, vertex first, vertex goal}
 g($s_{goal}$) $\leftarrow$ v($s_{goal}$) $\leftarrow$ $\infty$; v($s_{start}$) $\leftarrow$ $\infty$\;
 g($s_{start}$) $\leftarrow$ 0; OPEN $\leftarrow$ CLOSED $\leftarrow$ INCONS $\leftarrow$ $\emptyset$\;
 insert $s_{start}$ into OPEN with key($s_{start}$)\;
@@ -98,7 +98,7 @@ publish current $\epsilon$-suboptimal solution\;
 	ComputePath()\;
 	publish current $\epsilon$-suboptimal solution\;
 }
-\caption{Algoritmo ARA* - função principal.}
+\caption{Algoritmo ARA*.}
 \end{algorithm}
 
 %\begin{lstlisting}[mathescape, label=lst-dinamicos-ara-main, caption=Algoritmo ARA* - função principal, float=htpb]
@@ -117,11 +117,11 @@ publish current $\epsilon$-suboptimal solution\;
 %		publish current $\epsilon$-suboptimal solution;
 %\end{lstlisting}
 
-A função principal é descrita no terceiro algoritmo. Temos as variáveis g(s) e v(s) que correspondem ao valor da distância real calculada da origem $s_{start}$ até o vértice s, porém v(s) representa a distância calculada pelo algoritmo na busca anterior, enquanto g(s) é a distância da busca atual. O valor de v(s), apesar de estar descrito no algoritmo conforme a literatura de origem, não é utilizado pelo algoritmo. Ele só é utilizado no próximo algoritmo, AD*, que está descrito no mesmo artigo do ARA* e foi do critério de seus autores originais colocar essa variável em sua descrição (portanto será ignorado na explicação que se segue). O valor de g($s_{goal}$) (distância real calculada da origem ao vértice destino) é atribuído como $\infty$ (infinito)\footnote{Vide nota de rodapé da seção \ref{sec-dijkstra-algoritmo}.}, enquanto que o valor de g($s_{start}$) é atribuído com o valor 0, pois a distância real é calculada a partir da origem. Em seguida são criados os conjuntos ``OPEN'', ``CLOSED'' e ``INCONS'', correspondendo respectivamente ao conjunto dos ``ABERTOS'', ``FECHADOS'' e ``INCONSISTENTES''. O vértice $s_{start}$ é inserido na fila de prioridades do conjunto OPEN utilizando a função de chave ordenadora descrito no segundo algoritmo. Essa função utiliza a estratégia da heurística inflada (descrito a seguir, na subseção \ref{sec-dinamicos-ara-consideracoes}).
+A função principal é descrita no terceiro algoritmo. Temos as variáveis g(s) e v(s) que correspondem ao valor da distância real calculada da origem $s_{start}$ até o vértice s, porém v(s) representa a distância calculada pelo algoritmo na busca anterior, enquanto g(s) é a distância da busca atual. O valor de v(s), apesar de estar descrito no algoritmo conforme a literatura de origem, não é utilizado pelo algoritmo. Ele só é utilizado no próximo algoritmo, AD*, que está descrito no mesmo artigo do ARA* e foi do critério de seus autores originais colocar essa variável em sua descrição (portanto será ignorado na explicação que se segue). O valor de g($s_{goal}$) (distância real calculada da origem ao vértice destino) é atribuído como $\infty$ (infinito)\footnote{Vide nota de rodapé da subseção \ref{sec-dijkstra-algoritmo}.}, enquanto que o valor de g($s_{start}$) é atribuído com o valor 0, pois a distância real é calculada a partir da origem. Em seguida são criados os conjuntos ``OPEN'', ``CLOSED'' e ``INCONS'', correspondendo respectivamente ao conjunto dos ``ABERTOS'', ``FECHADOS'' e ``INCONSISTENTES''. O vértice $s_{start}$ é inserido na fila de prioridades do conjunto OPEN utilizando a função de chave ordenadora descrito no segundo algoritmo. Essa função utiliza a estratégia da heurística inflada (descrito a seguir, na subseção \ref{sec-dinamicos-ara-consideracoes}).
 
-A função de cálculo de caminho é então acionada pela função principal (algoritmo \ref{lst-dinamicos-ara-computepath}). Nesta função, o processo iterativo ocorre enquanto o valor da chave de $s_{goal}$ for maior do que o valor da chave do termo mínimo da fila de prioridades. Enquanto isso for verdade, o vértice s, que corresponde ao valor do vértice com menor chave de OPEN, é removido deste e adicionado ao conjunto CLOSED. Para cada s' (que representa um vértice do conjunto de vértices adjacentes de s) é verificado se o mesmo já foi visitado pelo algoritmo e em caso negativo, o seu valor de g(s') é atribuído como $\infty$ (infinito). Em seguida, é verificado se a distância calculada até o momento para s', g(s'), é maior do que a soma de g(s) com o peso da aresta entre s e s'. Se caso positivo, g(s') é atualizado com esse novo valor. Em seguida é verificado se o vértice s' não pertence ao conjunto dos fechados e em caso positivo, ele é adicionado/atualizado no conjunto OPEN de acordo com a função de chave ordenadora. Caso contrário, ele é adicionado ao conjunto dos INCONS.
+A função de cálculo de caminho é então acionada pela função principal. Nesta função, o processo iterativo ocorre enquanto o valor da chave de $s_{goal}$ for maior do que o valor da chave do termo mínimo da fila de prioridades. Enquanto isso for verdade, o vértice s, que corresponde ao valor do vértice com menor chave de OPEN, é removido deste e adicionado ao conjunto CLOSED. Para cada s' (que representa um vértice do conjunto de vértices adjacentes de s) é verificado se o mesmo já foi visitado pelo algoritmo e em caso negativo, o seu valor de g(s') é atribuído como $\infty$ (infinito). Em seguida, é verificado se a distância calculada até o momento para s', g(s'), é maior do que a soma de g(s) com o peso da aresta entre s e s'. Se caso positivo, g(s') é atualizado com esse novo valor. Em seguida é verificado se o vértice s' não pertence ao conjunto dos fechados e em caso positivo, ele é adicionado/atualizado no conjunto OPEN de acordo com a função de chave ordenadora. Caso contrário, ele é adicionado ao conjunto dos INCONS.
 
-Após o cálculo do caminho e de acordo com função principal (algoritmo \ref{lst-dinamicos-ara-main}), a solução de fator $\epsilon$ é sub-ótima (o motivo da solução ser sub-ótima é explicado na subseção \ref{sec-dinamicos-ara-consideracoes}) é apresentada pelo algoritmo. A partir daí começa o processo iterativo em que se verifica se o valor de $\epsilon$ é maior que 1. Em caso positivo, o valor de $\epsilon$ é decrescido por um fator de corte, estipulado como parâmetro de entrada. Os vértices pertencentes a INCONS são movidos para OPEN e todas as chaves da fila de prioridades são atualizadas considerando o novo valor de $\epsilon$. O conjunto CLOSED é esvaziado e a função de cálculo de caminho é acionada novamente e seu respectivo resultado é apresentado.
+Após o cálculo do caminho e de acordo com o algoritmo ARA*, a solução de fator $\epsilon$ é sub-ótima (o motivo da solução ser sub-ótima é explicado na subseção \ref{sec-dinamicos-ara-consideracoes}) é apresentada pelo algoritmo. A partir daí começa o processo iterativo em que se verifica se o valor de $\epsilon$ é maior que 1. Em caso positivo, o valor de $\epsilon$ é decrescido por um fator de corte, estipulado como parâmetro de entrada. Os vértices pertencentes a INCONS são movidos para OPEN e todas as chaves da fila de prioridades são atualizadas considerando o novo valor de $\epsilon$. O conjunto CLOSED é esvaziado e a função de cálculo de caminho é acionada novamente e seu respectivo resultado é apresentado.
 
 \subsection{Heurística inflada e considerações sobre o algoritmo}
 \label{sec-dinamicos-ara-consideracoes}
@@ -132,11 +132,11 @@ Porém, uma grande vantagem de se utilizar essa estratégia é que teremos um li
 
 Portanto a ideia principal é achar uma solução rápida, porém não-garantidamente ótima, atribuindo um valor $\epsilon$ maior do que 1, e caso a aplicação permita o uso de um tempo maior para aprimorarmos o resultado\footnote{Por exemplo, uma determinada aplicação necessita que se ache um caminho em no máximo 2 segundos. Se o algoritmo achar uma solução sub-ótima em 3 ms, dispomos de mais 1997 ms para podermos aprimorá-la.}, diminuímos o valor de $\epsilon$. E se o tempo ainda permitir, diminuímos até termos $\epsilon$ = 1, em que a solução será garantidamente ótima. 
 
-Outra estratégia utilizada para ganhar tempo, a cada novo valor de $\epsilon$ em que a função para cálculo de caminho é acionada (algoritmo \ref{lst-dinamicos-ara-computepath}), não é necessário recalcular todos os vértices visitados anteriormente, já que os mesmos permanecem na lista de abertos, tendo apenas suas chaves atualizadas com o novo valor de $\epsilon$ e consequentemente a ordem dos vértices também é reconfigurada de acordo com esses novos valores. Além disso, caso haja um melhor caminho encontrado para um vértice que pertence aos fechados, este são colocados em INCONS dos quais serão enviados para OPEN para serem recalculados na próxima busca. A busca se refere ao número da iteração da invocação da função de cálculo de caminho, contido no algoritmo \ref{lst-dinamicos-ara-computepath}, e consequentemente ao valor de $\epsilon$ a ele atribuído.
+Outra estratégia utilizada para ganhar tempo, a cada novo valor de $\epsilon$ em que a função para cálculo de caminho é acionada, não é necessário recalcular todos os vértices visitados anteriormente, já que os mesmos permanecem na lista de abertos, tendo apenas suas chaves atualizadas com o novo valor de $\epsilon$ e consequentemente a ordem dos vértices também é reconfigurada de acordo com esses novos valores. Além disso, caso haja um melhor caminho encontrado para um vértice que pertence aos fechados, este são colocados em INCONS dos quais serão enviados para OPEN para serem recalculados na próxima busca. A busca se refere ao número da iteração da invocação da função de cálculo de caminho, contido no algoritmo ARA*, e consequentemente ao valor de $\epsilon$ a ele atribuído.
 
 As figuras \ref{fig-ara-exemplo3}, \ref{fig-ara-exemplo1} e \ref{fig-ara-exemplo2} mostram a estratégia da heurística inflada aplicada. A figura \ref{fig-ara-exemplo3} mostra o grafo onde são aplicados os algoritmos A* e o ARA*, sendo determinado como o vértice origem o ``0'' e o vértice destino o ``4''. Os valores das heurísticas utilizadas correspondem ao custo da distância ótima de cada vértice ao vértice destino ``4''. A figura \ref{fig-ara-exemplo1} mostra a exploração do grafo pelo algoritmo A* (os vértices em vermelho representam os que são escolhidos pelo algoritmo a cada passo), enquanto que a figura \ref{fig-ara-exemplo2} mostra a exploração do grafo pelo algoritmo ARA*, tendo o valor de $\epsilon = 2$ (novamente os vértices em vermelho representam os que são escolhidos pelo algoritmo a cada passo). Podemos ver que o efeito da heurística inflada ``poda'' ainda mais os vértices a serem visitados e encontra uma solução que não é a ótima.
 
-A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a estratégia de diminuir o fator $\epsilon$ e as respectivas soluções encontradas para a configuração proposta pela figura.
+A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a estratégia de diminuir o fator $\epsilon$ e as respectivas soluções encontradas para a configuração apresentada na figura.
 %A figura \ref{fig-ara-exemplo}, contida em \citeonline{likhachev2008anytime}, mostra a aplicação da estratégia da heurística inflada com seus respectivos resultados encontrados pelo algoritmo.
 \newpage
 \begin{figure}[H]
@@ -179,7 +179,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-\Entrada{vertex s}
+\KwIn{vertex s}
 \eIf{$v(s) \neq g(s)$}
 {
 	\eIf{s $\notin$ CLOSED}
@@ -205,7 +205,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 		}
 	}
 }
-\caption{Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, UpdateSetmembership(s).}
+\caption{UpdateSetmembership(s) - função para determinar o conjunto ao qual vértice pertencerá.}
 \end{algorithm}
 
 %\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-set, caption=Algoritmo AD* - função para determinar o conjunto ao qual vértice pertencerá, float=htpb]
@@ -221,7 +221,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-%\Entrada{vertex s}
+%\KwIn{vertex s}
 \While{key($s_{goal}$) > $min_{s \in OPEN(key(s))}$ OR v($s_{goal}$) < g($s_{goal}$)}
 {
 	remove s with smallest key(s) from OPEN\;
@@ -258,7 +258,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 		}
 	}
 }
-\caption{Algoritmo AD* - função de cálculo de caminho ComputePath().}
+\caption{ComputePath() - função de cálculo de caminho.}
 \end{algorithm}
 
 %\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-computepath, caption=Algoritmo AD* - função de cálculo de caminho, float=htpb]
@@ -287,7 +287,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-\Entrada{vertex s}
+\KwIn{vertex s}
 \eIf{v(s) $\geq$ g(s)}
 {
 	return [g(s) + $\epsilon$ * h(s); g(s)]\;
@@ -295,7 +295,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 {
 	return [v(s) + h(s); v(s)]\;
 }
-\caption{Algoritmo AD* - função da chave ordenadora da fila de prioridades key(s).}
+\caption{key(s) - função da chave ordenadora da fila de prioridades.}
 \end{algorithm}
 
 %\begin{lstlisting}[mathescape, label=lst-dinamicos-ad-key, caption=Algoritmo AD* - função da chave ordenadora da fila de prioridades, float=htpb]
@@ -309,7 +309,7 @@ Esse algoritmo, também proposto em \citeonline{likhachev2008anytime}, está des
 \begin{algorithm}[H]
 \SetAlgoLined
 %\KwResult{Write here the result}
-%\Entrada{weighted simple digraph, vertex first, vertex goal}
+%\KwIn{weighted simple digraph, vertex first, vertex goal}
 g($s_{goal}$) $\leftarrow$ v($s_{goal}$) $\leftarrow$ $\infty$; v($s_{start}$) $\leftarrow$ $\infty$;bp($s_{goal}$) $\leftarrow$ bp($s_{start}$) $\leftarrow$ null\;
 g($s_{start}$) $\leftarrow$ 0; OPEN $\leftarrow$ CLOSED $\leftarrow$ INCONS $\leftarrow$ $\emptyset$; $\epsilon$ $\leftarrow \epsilon_{0}$\;
 insert $s_{start}$ into OPEN with key($s_{start}$)\;
@@ -345,7 +345,7 @@ insert $s_{start}$ into OPEN with key($s_{start}$)\;
 		CLOSED $\leftarrow$ $\emptyset$\;
 }
 		
-\caption{Algoritmo AD* - função principal.}
+\caption{Algoritmo AD*.}
 \end{algorithm}
 
 

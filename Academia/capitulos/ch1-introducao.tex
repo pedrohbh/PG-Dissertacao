@@ -4,7 +4,7 @@
 % ==============================================================================
 \chapter{Introdução}
 \label{sec-intro}
-Na computação muitas aplicações necessitam considerar um conjunto de conexões entre dados e uso de algoritmos sobre esses dados para poder responder perguntas, como exemplo, se existe um caminho entre dois dados distintos seguindo por essas conexões, qual a menor distância entre eles ou ainda quantos dados podemos alcançar a partir de um outro determinado dado. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}. Um grafo G = (V,E) consiste de um conjunto não vazio V de vértices, que representam os dados, e um conjunto que pode ser vazio de arestas E, que representam a ligação entre esses dados. A figura \ref{fig-intro-exemplografo} mostra um exemplo de um grafo. Exemplos de modelagens por grafos são a ligação entre cidades em que as arestas representam as distâncias entre elas e a representação de uma rede interna de computadores. 
+Na computação muitas aplicações necessitam considerar um conjunto de conexões entre dados e uso de algoritmos sobre esses dados para poder responder perguntas, como exemplo, se existe um caminho entre dois dados distintos seguindo por essas conexões, qual a menor distância entre eles ou ainda quantos dados podemos alcançar a partir de um outro determinado dado. Para modelar tais situações, utilizamos um tipo abstrato chamado grafo \cite{ziviani2004projeto}. Um grafo G = (V,E) consiste de um conjunto não vazio V de vértices, que representam os dados, e um conjunto que pode ser vazio de arestas E, que representam a ligação entre esses dados \cite{diestel}. A figura \ref{fig-intro-exemplografo} mostra um exemplo de um grafo. Exemplos de modelagens por grafos são a ligação entre cidades em que as arestas representam as distâncias entre elas e a representação de uma rede interna de computadores. 
 
 \begin{figure}[H]
 \centering
@@ -27,11 +27,13 @@ O algoritmo de Dijkstra é amplamente difundido na literatura, sendo que é util
 
 O algoritmo A* é bastante difundido na literatura. Foi proposto por \citeonline{hart1968formal}. Ele é descrito no livro de \citeonline{russell1995modern} e no artigo de \citeonline{likhachev2008anytime}. O pseudo-código descrito neste livro e artigo são usados como base para a implementação desse algoritmo neste projeto.
 
-O estudo dos algoritmos ARA* e AD* é baseado no artigo no qual esses algoritmos foram propostos \cite{likhachev2008anytime}, além do artigo em que investiga esses algoritmos \cite{moura2010estudo}.
+O estudo dos algoritmos ARA* e AD* são variações do algorimto A* para a solução do problema de caminho mínimo em grafos dinâmicos e foram propostos por \citeonline{likhachev2008anytime}. O artigo \cite{moura2010estudo} investiga o comportamento desses algoritmos aplicados a mapas reais. 
 
 O trabalho de \citeonline{larkin2014back} analisa o uso de diversas estruturas de dados como fila de prioridades e seus respectivos impactos, ressaltando diferenças entre a proposta teórica dessas estruturas e a aplicação prática.
 \section{Metodologia de pesquisa}
 \label{sec-intro-metodologia}
+Neste trabalho estudamos os algoritmos de Dijkstra e A* para a solução do problema de caminho mínimo em grafos estáticos, e os algoritmos ARA* e AD* para grafos dinâmicos.
+
 Todos os algoritmos estudados foram implementados na linguagem Java, a versão do compilador utilizado é Java 1.8.0\_131. Os testes a serem realizados e as instâncias utilizadas estão descritos no capítulo \ref{sec-testes}.
 \newpage
 \section{Organização dos capítulos}
